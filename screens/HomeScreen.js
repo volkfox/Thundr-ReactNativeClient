@@ -6,14 +6,14 @@
 import React from 'react'
 import { 
     View, 
-    StyleSheet, 
     StatusBar, 
     SafeAreaView,
-    ScrollView,
-    Image,
+    FlatList,
 } from 'react-native'
 import FontStyles from '../components/FontStyles'
 import ActionButton from 'react-native-action-button'
+import brainstormData from '../components/BrainstormData'
+import HomeScreenItem from '../components/HomeScreenItem';
 
 export default class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -30,72 +30,41 @@ export default class HomeScreen extends React.Component {
         },
         headerBackTitle: null,
     }
+
+    _renderItem = ({item}) => (
+        <HomeScreenItem
+            title={item.title}
+            date={item.date}
+            summary={item.summary}
+            ideas={item.ideas}
+            collaborators={item.collaborators}
+        />
+    )
+
+    _renderSeparator = () => (
+        <View 
+            style = {{
+                height: 0.5,
+                width: '100%',
+                backgroundColor: '#cccccc',
+            }}
+        />
+    )
    
     render() {
         return (
-            <SafeAreaView style={styles.safeContainer}> 
-                <View style={styles.container}>
-                    <StatusBar barStyle='light-content'/>
-                    <ScrollView>
-                        <View style={styles.imageContainer}>
-                            <Image 
-                                source={require('../images/idea1.png')}
-                                style={styles.idea}
-                                resizeMode='contain'
-                            />
-                        </View>
-                        <View style={styles.imageContainer}>
-                            <Image 
-                                source={require('../images/idea2.png')}
-                                style={styles.idea}
-                                resizeMode='contain'
-                            />
-                        </View>
-                        <View style={styles.imageContainer}>
-                            <Image 
-                                source={require('../images/idea3.png')}
-                                style={styles.idea}
-                                resizeMode='contain'
-                            />
-                        </View>
-                        <View style={styles.imageContainer}>
-                            <Image 
-                                source={require('../images/idea4.png')}
-                                style={styles.idea}
-                                resizeMode='contain'
-                            />
-                        </View>
-                        <View style={styles.imageContainer}>
-                            <Image 
-                                source={require('../images/idea4.png')}
-                                style={styles.idea}
-                                resizeMode='contain'
-                            />
-                        </View>
-                    </ScrollView>
-                    <ActionButton
-                        buttonColor='#FAD15F' 
-                        onPress={ () => {this.props.navigation.push('NewBrainstorm')}}
-                    />
-                </View>
+            <SafeAreaView style={{flex: 1}}> 
+                <StatusBar barStyle='light-content'/>
+                <FlatList
+                    data={brainstormData}
+                    renderItem={this._renderItem}
+                    ItemSeparatorComponent={this._renderSeparator}
+                />
+                <ActionButton
+                    buttonColor='#FAD15F' 
+                    onPress={ () => {this.props.navigation.push('NewBrainstorm')}}
+                />
             </SafeAreaView>
         )
     }
 }
-
-const styles = StyleSheet.create({
-    safeContainer: {
-        flex: 1,
-    },
-    container: {
-        flex: 1,
-    },
-    imageContainer: {
-       alignItems: 'center',
-       height: 150,
-       justifyContent: 'flex-start',
-    },
-    idea: {
-        width: '90%',
-    }
-})

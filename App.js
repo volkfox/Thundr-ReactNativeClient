@@ -16,10 +16,12 @@ import AuthLoadingScreen from './screens/AuthLoadingScreen'
 import NewBrainstormScreen from './screens/NewBrainstormScreen'
 import BrainstormInProgressScreen from './screens/BrainstormInProgressScreen'
 import BrainstormingScreen from './screens/BrainstormingScreen'
+import TestScreen from './screens/TestScreen';
 
 const AppStack = createStackNavigator(
   {
     Home: HomeScreen,
+    //Home: TestScreen,
     NewBrainstorm: NewBrainstormScreen,
     BrainstormInProgress: BrainstormInProgressScreen,
     Brainstorming: BrainstormingScreen,

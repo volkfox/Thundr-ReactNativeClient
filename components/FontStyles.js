@@ -10,6 +10,7 @@ const {
 } = Dimensions.get('window')
 
 const fontStyles = {
+    tiny: SCREEN_HEIGHT / 100,
     small: SCREEN_HEIGHT / 60,
     body: SCREEN_HEIGHT / 40,
     header: SCREEN_HEIGHT / 30,
