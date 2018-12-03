@@ -17,6 +17,7 @@ import NewBrainstormScreen from './screens/NewBrainstormScreen'
 import BrainstormingScreen from './screens/BrainstormingScreen'
 import TestScreen from './screens/TestScreen';
 import PostBrainstormScreen from './screens/PostBrainstormScreen'
+import PastBrainstormScreen from './screens/PastBrainstormScreen'
 
 /* Main navigation stack */
 const AppStack = createStackNavigator(
@@ -26,6 +27,7 @@ const AppStack = createStackNavigator(
     NewBrainstorm: NewBrainstormScreen,
     Brainstorming: BrainstormingScreen,
     PostBrainstorm: PostBrainstormScreen,
+    PastBrainstorm: PastBrainstormScreen,
   },
   {
     initialRouteName: 'Home',

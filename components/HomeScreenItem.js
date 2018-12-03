@@ -11,10 +11,12 @@ import {
     Text,
     Dimensions,
     Image,
+    TouchableOpacity,
 } from 'react-native'
+import { withNavigation } from 'react-navigation'
 import FontStyles from './FontStyles'
 
-export default class HomeScreenItem extends React.Component {
+class HomeScreenItem extends React.Component {
     render() {
         /* Build string of collaborators. */
         let collaborators = () => {
@@ -32,48 +34,48 @@ export default class HomeScreenItem extends React.Component {
 
         return (
             <View style={styles.itemContainer}>
-                <View style= {styles.titleLine}>
-                    <View style={styles.titleContainer}>
-                        <Text style={styles.titleText} numberOfLines={1}>
-                            {this.props.title}
-                        </Text>
+                <TouchableOpacity
+                    onPress={ () => this.props.navigation.push('PastBrainstorm', {title: this.props.title})}
+                >
+                    <View style= {styles.titleLine}>
+                        <View style={styles.titleContainer}>
+                            <Text style={styles.titleText} numberOfLines={1}>{this.props.title}</Text>
+                        </View>
+                        <View style={styles.dateContainer}>
+                            <Text style={styles.dateText}>{this.props.date}</Text>
+                        </View>
+                        <View style={styles.menuContainer}>
+                            <Text style={{color: '#7E7E7E'}}>...</Text>
+                        </View>
                     </View>
-                    <View style={styles.dateContainer}>
-                        <Text style={styles.dateText}>{this.props.date}</Text>
+                    <View style={styles.descriptionContainer}>
+                        <Text style={styles.descriptionText} numberOfLines={3}>{this.props.description}</Text>
                     </View>
-                    <View style={styles.menuContainer}>
-                        <Text style={{color: '#7E7E7E'}}>...</Text>
+                    <View style={styles.infoContainer}>
+                        <Image
+                            style={styles.bolt}
+                            source={require('../images/gray_bolt.png')}
+                            resizeMode='contain'
+                        />
+                        <View style={styles.ideasContainer}>
+                            <Text style={styles.infoText} numberOfLines={1}>{this.props.ideas}</Text>
+                        </View>
+                        <Image 
+                            style={styles.collaborator}
+                            source={require('../images/collaborator.png')}
+                            resizeMode='contain'
+                        />
+                        <View style={styles.collaboratorsContainer}>
+                            <Text 
+                                style={styles.infoText} 
+                                numberOfLines={1}
+                                ellipsizeMode='middle'
+                            >
+                                {collaborators()}
+                            </Text>
+                        </View>
                     </View>
-                </View>
-                <View style={styles.descriptionContainer}>
-                    <Text style={styles.descriptionText} numberOfLines={3}>
-                        {this.props.description}
-                    </Text>
-                </View>
-                <View style={styles.infoContainer}>
-                    <Image
-                        style={styles.bolt}
-                        source={require('../images/gray_bolt.png')}
-                        resizeMode='contain'
-                    />
-                    <View style={styles.ideasContainer}>
-                        <Text style={styles.infoText} numberOfLines={1}>{this.props.ideas}</Text>
-                    </View>
-                    <Image 
-                        style={styles.collaborator}
-                        source={require('../images/collaborator.png')}
-                        resizeMode='contain'
-                    />
-                    <View style={styles.collaboratorsContainer}>
-                        <Text 
-                            style={styles.infoText} 
-                            numberOfLines={1}
-                            ellipsizeMode='middle'
-                        >
-                            {collaborators()}
-                        </Text>
-                    </View>
-                </View>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -150,3 +152,5 @@ const styles = StyleSheet.create({
         height: 15,
     },
 })
+
+export default withNavigation(HomeScreenItem)

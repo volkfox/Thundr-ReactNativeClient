@@ -9,7 +9,7 @@ import {
     View,
     Text,
 } from 'react-native'
-import brainstormData from '../components/BrainstormData'
+import brainstormData from '../data/BrainstormData'
 
 class FlatListItem extends React.Component {
     render() {

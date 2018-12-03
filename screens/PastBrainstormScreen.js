@@ -1,48 +1,46 @@
-/*  -- HomePage.js --
-    Home page of Thundr. Allows user to browse previous brainstorms
-    and has a FAB that allows creation of new brainstorms.
+/*  -- PastBrainstormScreen.js --
+
 */
 
 import React from 'react'
-import { 
-    View, 
-    StatusBar, 
+import {
     SafeAreaView,
+    Text,
+    View,
     FlatList,
+    StatusBar,
     TouchableOpacity,
     Image,
 } from 'react-native'
 import FontStyles from '../components/FontStyles'
 import ActionButton from 'react-native-action-button'
-import HomeScreenItem from '../components/HomeScreenItem'
-import brainstormData from '../data/BrainstormData'
+import pastData from '../data/PastData'
+import PastBrainstormItem from '../components/PastBrainstormItem'
 
-export default class HomeScreen extends React.Component {
+export default class PastBrainstormScreen extends React.Component {
     render() {
         return (
-            <SafeAreaView style={{flex: 1}}> 
-                <StatusBar barStyle='light-content'/>
-                <FlatList
-                    data={brainstormData}
-                    renderItem={this._renderItem}
-                    ItemSeparatorComponent={this._renderSeparator}
-                />
-                <ActionButton
+            <SafeAreaView style={{flex: 1}}>
+            <StatusBar barStyle='light-content'/>
+            <FlatList
+                data={pastData}
+                renderItem={this._renderItem}
+                ItemSeparatorComponent={this._renderSeparator}
+            />
+            <ActionButton
                     buttonColor='#FAD15F' 
-                    onPress={ () => {this.props.navigation.push('NewBrainstorm')}}
-                />
+                    onPress={ () => {}}
+            />
             </SafeAreaView>
         )
     }
 
     /* renderItem function for Flatlist. */
     _renderItem = ({item}) => (
-        <HomeScreenItem
-            title={item.title}
-            date={item.date}
-            description={item.description}
-            ideas={item.ideas}
-            collaborators={item.collaborators}
+        <PastBrainstormItem
+            idea={item.idea}
+            notes={item.notes}
+            upvotes={item.upvotes}
         />
     )
 
@@ -58,8 +56,8 @@ export default class HomeScreen extends React.Component {
     )
 
     /* Header styling. */
-    static navigationOptions = {
-        title: 'Brainstorms', 
+    static navigationOptions = ({navigation}) => ({
+        title: navigation.getParam('title', null), 
         headerStyle: {
             borderBottomWidth: 0,
             height: FontStyles.headerHeight,
@@ -68,19 +66,19 @@ export default class HomeScreen extends React.Component {
         headerTintColor: '#FFFFFF',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.header - 5,
+            fontSize: FontStyles.body - 3,
         },
-        headerBackTitle: null,
+        headerLeft: null,
         headerRight: (
             <TouchableOpacity style={ {paddingRight: 25, paddingBottom: 8} }
                 onPress={ () => {} }
             >
                 <Image
-                    source={require('../images/search.png')}
+                    source={require('../images/info_button.png')}
                     resizeMode='contain'
-                    style={ {width: 20, height: 20} }
+                    style={ {width: 22, height: 22}}
                 />
             </TouchableOpacity>
         ),
-    }
+    }) 
 }

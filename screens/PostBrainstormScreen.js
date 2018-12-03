@@ -20,7 +20,7 @@ import {
 } from 'react-native'
 import { StackActions, NavigationActions } from 'react-navigation'
 import FontStyles from '../components/FontStyles'
-import brainstormData from '../components/BrainstormData'
+import brainstormData from '../data/BrainstormData'
 
 export default class PostBrainstormScreen extends React.Component {
     constructor(props) {
