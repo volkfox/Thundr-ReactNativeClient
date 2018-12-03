@@ -1,3 +1,7 @@
+/*  -- BrainstormingScreen.js --
+    Displayed when a brainstorm is in progress. Allows user to
+    press on the screen and record ideas.
+*/
 
 import React from 'react'
 import {
@@ -9,21 +13,30 @@ import {
     TouchableOpacity,
     StatusBar,
 } from 'react-native'
-
+import { StackActions, NavigationActions } from 'react-navigation'
 import FontStyles from '../components/FontStyles'
 
 export default class BrainstormingScreen extends React.Component { 
-    static navigationOptions = {
-        header: null,
-    }
-
     render() {
+        const collaborators = this.props.navigation.getParam('collaborators', null)
+
+        /* Reset stack after navigating away. */
+        const resetAction = StackActions.reset({
+            index: 0,
+            actions: [
+                NavigationActions.navigate({
+                    routeName: 'PostBrainstorm',
+                    params: { collaborators: collaborators }
+                })
+            ]
+        })
+
         return (
             <SafeAreaView style={styles.safeContainer}>
                 <View style={styles.finishContainer}>
                     <StatusBar barStyle='light-content'/>
                     <TouchableOpacity
-                        onPress={ () => this.props.navigation.navigate('Home')}
+                        onPress={ () => this.props.navigation.dispatch(resetAction) }
                         style={styles.finishButton}
                     >
                         <Text style={styles.finishText}>Done</Text>
@@ -42,8 +55,14 @@ export default class BrainstormingScreen extends React.Component {
             </SafeAreaView>
         )
     }
+
+    /* Header styling. */
+    static navigationOptions = {
+        header: null,
+    }
 }
 
+/* Style sheet. */
 const styles = StyleSheet.create({
     safeContainer: {
         flex: 1,
@@ -83,7 +102,4 @@ const styles = StyleSheet.create({
         fontSize: FontStyles.body,
         color: '#FFFFFF',
     },
-    done: {
-
-    }
 })

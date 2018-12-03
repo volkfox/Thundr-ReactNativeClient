@@ -1,6 +1,6 @@
 /*  -- HomeScreenItem.js --
     FlatList element for the home screen. 
-    Renders the title, date, summary, ideas generated, and collaborators 
+    Renders the title, date, description, ideas generated, and collaborators 
     for a past brainstorm.
  */
 
@@ -16,6 +16,7 @@ import FontStyles from './FontStyles'
 
 export default class HomeScreenItem extends React.Component {
     render() {
+        /* Build string of collaborators. */
         let collaborators = () => {
             const length = this.props.collaborators.length
             if (length > 2) {
@@ -25,7 +26,7 @@ export default class HomeScreenItem extends React.Component {
             } else if (length == 2) {
                 return 'with ' + this.props.collaborators[0] + ' and ' + this.props.collaborators[1]
             } else {
-                return ''
+                return 'with no others'
             }
         }        
 
@@ -44,9 +45,9 @@ export default class HomeScreenItem extends React.Component {
                         <Text style={{color: '#7E7E7E'}}>...</Text>
                     </View>
                 </View>
-                <View style={styles.summaryContainer}>
-                    <Text style={styles.summaryText} numberOfLines={3}>
-                        {this.props.summary}
+                <View style={styles.descriptionContainer}>
+                    <Text style={styles.descriptionText} numberOfLines={3}>
+                        {this.props.description}
                     </Text>
                 </View>
                 <View style={styles.infoContainer}>
@@ -78,6 +79,7 @@ export default class HomeScreenItem extends React.Component {
     }
 }
 
+/* Style sheet. */
 const styles = StyleSheet.create({
     itemContainer: {
         flex: 1,
@@ -111,12 +113,12 @@ const styles = StyleSheet.create({
         width: '15%',
         alignItems: 'flex-end',
     },
-    summaryContainer: {
+    descriptionContainer: {
         flex: 1,
         width: '75%',
         marginVertical: 10,
     },
-    summaryText: {
+    descriptionText: {
         fontFamily: 'HiraginoSans-W3',
         fontSize: FontStyles.small - 3,
         color: '#7E7E7E',

@@ -59,6 +59,7 @@ export default class ForgotPasswordScreen extends React.Component {
     }
 }
 
+/* Style sheet. */
 const styles=StyleSheet.create({
     safeContainer: {
         flex: 1,

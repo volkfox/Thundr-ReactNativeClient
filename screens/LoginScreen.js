@@ -23,20 +23,6 @@ import FontStyles from '../components/FontStyles'
 import SigninTextField from '../components/SigninTextField'
 
 export default class LoginScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Login',       
-        headerStyle: {
-            borderBottomWidth: 0,
-            height: Dimensions.get('window').height / 8,
-        },
-        headerTintColor: '#FAD15F',
-        headerTitleStyle: {
-            fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.header,
-        },
-        headerBackTitle: null,
-    }
-    
     render() {
         return (
             <SafeAreaView style={styles.safeContainer}> 
@@ -83,8 +69,24 @@ export default class LoginScreen extends React.Component {
         await AsyncStorage.setItem('userToken', 'placeholder')
         this.props.navigation.navigate('App')
     }
+    
+    /* Header styling. */
+    static navigationOptions = {
+        title: 'Login',       
+        headerStyle: {
+            borderBottomWidth: 0,
+            height: Dimensions.get('window').height / 8,
+        },
+        headerTintColor: '#FAD15F',
+        headerTitleStyle: {
+            fontFamily: 'HiraginoSans-W6',
+            fontSize: FontStyles.header,
+        },
+        headerBackTitle: null,
+    }
 }
 
+/* Style sheet. */
 const styles = StyleSheet.create({
     safeContainer: {
         flex: 1,

@@ -16,41 +16,6 @@ import brainstormData from '../components/BrainstormData'
 import HomeScreenItem from '../components/HomeScreenItem';
 
 export default class HomeScreen extends React.Component {
-    static navigationOptions = {
-        title: 'Brainstorms', 
-        headerStyle: {
-            borderBottomWidth: 0,
-            height: FontStyles.headerHeight,
-            backgroundColor: '#FAD15F',
-        },
-        headerTintColor: '#FFFFFF',
-        headerTitleStyle: {
-            fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.header,
-        },
-        headerBackTitle: null,
-    }
-
-    _renderItem = ({item}) => (
-        <HomeScreenItem
-            title={item.title}
-            date={item.date}
-            summary={item.summary}
-            ideas={item.ideas}
-            collaborators={item.collaborators}
-        />
-    )
-
-    _renderSeparator = () => (
-        <View 
-            style = {{
-                height: 0.5,
-                width: '100%',
-                backgroundColor: '#cccccc',
-            }}
-        />
-    )
-   
     render() {
         return (
             <SafeAreaView style={{flex: 1}}> 
@@ -66,5 +31,43 @@ export default class HomeScreen extends React.Component {
                 />
             </SafeAreaView>
         )
+    }
+
+    /* renderItem function for FlatList. */
+    _renderItem = ({item}) => (
+        <HomeScreenItem
+            title={item.title}
+            date={item.date}
+            description={item.description}
+            ideas={item.ideas}
+            collaborators={item.collaborators}
+        />
+    )
+
+    /* renderSeparator function for FlatList. */
+    _renderSeparator = () => (
+        <View 
+            style = {{
+                height: 0.5,
+                width: '100%',
+                backgroundColor: '#cccccc',
+            }}
+        />
+    )
+
+    /* Header styling. */
+    static navigationOptions = {
+        title: 'Brainstorms', 
+        headerStyle: {
+            borderBottomWidth: 0,
+            height: FontStyles.headerHeight,
+            backgroundColor: '#FAD15F',
+        },
+        headerTintColor: '#FFFFFF',
+        headerTitleStyle: {
+            fontFamily: 'HiraginoSans-W6',
+            fontSize: FontStyles.header - 5,
+        },
+        headerBackTitle: null,
     }
 }

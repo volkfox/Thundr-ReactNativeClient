@@ -16,11 +16,6 @@ import {
 import FontStyles from '../components/FontStyles'
 
 export default class EntryScreen extends React.Component {
-    static navigationOptions = {
-        header: null,
-        headerTruncatedBackTitle: null,
-    }
-    
     render() {
         return (
             <SafeAreaView style={styles.safeContainer}>
@@ -54,8 +49,15 @@ export default class EntryScreen extends React.Component {
             </SafeAreaView>
         )
     }
+
+    /* Header styling. */
+    static navigationOptions = {
+        header: null,
+        headerTruncatedBackTitle: null,
+    }
 }
 
+/* Style sheet. */
 const styles = StyleSheet.create({
     safeContainer: {
         flex: 1, 

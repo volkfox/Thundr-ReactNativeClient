@@ -18,11 +18,6 @@ export default class AuthLoadingScreen extends React.Component {
         super(props)
         this._bootStrapAsync()
     }
-
-    _bootStrapAsync = async () => {
-        const userToken = await AsyncStorage.getItem('userToken')
-        this.props.navigation.navigate(userToken ? 'App' : 'Auth')
-    }
     
     render() {
         return (
@@ -40,8 +35,14 @@ export default class AuthLoadingScreen extends React.Component {
             </SafeAreaView>
         )
     }
+
+    _bootStrapAsync = async () => {
+        const userToken = await AsyncStorage.getItem('userToken')
+        this.props.navigation.navigate(userToken ? 'App' : 'Auth')
+    }
 }
 
+/* Style sheet. */
 const styles = StyleSheet.create({
     safeContainer: {
         flex: 1,
