@@ -7,7 +7,6 @@ import {
     View,
     Text,
     StyleSheet,
-    Dimensions,
     Image,
     TouchableOpacity,
     ScrollView,
@@ -27,10 +26,13 @@ export default class PastBrainstormItem extends React.Component {
     render() {
         return (
             <View style={styles.itemContainer}>
-                <Modal isVisible={this.state.isModalVisible}>
+                <Modal 
+                    isVisible={this.state.isModalVisible}
+                    onBackdropPress={this._toggleModal}
+                >
                     <View style={styles.modalContainer}>
                         <View style={{ flexDirection: 'row' }}>
-                            <View style={{flex: 1}}/>
+                            <View style={{ flex: 1 }}/>
                             <View style={styles.modalTitleContainer}>
                                 <Text style={styles.modalTitleText} numberOfLines={1}>{this.props.idea}</Text>
                             </View>

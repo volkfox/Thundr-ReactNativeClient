@@ -5,7 +5,8 @@
 import { 
   createAppContainer, 
   createStackNavigator, 
-  createSwitchNavigator 
+  createSwitchNavigator ,
+  createDrawerNavigator,
 } from 'react-navigation'
 import EntryScreen from './screens/EntryScreen'
 import HomeScreen from './screens/HomeScreen'
@@ -18,9 +19,10 @@ import BrainstormingScreen from './screens/BrainstormingScreen'
 import TestScreen from './screens/TestScreen';
 import PostBrainstormScreen from './screens/PostBrainstormScreen'
 import PastBrainstormScreen from './screens/PastBrainstormScreen'
+import { create } from 'uuid-js';
 
 /* Main navigation stack */
-const AppStack = createStackNavigator(
+const HomeStack = createStackNavigator(
   {
     Home: HomeScreen,
     //Home: TestScreen,
@@ -48,6 +50,15 @@ const AuthStack = createStackNavigator(
   }
 )
 
+/* Wraps HomeStack and ProfileStack in a drawer navigator. */
+const AppStack = createDrawerNavigator(
+  {
+    Home: HomeStack,
+    Test: TestScreen,
+  }
+)
+
+/* Wraps App flow and Authentication flow in a switch navigator. */
 export default createAppContainer(createSwitchNavigator(
   {
     AuthLoading: AuthLoadingScreen,
