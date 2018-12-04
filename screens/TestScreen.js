@@ -9,18 +9,7 @@ import {
     View,
     Text,
 } from 'react-native'
-import brainstormData from '../data/BrainstormData'
-
-class FlatListItem extends React.Component {
-    render() {
-        return (
-            <View style={{flex: 1}}>
-                <Text>{this.props.title}</Text>
-                <Text>{this.props.summary}</Text>
-            </View>
-        )
-    }
-}
+import Modal from 'react-native-modal'
 
 export default class TestScreen extends React.Component {
     

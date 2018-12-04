@@ -10,14 +10,45 @@ import {
     Dimensions,
     Image,
     TouchableOpacity,
+    ScrollView,
 } from 'react-native'
 import FontStyles from '../components/FontStyles'
+import Modal from 'react-native-modal'
 
 export default class PastBrainstormItem extends React.Component {
+    state = {
+        isModalVisible: false,
+    }
+
+    /* Change the visibility of the modal. */
+    _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
+
     render() {
         return (
             <View style={styles.itemContainer}>
-                <TouchableOpacity>
+                <Modal isVisible={this.state.isModalVisible}>
+                    <View style={styles.modalContainer}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{flex: 1}}/>
+                            <View style={styles.modalTitleContainer}>
+                                <Text style={styles.modalTitleText} numberOfLines={1}>{this.props.idea}</Text>
+                            </View>
+                            <View style={styles.exitButtonContainer}>
+                                <TouchableOpacity onPress={this._toggleModal}>
+                                    <Image
+                                        source={require('../images/yellow_x.png')}
+                                        style={styles.exitButton}
+                                        resizeMode='contain'
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        <ScrollView style={{ width: '80%' }}>
+                            <Text style={styles.modalText}>{this.props.notes}</Text>
+                        </ScrollView>
+                    </View>
+                </Modal>
+                <TouchableOpacity onPress={this._toggleModal}>
                     <View style={styles.titleLine}>
                         <View style={styles.ideaContainer}>
                             <Text style={styles.ideaText} numberOfLines={1}>{this.props.idea}</Text>
@@ -53,9 +84,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
     },
-    notesContainer: {
-        flex: 1,
-    },
     ideaContainer: {
         width: '75%',
     },
@@ -85,5 +113,41 @@ const styles = StyleSheet.create({
         flex: 1,
         width: '75%',
         marginVertical: 10,
-    }
+    },
+    modalContainer: {
+        alignSelf: 'center',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '50%',
+        width: '90%',
+        backgroundColor: '#F5FCFF',
+        borderRadius: 30,
+    },
+    modalText: {
+        fontFamily: 'HiraginoSans-W3',
+        fontSize: FontStyles.body,
+        color: '#7E7E7E',
+    },
+    modalTitleText: {
+        fontFamily: 'HiraginoSans-W3',
+        fontSize: FontStyles.header,
+        paddingTop: 20,
+        color: '#595959',
+    },
+    exitButton: {
+        width: 20, 
+        height: 20,
+    },
+    exitButtonContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingTop: 8,
+        paddingRight: 20,
+    },
+    modalTitleContainer: {
+        flex: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 })
