@@ -5,7 +5,7 @@
 let brainstormData = [
     {
         'title': 'Voice Interaction Ideas',
-        'date': '12/1/18',
+        'date': '12/01/18',
         'description': 'Brainstormed ways to incorporate voice interaction technology into our app.',
         'ideas': 90,
         'collaborators': [ 'Emma', 'Caroline' ],

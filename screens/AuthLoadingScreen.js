@@ -22,15 +22,13 @@ export default class AuthLoadingScreen extends React.Component {
     render() {
         return (
             <SafeAreaView style={styles.safeContainer}>
-                <View style={styles.container}>
-                    <StatusBar barStyle='light-content'/>
-                    <View style={styles.logoContainer}>
-                        <Image
-                            style={styles.idea}
-                            source={require('../images/logo.png')}
-                            resizeMode='contain'
-                        />
-                    </View>
+                <StatusBar barStyle='light-content'/>
+                <View style={styles.logoContainer}>
+                    <Image
+                        style={styles.idea}
+                        source={require('../images/logo.png')}
+                        resizeMode='contain'
+                    />
                 </View>
             </SafeAreaView>
         )
@@ -47,9 +45,6 @@ const styles = StyleSheet.create({
     safeContainer: {
         flex: 1,
         backgroundColor: '#FAD15F',
-    },
-    container: {
-        flex: 1,
     },
     logoContainer: {
         flex: 1,

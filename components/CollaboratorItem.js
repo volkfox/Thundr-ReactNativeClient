@@ -11,6 +11,7 @@
      StyleSheet,
  } from 'react-native'
 import FontStyles from './FontStyles';
+import { scale } from 'react-native-size-matters'
 
  export default class CollaboratorItem extends React.Component {
      render() {
@@ -38,17 +39,17 @@ import FontStyles from './FontStyles';
      container: {
         flex: 1,
         flexDirection: 'row',
-        marginLeft: 40,
+        marginLeft: scale(40),
         alignItems: 'flex-end',
      },
      bolt: {
-        width: 50,
-        height: 50,
+        width: scale(50),
+        height: scale(50),
      },
      text: {
-        marginLeft: 5,
+        marginLeft: scale(10),
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.body,
+        fontSize: FontStyles.medium,
          
      }
  })

@@ -21,6 +21,7 @@ import {
 import { StackActions, NavigationActions } from 'react-navigation'
 import FontStyles from '../components/FontStyles'
 import CollaboratorItem from '../components/CollaboratorItem'
+import { scale } from 'react-native-size-matters'
 
 export default class NewBrainstormScreen extends React.Component {
     constructor(props) {
@@ -105,7 +106,7 @@ export default class NewBrainstormScreen extends React.Component {
     }
 
     /* Header styling. */
-    static navigationOptions = {
+    static navigationOptions = ({navigation}) => ({
         title: 'Add People', 
         headerStyle: {
             borderBottomWidth: 0,
@@ -115,10 +116,22 @@ export default class NewBrainstormScreen extends React.Component {
         headerTintColor: '#FFFFFF',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.header - 5,
+            fontSize: FontStyles.medium,
         },
         headerBackTitle: null,
-    }
+        headerLeft: (
+            <TouchableOpacity 
+                style={ {paddingLeft: scale(12), paddingBottom: scale(9)} } 
+                onPress={ () => {navigation.pop()}}
+            >
+                <Image
+                    source={require('../images/white_back_arrow.png')}
+                    resizeMode='contain'
+                    style={ {width: scale(22), height: scale(22)} }
+                />
+            </TouchableOpacity>
+        )
+    })
 }
 
 /* Style sheet. */
@@ -134,17 +147,17 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 20,
+        marginTop: scale(20),
     },
     addButtonContainer: {
         marginLeft: 10,
-        width: 30,
-        height: 50,
+        width: scale(30),
+        height: scale(50),
         justifyContent: 'center',
     },
     addButton: {
-        width: 15,
-        height: 15,
+        width: scale(15),
+        height: scale(15),
     },
     peopleContainer: {
         flex: 3,
@@ -158,26 +171,21 @@ const styles = StyleSheet.create({
     inputField: {
         width: '75%',
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small + 3,
+        fontSize: FontStyles.medium,
         borderBottomColor: '#FAD15F',
-        borderBottomWidth: 1.5,
+        borderBottomWidth: scale(1.5),
     },
     startButton: {
         backgroundColor: '#FAD15F',
-        marginHorizontal: 25,
+        marginHorizontal: scale(30),
         borderRadius: 100,
         alignItems: 'center',
-        height: FontStyles.title,
+        height: FontStyles.buttonHeight,
     },
     startText: {
         color: '#FFFFFF',
         fontFamily: 'HiraginoSans-W6',
-        fontSize: FontStyles.body,
-        paddingVertical: (FontStyles.title - FontStyles.body) / 2,
-    },
-    collaboratorText: {
-        fontFamily: 'HiraginoSans-W6',
-        fontSize: FontStyles.body,
-        paddingVertical: 5,
+        fontSize: FontStyles.medium,
+        paddingVertical: (FontStyles.buttonHeight - FontStyles.medium) / 2,
     },
 })

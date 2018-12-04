@@ -5,7 +5,6 @@
 import React from 'react'
 import {
     SafeAreaView,
-    Text,
     View,
     FlatList,
     StatusBar,
@@ -16,6 +15,7 @@ import FontStyles from '../components/FontStyles'
 import ActionButton from 'react-native-action-button'
 import pastData from '../data/PastData'
 import PastBrainstormItem from '../components/PastBrainstormItem'
+import { scale } from 'react-native-size-matters'
 
 export default class PastBrainstormScreen extends React.Component {
     render() {
@@ -48,8 +48,7 @@ export default class PastBrainstormScreen extends React.Component {
     _renderSeparator = () => (
         <View 
             style = {{
-                height: 0.5,
-                width: '100%',
+                height: scale(0.5),
                 backgroundColor: '#cccccc',
             }}
         />
@@ -66,17 +65,17 @@ export default class PastBrainstormScreen extends React.Component {
         headerTintColor: '#FFFFFF',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.body - 3,
+            fontSize: FontStyles.small,
         },
         headerLeft: null,
         headerRight: (
-            <TouchableOpacity style={ {paddingRight: 25, paddingBottom: 8} }
+            <TouchableOpacity style={ {paddingRight: scale(25), paddingBottom: scale(5)} }
                 onPress={ () => {} }
             >
                 <Image
                     source={require('../images/info_button.png')}
                     resizeMode='contain'
-                    style={ {width: 22, height: 22}}
+                    style={ {width: scale(20), height: scale(20)}}
                 />
             </TouchableOpacity>
         ),

@@ -15,6 +15,7 @@ import {
 } from 'react-native'
 import { StackActions, NavigationActions } from 'react-navigation'
 import FontStyles from '../components/FontStyles'
+import { scale } from 'react-native-size-matters'
 
 export default class BrainstormingScreen extends React.Component { 
     render() {
@@ -33,25 +34,29 @@ export default class BrainstormingScreen extends React.Component {
 
         return (
             <SafeAreaView style={styles.safeContainer}>
-                <View style={styles.finishContainer}>
-                    <StatusBar barStyle='light-content'/>
-                    <TouchableOpacity
-                        onPress={ () => this.props.navigation.dispatch(resetAction) }
-                        style={styles.finishButton}
-                    >
-                        <Text style={styles.finishText}>Done</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.boltContainer}>
-                    <Image
-                        style={styles.bolt}
-                        source={require('../images/bolt.png')}
-                        resizeMode='contain'
-                    />
-                </View>
-                <View style={styles.textContainer}>
-                    <Text style={styles.text}>Hold to Record an Idea</Text>
-                </View>
+                <TouchableOpacity
+                    style={{flex: 1}}
+                >
+                    <View style={styles.finishContainer}>
+                        <StatusBar barStyle='light-content'/>
+                        <TouchableOpacity
+                            onPress={ () => this.props.navigation.dispatch(resetAction) }
+                            style={styles.finishButton}
+                        >
+                            <Text style={styles.finishText}>Done</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.boltContainer}>
+                        <Image
+                            style={styles.bolt}
+                            source={require('../images/bolt.png')}
+                            resizeMode='contain'
+                        />
+                    </View>
+                    <View style={styles.textContainer}>
+                        <Text style={styles.text}>Hold to Record an Idea</Text>
+                    </View>
+                </TouchableOpacity>
             </SafeAreaView>
         )
     }
@@ -82,15 +87,15 @@ const styles = StyleSheet.create({
     },
     finishButton: {
         width: '25%',
-        height: FontStyles.title,
+        height: FontStyles.buttonHeight,
         alignItems: 'flex-end',
-        marginRight: 20,
+        marginRight: scale(20),
     },
     finishText: {
         fontFamily: 'HiraginoSans-W6',
         color: '#FFFFFF',
-        fontSize: FontStyles.body,
-        paddingVertical: (FontStyles.title - FontStyles.body) / 2,
+        fontSize: FontStyles.medium,
+        paddingVertical: (FontStyles.buttonHeight - FontStyles.medium) / 2,
     },
     textContainer: {
         flex: 1,
@@ -98,8 +103,8 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     text: {
-        fontFamily: 'HiraginoSans-W6',
-        fontSize: FontStyles.body,
+        fontFamily: 'HiraginoSans-W3',
+        fontSize: FontStyles.small,
         color: '#FFFFFF',
     },
 })

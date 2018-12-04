@@ -13,6 +13,7 @@ import {
     Image,
 } from 'react-native'
 import FontStyles from '../components/FontStyles'
+import { scale } from 'react-native-size-matters'
 import ActionButton from 'react-native-action-button'
 import HomeScreenItem from '../components/HomeScreenItem'
 import brainstormData from '../data/BrainstormData'
@@ -50,8 +51,7 @@ export default class HomeScreen extends React.Component {
     _renderSeparator = () => (
         <View 
             style = {{
-                height: 0.5,
-                width: '100%',
+                height: scale(0.5),
                 backgroundColor: '#cccccc',
             }}
         />
@@ -67,18 +67,19 @@ export default class HomeScreen extends React.Component {
         },
         headerTintColor: '#FFFFFF',
         headerTitleStyle: {
-            fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.header - 5,
+            fontFamily: 'HiraginoSans-W3',
+            fontSize: FontStyles.medium,
         },
         headerBackTitle: null,
         headerRight: (
-            <TouchableOpacity style={ {paddingRight: 25, paddingBottom: 8} }
+            <TouchableOpacity 
+                style={ {paddingRight: scale(25), paddingBottom: scale(8)} } 
                 onPress={ () => {} }
             >
                 <Image
                     source={require('../images/search.png')}
                     resizeMode='contain'
-                    style={ {width: 20, height: 20} }
+                    style={ {width: scale(17), height: scale(17)} }
                 />
             </TouchableOpacity>
         ),

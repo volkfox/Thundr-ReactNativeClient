@@ -16,51 +16,50 @@ import {
     StatusBar, 
     TouchableOpacity, 
     SafeAreaView, 
-    Dimensions,
     AsyncStorage, 
+    Image,
 } from 'react-native'
 import FontStyles from '../components/FontStyles'
 import SigninTextField from '../components/SigninTextField'
+import { scale } from 'react-native-size-matters'
 
 export default class LoginScreen extends React.Component {
     render() {
         return (
             <SafeAreaView style={styles.safeContainer}> 
-                <View style={styles.container}>
-                    <StatusBar barStyle='dark-content'/>
-                    <View style={styles.inputContainer}>
-                        <View style={styles.fieldContainer}>
-                            <SigninTextField 
-                                text='Email'
-                                hidden={false}
-                            />
-                        </View>
-                        <View style={styles.fieldContainer}>
-                            <SigninTextField 
-                                style={styles.fieldContainer}
-                                text='Password'
-                                hidden={true}
-                            />
-                        </View>
+                <StatusBar barStyle='dark-content'/>
+                <View style={styles.inputContainer}>
+                    <View style={styles.fieldContainer}>
+                        <SigninTextField 
+                            text='Email'
+                            hidden={false}
+                        />
                     </View>
-                    <View style={styles.forgotContainer}>
-                        <TouchableOpacity 
-                            style={styles.forgotButton}
-                            onPress={ () => this.props.navigation.push('Forgot')}
-                        >
-                            <Text style={styles.forgotText}>Forgot your password?</Text>
-                        </TouchableOpacity>
+                    <View style={styles.fieldContainer}>
+                        <SigninTextField 
+                            style={styles.fieldContainer}
+                            text='Password'
+                            hidden={true}
+                        />
                     </View>
-                    <View style={styles.continueContainer}>
-                        <TouchableOpacity 
-                            style={styles.continueButton}
-                            onPress={this._asyncLogin}
-                        >
-                            <Text style={styles.continueText}>Continue</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.keyboardContainer}/>
                 </View>
+                <View style={styles.forgotContainer}>
+                    <TouchableOpacity 
+                        style={styles.forgotButton}
+                        onPress={ () => this.props.navigation.push('Forgot')}
+                    >
+                        <Text style={styles.forgotText}>Forgot your password?</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.continueContainer}>
+                    <TouchableOpacity 
+                        style={styles.continueButton}
+                        onPress={this._asyncLogin}
+                    >
+                        <Text style={styles.continueText}>Continue</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.keyboardContainer}/>
             </SafeAreaView>
         )
     }
@@ -71,19 +70,31 @@ export default class LoginScreen extends React.Component {
     }
     
     /* Header styling. */
-    static navigationOptions = {
+    static navigationOptions = ({navigation}) => ({
         title: 'Login',       
         headerStyle: {
             borderBottomWidth: 0,
-            height: Dimensions.get('window').height / 8,
+            height: FontStyles.headerHeight,
         },
         headerTintColor: '#FAD15F',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.header,
+            fontSize: FontStyles.large,
         },
         headerBackTitle: null,
-    }
+        headerLeft: (
+            <TouchableOpacity 
+                style={ {paddingLeft: scale(12), paddingBottom: scale(9)} } 
+                onPress={ () => {navigation.pop()}}
+            >
+                <Image
+                    source={require('../images/back_arrow.png')}
+                    resizeMode='contain'
+                    style={ {width: scale(22), height: scale(22)} }
+                />
+            </TouchableOpacity>
+        )
+    })
 }
 
 /* Style sheet. */
@@ -91,12 +102,9 @@ const styles = StyleSheet.create({
     safeContainer: {
         flex: 1,
     },
-    container: {
-        flex: 1,
-    },
     inputContainer: {
         flex: 2,
-        paddingVertical: 15,
+        paddingVertical: scale(15),
     },
     fieldContainer: {
         flex: 1,
@@ -107,7 +115,7 @@ const styles = StyleSheet.create({
     forgotButton: {
         alignItems: 'center',
         justifyContent: 'center',
-        marginHorizontal: 100,
+        marginHorizontal: scale(80),
     },
     forgotText: {
         fontFamily: 'HiraginoSans-W3',
@@ -120,15 +128,15 @@ const styles = StyleSheet.create({
     continueButton: {
         backgroundColor: '#FAD15F',
         alignItems: 'center',
-        height: FontStyles.title,
-        marginHorizontal: 25,
+        height: FontStyles.buttonHeight,
+        marginHorizontal: scale(30),
         borderRadius: 100,
     },
     continueText: {
         color: '#FFFFFF',
         fontFamily: 'HiraginoSans-W6',
-        fontSize: FontStyles.body,
-        paddingVertical: (FontStyles.title - FontStyles.body) / 2,
+        fontSize: FontStyles.medium,
+        paddingVertical: (FontStyles.buttonHeight - FontStyles.medium) / 2,
     },
     keyboardContainer: {
        flex: 3.2,

@@ -21,6 +21,7 @@ import {
 import { StackActions, NavigationActions } from 'react-navigation'
 import FontStyles from '../components/FontStyles'
 import brainstormData from '../data/BrainstormData'
+import { scale } from 'react-native-size-matters'
 
 export default class PostBrainstormScreen extends React.Component {
     constructor(props) {
@@ -61,8 +62,7 @@ export default class PostBrainstormScreen extends React.Component {
                         <Text style={styles.doneText}>Done</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{flex: 3}}>
-                </View>
+                <View style={{flex: 3}}/>
             </SafeAreaView>
         )
     }
@@ -140,7 +140,7 @@ export default class PostBrainstormScreen extends React.Component {
         headerTintColor: '#FFFFFF',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.header - 5,
+            fontSize: FontStyles.medium,
         },
         headerLeft: null,
         headerBackTitle: null,
@@ -150,45 +150,38 @@ export default class PostBrainstormScreen extends React.Component {
 /* Style sheet. */
 const styles = StyleSheet.create({
     titleContainer: {
-        paddingTop: 50,
+        paddingTop: scale(50),
         flex: 0.8,
         alignItems: 'center',
     },
     inputField: {
-        width: '80%',
+        width: '75%',
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small + 3,
+        fontSize: FontStyles.medium,
         borderBottomColor: '#FAD15F',
-        borderBottomWidth: 1.5,
-    },
-    text: {
-        fontFamily: 'HiraginoSans-W3',
-        color: '#4B4A4A',
-        marginLeft: 30,
-        fontSize: FontStyles.small,
+        borderBottomWidth: scale(1.5),
     },
     descriptionContainer: {
         flex: 1,
-        paddingTop: 20,
+        paddingTop: scale(20),
         alignItems: 'center',
     },
     doneContainer: {
         flex: 1,
-        paddingTop: 20,
-        alignItems: 'center',
+        paddingTop: scale(20),
     },
     doneButton: {
         backgroundColor: '#FAD15F',
         alignItems: 'center',
-        height: FontStyles.title,
-        width: '85%',
+        height: FontStyles.headerHeight,
+        marginHorizontal: scale(30),
         borderRadius: 100,
     },
     doneText: {
         color: '#FFFFFF',
-        fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.body,
-        paddingVertical: (FontStyles.title - FontStyles.body) / 2,
+        fontFamily: 'HiraginoSans-W6',
+        fontSize: FontStyles.medium,
+        paddingVertical: (FontStyles.headerHeight - FontStyles.medium) / 2,
     },
     keyboardContainer: {
         flex: 3,

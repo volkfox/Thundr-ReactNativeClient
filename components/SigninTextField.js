@@ -5,18 +5,20 @@
 import React, { Component } from 'react'
 import { TextInput, Text, StyleSheet, View } from 'react-native'
 import FontStyles from './FontStyles'
+import { scale } from 'react-native-size-matters'
 
 export default class SigninTextField extends Component {
     render() {
         return (
-            <View style={styles.field}>
-                <Text style={styles.text}>{this.props.text}</Text>
+            <View style={styles.container}>
                 <TextInput 
-                    style={styles.input}
+                    style={styles.inputField}
                     autoCorrect={false}
                     secureTextEntry={this.props.hidden}
                     returnKeyType='next'
                     keyboardType='email-address'
+                    placeholder={this.props.text}
+                    clearButtonMode='while-editing'
                 />
             </View>
         )
@@ -24,21 +26,16 @@ export default class SigninTextField extends Component {
 }
 
 const styles=StyleSheet.create({
-    field: {
-        height: '25%',
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    text: {
+    inputField: {
         fontFamily: 'HiraginoSans-W3',
-        color: '#4B4A4A',
-        marginLeft: 30,
         fontSize: FontStyles.small,
+        width: '75%',
+        borderBottomColor: '#FAD15F',
+        borderBottomWidth: scale(1.5),
     },
-    input: {
-        borderColor: '#CCCCCC',
-        borderWidth: 0.5,
-        marginHorizontal: 20,
-        borderRadius: 100,
-        height: FontStyles.title,
-        paddingLeft: 15,
-    }
 })

@@ -2,21 +2,19 @@
     Constants to control font size in Thundr app.
 */
 
-import { Dimensions } from 'react-native'
+import { scale } from 'react-native-size-matters'
 
-const {
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
-} = Dimensions.get('window')
-
-const fontStyles = {
-    tiny: SCREEN_HEIGHT / 100,
-    small: SCREEN_HEIGHT / 60,
-    body: SCREEN_HEIGHT / 40,
-    header: SCREEN_HEIGHT / 30,
-    title: SCREEN_HEIGHT / 20,
-    huge: SCREEN_HEIGHT / 15,
-    headerHeight: SCREEN_HEIGHT / 13,
+const FontStyles = {
+    xtiny: scale(10),
+    tiny: scale(12),
+    small: scale(16),
+    medium: scale(20),
+    large: scale(24),
+    xlarge: scale(28),
+    xxlarge: scale(34),
+    xxxlarge: scale(40),
+    buttonHeight: scale(50),
+    headerHeight: scale(50),
 }
 
-export default fontStyles
+export default FontStyles

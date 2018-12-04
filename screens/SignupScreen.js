@@ -16,46 +16,45 @@ import {
     StatusBar, 
     TouchableOpacity, 
     SafeAreaView, 
-    Dimensions,
+    Image,
     AsyncStorage,
 } from 'react-native'
 import FontStyles from '../components/FontStyles'
 import SigninTextField from '../components/SigninTextField'
+import { scale } from 'react-native-size-matters'
 
 export default class SignupScreen extends React.Component {
     render() {
         return (
             <SafeAreaView style={styles.safeContainer}>
-                <View style={styles.container}>
-                    <StatusBar barStyle='dark-content'/>
-                    <View style={styles.inputContainer}>
-                        <SigninTextField 
-                            text='Name' 
-                            hidden={false}
-                        />
-                        <SigninTextField 
-                            text='Email' 
-                            hidden={false}
-                        />
-                        <SigninTextField 
-                            text='Password' 
-                            hidden={true}
-                        />
-                        <SigninTextField 
-                            text='Confirm Password' 
-                            hidden={true}
-                        />
-                    </View>
-                    <View style={styles.continueContainer}>
-                        <TouchableOpacity 
-                            style={styles.continueButton}
-                            onPress={this._signUpAsync}
-                        >
-                            <Text style={styles.continueText}>Continue</Text>
-                        </TouchableOpacity> 
-                    </View>
-                    <View style={styles.keyboardContainer}/>
+                <StatusBar barStyle='dark-content'/>
+                <View style={styles.inputContainer}>
+                    <SigninTextField 
+                        text='Name' 
+                        hidden={false}
+                    />
+                    <SigninTextField 
+                        text='Email' 
+                        hidden={false}
+                    />
+                    <SigninTextField 
+                        text='Password' 
+                        hidden={true}
+                    />
+                    <SigninTextField 
+                        text='Confirm Password' 
+                        hidden={true}
+                    />
                 </View>
+                <View style={styles.continueContainer}>
+                    <TouchableOpacity 
+                        style={styles.continueButton}
+                        onPress={this._signUpAsync}
+                    >
+                        <Text style={styles.continueText}>Continue</Text>
+                    </TouchableOpacity> 
+                </View>
+                <View style={styles.keyboardContainer}/>
             </SafeAreaView>
         )
     }
@@ -66,26 +65,35 @@ export default class SignupScreen extends React.Component {
     }
 
     /* Header styling. */
-    static navigationOptions = {
+    static navigationOptions = ({navigation}) => ({
         title: 'Sign Up',       
         headerStyle: {
             borderBottomWidth: 0,
-            height: Dimensions.get('window').height / 8,
+            height: FontStyles.headerHeight,
         },
         headerTintColor: '#FAD15F',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.header,
+            fontSize: FontStyles.large,
         },
-    }
+        headerLeft: (
+            <TouchableOpacity 
+                style={ {paddingLeft: scale(12), paddingBottom: scale(9)} } 
+                onPress={ () => {navigation.pop()}}
+            >
+                <Image
+                    source={require('../images/back_arrow.png')}
+                    resizeMode='contain'
+                    style={ {width: scale(22), height: scale(22)} }
+                />
+            </TouchableOpacity>
+        )
+    })
 }
 
 /* Style sheet. */
 const styles = StyleSheet.create({
     safeContainer: {
-        flex: 1,
-    },
-    container: {
         flex: 1,
     },
     inputContainer: {
@@ -98,15 +106,15 @@ const styles = StyleSheet.create({
     continueButton: {
         backgroundColor: '#FAD15F',
         alignItems: 'center',
-        height: FontStyles.title,
-        marginHorizontal: 20,
+        height: FontStyles.buttonHeight,
+        marginHorizontal: scale(30),
         borderRadius: 100,
     },
     continueText: {
         fontFamily: 'HiraginoSans-W6',
         color: '#FFFFFF',
-        fontSize: FontStyles.body,
-        paddingVertical: (FontStyles.title - FontStyles.body) / 2,
+        fontSize: FontStyles.medium,
+        paddingVertical: (FontStyles.buttonHeight - FontStyles.medium) / 2,
     },
     keyboardContainer: {
         flex: 2.8,

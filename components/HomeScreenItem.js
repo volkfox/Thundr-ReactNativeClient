@@ -9,12 +9,12 @@ import {
     View,
     StyleSheet,
     Text,
-    Dimensions,
     Image,
     TouchableOpacity,
 } from 'react-native'
 import { withNavigation } from 'react-navigation'
 import FontStyles from './FontStyles'
+import { scale } from 'react-native-size-matters'
 
 class HomeScreenItem extends React.Component {
     render() {
@@ -85,16 +85,16 @@ class HomeScreenItem extends React.Component {
 const styles = StyleSheet.create({
     itemContainer: {
         flex: 1,
-        marginLeft: Dimensions.get('window').width / 10,
-        marginRight: Dimensions.get('window').width / 20,
-        paddingVertical: 20,
+        marginLeft: scale(20),
+        marginRight: scale(20),
+        paddingVertical: scale(20),
     },
     titleLine: {
         flex: 1,
         flexDirection: 'row',
     },
     titleContainer: {
-        width: '65%',
+        flex: 7,
         justifyContent: 'center',
     },
     titleText: {
@@ -102,36 +102,35 @@ const styles = StyleSheet.create({
         fontSize: FontStyles.small,
     },
     dateContainer: {
-        width: '20%',
+        flex: 2,
         alignItems: 'flex-end',
         justifyContent: 'center',
     },
     dateText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.tiny,
+        fontSize: FontStyles.xtiny,
         color: '#7E7E7E',
     },
     menuContainer: {
-        width: '15%',
+        flex: 1,
         alignItems: 'flex-end',
+        paddingBottom: scale(10),
     },
     descriptionContainer: {
-        flex: 1,
         width: '75%',
-        marginVertical: 10,
+        marginVertical: scale(10),
     },
     descriptionText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small - 3,
+        fontSize: FontStyles.tiny,
         color: '#7E7E7E',
     },
     infoContainer: {
-        flex: 1,
         flexDirection: 'row',
     },
     bolt: {
-        width: 20,
-        height: 20,
+        width: scale(20),
+        height: scale(20),
     },
     ideasContainer: {
         justifyContent: 'flex-end',
@@ -139,17 +138,17 @@ const styles = StyleSheet.create({
     },
     infoText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small - 3,
+        fontSize: FontStyles.tiny,
         color: '#7E7E7E', 
     },
     collaboratorsContainer: {
         justifyContent: 'flex-end',
         width: '50%',
-        paddingLeft: 7,
+        paddingLeft: scale(7),
     },
     collaborator: {
-        width: 15,
-        height: 15,
+        width: scale(15),
+        height: scale(15),
     },
 })
 

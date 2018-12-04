@@ -14,6 +14,7 @@ import {
 } from 'react-native'
 import FontStyles from '../components/FontStyles'
 import Modal from 'react-native-modal'
+import { scale } from 'react-native-size-matters'
 
 export default class PastBrainstormItem extends React.Component {
     state = {
@@ -43,7 +44,7 @@ export default class PastBrainstormItem extends React.Component {
                                 </TouchableOpacity>
                             </View>
                         </View>
-                        <ScrollView style={{ width: '80%' }}>
+                        <ScrollView style={{ width: '80%', paddingTop: scale(15)}}>
                             <Text style={styles.modalText}>{this.props.notes}</Text>
                         </ScrollView>
                     </View>
@@ -76,9 +77,8 @@ export default class PastBrainstormItem extends React.Component {
 const styles = StyleSheet.create({
     itemContainer: {
         flex: 1,
-        marginLeft: Dimensions.get('window').width / 10,
-        marginRight: Dimensions.get('window').width / 20,
-        paddingVertical: 20,
+        marginLeft: scale(20),
+        paddingVertical: scale(20),
     },
     titleLine: {
         flex: 1,
@@ -94,25 +94,25 @@ const styles = StyleSheet.create({
     upvoteContainer: {
         width: '14%',
         alignItems: 'flex-end',
-        paddingRight: 5,
-        paddingTop: 6,
+        paddingRight: scale(5),
+        paddingTop: scale(6),
     },
     imageContainer: {
         width: '6%',
     },
     upvote: {
-        width: 20,
-        height: 20,
+        width: scale(20),
+        height: scale(20),
     },
     text: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small - 3,
+        fontSize: FontStyles.tiny,
         color: '#7E7E7E',
     },
     notesContainer: {
         flex: 1,
         width: '75%',
-        marginVertical: 10,
+        marginVertical: scale(10),
     },
     modalContainer: {
         alignSelf: 'center',
@@ -130,20 +130,20 @@ const styles = StyleSheet.create({
     },
     modalTitleText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.header,
-        paddingTop: 20,
+        fontSize: FontStyles.small,
+        paddingTop: scale(20),
         color: '#595959',
     },
     exitButton: {
-        width: 20, 
-        height: 20,
+        width: scale(20), 
+        height: scale(20),
     },
     exitButtonContainer: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        paddingTop: 8,
-        paddingRight: 20,
+        paddingTop: scale(10),
+        paddingRight: scale(20),
     },
     modalTitleContainer: {
         flex: 8,
