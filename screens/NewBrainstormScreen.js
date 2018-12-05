@@ -18,9 +18,9 @@ import {
     FlatList,
 } from 'react-native'
 import { StackActions, NavigationActions } from 'react-navigation'
+import { scale } from 'react-native-size-matters'
 import FontStyles from '../components/FontStyles'
 import CollaboratorItem from '../components/CollaboratorItem'
-import { scale } from 'react-native-size-matters'
 import ThundrButton from '../components/ThundrButton'
 
 export default class NewBrainstormScreen extends React.Component {
@@ -56,6 +56,7 @@ export default class NewBrainstormScreen extends React.Component {
                             onChangeText={ (text) => this.setState({text}) }
                             value={this.state.text}
                         />
+                        <View style={{ flex: 1 }}>
                         <TouchableOpacity
                             style={styles.addButtonContainer}
                             onPress={this._addPerson}
@@ -65,6 +66,7 @@ export default class NewBrainstormScreen extends React.Component {
                                 style={styles.addButton}
                             />
                         </TouchableOpacity>
+                        </View>
                     </View>
                     <View style={{ flex: 3, paddingBottom: scale(10) }}>
                         <FlatList
@@ -142,6 +144,8 @@ const styles = StyleSheet.create({
     },
     addButtonContainer: {
         marginLeft: 10,
+        flex: 2,
+        paddingRight: scale(100),
         width: scale(30),
         height: scale(50),
         justifyContent: 'center',
@@ -153,7 +157,7 @@ const styles = StyleSheet.create({
     inputField: {
         width: '75%',
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.medium,
+        fontSize: FontStyles.small,
         borderBottomColor: '#FAD15F',
         borderBottomWidth: scale(1.5),
     },

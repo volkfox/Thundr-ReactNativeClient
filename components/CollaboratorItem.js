@@ -25,10 +25,12 @@ import { scale } from 'react-native-size-matters'
             <View style={styles.container}>
                 <Image
                     source={randomHeadshots[Math.floor(Math.random() * randomHeadshots.length)]}
-                    style={styles.bolt}
+                    style={styles.image}
                     resizeMode='contain'
                 />
-                <Text style={styles.text}>{this.props.name}</Text>
+                <View style={{ justifyContent: 'center', paddingTop: scale(10) }}>
+                    <Text style={styles.text}>{this.props.name}</Text>
+                </View>
             </View>
         )
      }
@@ -40,16 +42,14 @@ import { scale } from 'react-native-size-matters'
         flex: 1,
         flexDirection: 'row',
         marginLeft: scale(40),
-        alignItems: 'flex-end',
      },
-     bolt: {
+     image: {
         width: scale(50),
         height: scale(50),
      },
      text: {
         marginLeft: scale(10),
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.medium,
-         
+        fontSize: FontStyles.small,
      }
  })

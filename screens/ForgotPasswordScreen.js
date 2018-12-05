@@ -15,16 +15,16 @@ import {
     TouchableOpacity 
 } from 'react-native'
 import FontStyles from '../components/FontStyles'
-import SigninTextField from '../components/SigninTextField'
-import { scale } from 'react-native-size-matters'
 import ThundrButton from '../components/ThundrButton'
+import ThundrTextField from '../components/ThundrTextField'
+import { scale } from 'react-native-size-matters'
 
 export default class ForgotPasswordScreen extends React.Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1 }}>
                 <View style={{ flex: 2, paddingBottom: scale(50) }}>
-                    <SigninTextField text='Email'/>
+                    <ThundrTextField text='Email'/>
                 </View>
                 <ThundrButton
                     text='Submit'

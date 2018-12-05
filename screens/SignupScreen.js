@@ -19,9 +19,9 @@ import {
     AsyncStorage,
 } from 'react-native'
 import FontStyles from '../components/FontStyles'
-import SigninTextField from '../components/SigninTextField'
-import { scale } from 'react-native-size-matters'
+import ThundrTextField from '../components/ThundrTextField'
 import ThundrButton from '../components/ThundrButton'
+import { scale } from 'react-native-size-matters'
 
 export default class SignupScreen extends React.Component {
     render() {
@@ -29,10 +29,10 @@ export default class SignupScreen extends React.Component {
             <SafeAreaView style={{ flex: 1 }}>
                 <StatusBar barStyle='dark-content'/>
                 <View style={{ flex: 3.3 }}>
-                    <SigninTextField text='Name'/>
-                    <SigninTextField text='Email'/>
-                    <SigninTextField text='Password' hidden={true}/>
-                    <SigninTextField text='Confirm Password' hidden={true}/>
+                    <ThundrTextField text='Name'/>
+                    <ThundrTextField text='Email'/>
+                    <ThundrTextField text='Password' hidden={true}/>
+                    <ThundrTextField text='Confirm Password' hidden={true}/>
                 </View>
                 <View style={styles.continueContainer}>
                     <ThundrButton
