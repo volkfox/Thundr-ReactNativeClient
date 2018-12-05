@@ -30,7 +30,7 @@ export default class LoginScreen extends React.Component {
             <SafeAreaView style={{ flex: 1 }}> 
                 <StatusBar barStyle='dark-content'/>
                 <View style={styles.inputContainer}>
-                    <ThundrTextField text='Email'/>
+                    <ThundrTextField text='Email' autoFocus={true}/>
                     <ThundrTextField text='Password' hidden={true}/>
                 </View>
                 <View style={{ flex: 0.7 }}>

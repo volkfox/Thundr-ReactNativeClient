@@ -108,6 +108,8 @@ export default class PastBrainstormScreen extends React.Component {
                                 clearButtonMode='while-editing'
                                 onChangeText={ (text) => this.setState({newIdea: text}) }
                                 value={this.state.newIdea}
+                                selectionColor='#656565'
+                                autoFocus={true}
                             />
                             <View style={{ flex: 0.2} }/>
                             <TextInput
@@ -118,6 +120,7 @@ export default class PastBrainstormScreen extends React.Component {
                                 numberOfLines={4}
                                 onChangeText={ (text) => this.setState({newNotes: text}) }
                                 value={this.state.newNotes}
+                                selectionColor='#656565'
                             />
                         </View>
                         <View style={styles.newIdeaButtonContainer}>
@@ -141,7 +144,7 @@ export default class PastBrainstormScreen extends React.Component {
     /* Adds an idea to existing FlatList. */
     _addNewIdea = () => {
         if (this.state.newIdea.length == 0) {
-            alert('Please enter an idea.f')
+            alert('Please enter an idea.')
             return
         }
         const newIdea = {
@@ -241,7 +244,7 @@ const styles = StyleSheet.create({
         width: '90%',
         backgroundColor: '#F5FCFF',
         borderRadius: 30,
-        marginBottom: scale(150),
+        marginBottom: scale(220),
     },
     modalText: {
         fontFamily: 'HiraginoSans-W3',

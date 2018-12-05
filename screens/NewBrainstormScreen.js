@@ -55,6 +55,8 @@ export default class NewBrainstormScreen extends React.Component {
                             placeholder='People'
                             onChangeText={ (text) => this.setState({text}) }
                             value={this.state.text}
+                            autoFocus={true}
+                            selectionColor= '#656565'
                         />
                         <View style={{ flex: 1 }}>
                         <TouchableOpacity

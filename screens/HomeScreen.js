@@ -37,7 +37,7 @@ export default class HomeScreen extends React.Component {
                         <View style={styles.modalHeader}>
                             <View style={styles.iconContainer}>
                                 <TouchableOpacity
-                                    onPress={this._toggleModalOff}
+                                    onPress={this._toggleModal}
                                 >
                                     <Image
                                         source={require('../images/gray_back_arrow.png')}
@@ -51,6 +51,7 @@ export default class HomeScreen extends React.Component {
                                     placeholder='Search'
                                     style={styles.searchText}
                                     autoFocus={true}
+                                    selectionColor= '#656565'
                                 />
                             </View>
                             <View style={styles.iconContainer}>
@@ -106,12 +107,11 @@ export default class HomeScreen extends React.Component {
     /* Give reference to toggle function to navigation. */
     componentDidMount() {
         this.props.navigation.setParams({
-            toggleModalOn: this._toggleModalOn
+            toggleModal: this._toggleModal
         });
     }
 
-    _toggleModalOn = () => this.setState({ isModalVisible: true })
-    _toggleModalOff = () => this.setState({ isModalVisible: false })
+    _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
 
     /* Header styling. */
     static navigationOptions = ({navigation}) => ({
@@ -130,7 +130,7 @@ export default class HomeScreen extends React.Component {
         headerRight: (
             <TouchableOpacity 
                 style={ {paddingRight: scale(25), paddingBottom: scale(8)} } 
-                onPress={navigation.getParam('toggleModalOn')}
+                onPress={navigation.getParam('toggleModal')}
             >
                 <Image
                     source={require('../images/search.png')}

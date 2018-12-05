@@ -37,6 +37,7 @@ export default class PostBrainstormScreen extends React.Component {
                     text='Title of Brainstorm'
                     onChangeText={ (text) => this.setState({title: text}) }
                     value={this.state.title}
+                    autoFocus={true}
                 />
                 <ThundrTextField
                     text='Description'

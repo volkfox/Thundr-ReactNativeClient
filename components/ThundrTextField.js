@@ -16,7 +16,6 @@ export default class ThundrTextField extends Component {
         return (
             <View style={styles.container}>
                 <TextInput 
-                    // style={!this.props.large ? styles.large : styles.field}
                     style={styles.field}
                     placeholder={this.props.text}
                     autoCorrect={this.props.autoCorrect || false}
@@ -27,6 +26,8 @@ export default class ThundrTextField extends Component {
                     onChangeText={this.props.onChangeText || null }
                     multiline={this.props.multiline || false}
                     numberOfLines={this.props.numberOfLines || 1 }
+                    autoFocus={this.props.autoFocus || false}
+                    selectionColor='#656565'
                 />
             </View>
         )

@@ -24,7 +24,7 @@ export default class ForgotPasswordScreen extends React.Component {
         return (
             <SafeAreaView style={{ flex: 1 }}>
                 <View style={{ flex: 2, paddingBottom: scale(50) }}>
-                    <ThundrTextField text='Email'/>
+                    <ThundrTextField text='Email' autoFocus={true}/>
                 </View>
                 <ThundrButton
                     text='Submit'
