@@ -179,7 +179,7 @@ export default class PastBrainstormScreen extends React.Component {
 
     componentDidMount() {
         this.props.navigation.setParams({
-            handleThis: this._toggleInfo
+            toggleInfo: this._toggleInfo
         });
     }
 
@@ -219,7 +219,7 @@ export default class PastBrainstormScreen extends React.Component {
         headerLeft: null,
         headerRight: (
             <TouchableOpacity style={ {paddingRight: scale(25), paddingBottom: scale(5)} }
-                onPress={navigation.getParam('handleThis')}
+                onPress={navigation.getParam('toggleInfo')}
             >
                 <Image
                     source={require('../images/info_button.png')}
