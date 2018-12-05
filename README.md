@@ -6,7 +6,6 @@ and developing the UI and screen flows, with minimal backend functionality.
 
 TODOS:
 
-- Add modal for menu button(…)
 - Create confirmation modal to tell user to check email for password reset
-- Add check when adding people to brainstorm to see if non-empty string
 - Clean up PastBrainstormScreen, it's a bit messy.
+- Change statusBarStyle to 'dark-mode' when opening search modal on home screen.

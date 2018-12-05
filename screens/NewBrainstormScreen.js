@@ -98,6 +98,9 @@ export default class NewBrainstormScreen extends React.Component {
 
     /* Add a collaborator when textInput button is pressed. */
     _addPerson = () => {
+        if (this.state.text.length == 0) {
+            return
+        }
         this.collaborators.push({'name': this.state.text})
         this.setState({
              text: '',

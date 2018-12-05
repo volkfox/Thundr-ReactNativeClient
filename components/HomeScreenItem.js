@@ -14,9 +14,14 @@ import {
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
 import { withNavigation } from 'react-navigation'
+import Modal from 'react-native-modal'
 import ThundrSize from './ThundrSize'
 
 class HomeScreenItem extends React.Component {
+    state = {
+        isModalVisible: false,
+    }
+    
     render() {
         /* Build string of collaborators. */
         let collaborators = () => {
@@ -33,54 +38,87 @@ class HomeScreenItem extends React.Component {
         }        
 
         return (
-            <View style={styles.itemContainer}>
-                <TouchableOpacity
-                    onPress={ () => this.props.navigation.push('PastBrainstorm', {title: this.props.title, 
-                                    collaborators: this.props.collaborators, ideas: this.props.ideas, 
-                                    date: this.props.date, description: this.props.description})}
+            <View style={{ flex: 1 }}>
+                <Modal 
+                    isVisible={this.state.isModalVisible}
+                    style={{ justifyContent: 'flex-end' }}
+                    onBackdropPress={this._toggleModal}
                 >
-                    <View style= {styles.titleLine}>
-                        <View style={styles.titleContainer}>
-                            <Text style={styles.titleText} numberOfLines={1}>{this.props.title}</Text>
-                        </View>
-                        <View style={styles.dateContainer}>
-                            <Text style={styles.dateText}>{this.props.date}</Text>
-                        </View>
-                        <View style={styles.menuContainer}>
-                            <Text style={{color: '#7E7E7E'}}>...</Text>
-                        </View>
+                    <View style={styles.modalContainer}>
+                        <TouchableOpacity
+                            onPress={this._toggleModal}
+                            style={{ flex: 1 }}
+                        >
+                            <Text style={styles.modalText}>Share</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            onPress={this._toggleModal}
+                            style={{ flex: 1 }}
+                        >
+                            <Text style={styles.modalText}>Cancel</Text>
+                        </TouchableOpacity>
                     </View>
-                    <View style={styles.descriptionContainer}>
-                        <Text style={styles.descriptionText} numberOfLines={3}>{this.props.description}</Text>
-                    </View>
-                    <View style={styles.infoContainer}>
-                        <Image
-                            style={styles.bolt}
-                            source={require('../images/gray_bolt.png')}
-                            resizeMode='contain'
-                        />
-                        <View style={styles.ideasContainer}>
-                            <Text style={styles.infoText} numberOfLines={1}>{this.props.ideas}</Text>
+                </Modal>
+
+                <View style={styles.itemContainer}>
+                    <TouchableOpacity
+                        onPress={ () => this.props.navigation.push('PastBrainstorm', {title: this.props.title, 
+                                        collaborators: this.props.collaborators, ideas: this.props.ideas, 
+                                        date: this.props.date, description: this.props.description})}
+                    >
+                        <View style= {styles.titleLine}>
+                            <View style={styles.titleContainer}>
+                                <Text style={styles.titleText} numberOfLines={1}>{this.props.title}</Text>
+                            </View>
+                            <View style={styles.dateContainer}>
+                                <Text style={styles.dateText}>{this.props.date}</Text>
+                            </View>
+                            <View style={styles.menuContainer}>
+                                <TouchableOpacity
+                                    onPress={this._toggleModal}
+                                >
+                                    <Image
+                                        source={require('../images/menu_button.png')}
+                                        resizeMode='contain'
+                                        style={styles.menuButton}
+                                    />
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                        <Image 
-                            style={styles.collaborator}
-                            source={require('../images/collaborator.png')}
-                            resizeMode='contain'
-                        />
-                        <View style={styles.collaboratorsContainer}>
-                            <Text 
-                                style={styles.infoText} 
-                                numberOfLines={1}
-                                ellipsizeMode='middle'
-                            >
-                                {collaborators()}
-                            </Text>
+                        <View style={styles.descriptionContainer}>
+                            <Text style={styles.descriptionText} numberOfLines={3}>{this.props.description}</Text>
                         </View>
-                    </View>
-                </TouchableOpacity>
+                        <View style={styles.infoContainer}>
+                            <Image
+                                style={styles.bolt}
+                                source={require('../images/gray_bolt.png')}
+                                resizeMode='contain'
+                            />
+                            <View style={styles.ideasContainer}>
+                                <Text style={styles.infoText} numberOfLines={1}>{this.props.ideas}</Text>
+                            </View>
+                            <Image 
+                                style={styles.collaborator}
+                                source={require('../images/collaborator.png')}
+                                resizeMode='contain'
+                            />
+                            <View style={styles.collaboratorsContainer}>
+                                <Text 
+                                    style={styles.infoText} 
+                                    numberOfLines={1}
+                                    ellipsizeMode='middle'
+                                >
+                                    {collaborators()}
+                                </Text>
+                            </View>
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </View>
         )
     }
+
+    _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
 }
 
 /* Style sheet. */
@@ -116,7 +154,7 @@ const styles = StyleSheet.create({
     menuContainer: {
         flex: 1,
         alignItems: 'flex-end',
-        paddingBottom: scale(10),
+        paddingTop: scale(2),
     },
     descriptionContainer: {
         width: '75%',
@@ -151,6 +189,22 @@ const styles = StyleSheet.create({
     collaborator: {
         width: scale(15),
         height: scale(15),
+    },
+    modalContainer: {
+        alignSelf: 'center',
+        height: '20%',
+        width: '110%',
+        backgroundColor: '#F5FCFF',
+    },
+    modalText: {
+        fontFamily: 'HiraginoSans-W3',
+        fontSize: ThundrSize.small,
+        paddingLeft: scale(20),
+        paddingTop: scale(20),
+    },
+    menuButton: {
+        height: scale(15),
+        width: scale(15),
     },
 })
 
