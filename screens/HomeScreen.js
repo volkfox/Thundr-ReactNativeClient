@@ -30,7 +30,7 @@ export default class HomeScreen extends React.Component {
         return (
             <SafeAreaView style={{flex: 1}}> 
                 <StatusBar barStyle='light-content'/>
-                <Modal 
+                <Modal /* Search Modal */
                     isVisible={this.state.isModalVisible}    
                 >
                     <View style={styles.modalContainer}>
@@ -52,6 +52,7 @@ export default class HomeScreen extends React.Component {
                                     style={styles.searchText}
                                     autoFocus={true}
                                     selectionColor= '#656565'
+                                    clearButtonMode='while-editing'
                                 />
                             </View>
                             <View style={styles.iconContainer}>
@@ -125,11 +126,12 @@ export default class HomeScreen extends React.Component {
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W3',
             fontSize: ThundrSize.medium,
+            paddingTop: scale(8),
         },
         headerBackTitle: null,
         headerRight: (
             <TouchableOpacity 
-                style={ {paddingRight: scale(25), paddingBottom: scale(8)} } 
+                style={{ paddingRight: scale(25) }} 
                 onPress={navigation.getParam('toggleModal')}
             >
                 <Image

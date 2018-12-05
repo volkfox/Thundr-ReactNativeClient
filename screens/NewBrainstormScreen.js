@@ -121,20 +121,9 @@ export default class NewBrainstormScreen extends React.Component {
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
             fontSize: ThundrSize.medium,
+            paddingTop: scale(8),
         },
         headerBackTitle: null,
-        headerLeft: (
-            <TouchableOpacity 
-                style={ {paddingLeft: scale(12), paddingBottom: scale(9)} } 
-                onPress={ () => {navigation.pop()}}
-            >
-                <Image
-                    source={require('../images/white_back_arrow.png')}
-                    resizeMode='contain'
-                    style={ {width: scale(22), height: scale(22)} }
-                />
-            </TouchableOpacity>
-        )
     })
 }
 

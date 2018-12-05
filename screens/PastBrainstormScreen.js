@@ -217,17 +217,17 @@ export default class PastBrainstormScreen extends React.Component {
         headerTintColor: '#FFFFFF',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: ThundrSize.small,
+            fontSize: ThundrSize.smedium,
+            paddingTop: scale(7),
         },
-        headerLeft: null,
         headerRight: (
-            <TouchableOpacity style={ {paddingRight: scale(25), paddingBottom: scale(5)} }
+            <TouchableOpacity style={{ paddingRight: scale(25), paddingTop: scale(2) }}
                 onPress={navigation.getParam('toggleInfo')}
             >
                 <Image
                     source={require('../images/info_button.png')}
                     resizeMode='contain'
-                    style={ {width: scale(20), height: scale(20)}}
+                    style={{ width: scale(20), height: scale(20) }}
                 />
             </TouchableOpacity>
         ),

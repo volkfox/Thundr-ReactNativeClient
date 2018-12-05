@@ -54,7 +54,7 @@ export default class BrainstormingScreen extends React.Component {
                         />
                     </View>
                     <View style={styles.textContainer}>
-                        <Text style={styles.text}>Hold to Record an Idea</Text>
+                        <Text style={styles.text}>Hold and Speak to Record an Idea</Text>
                     </View>
                 </TouchableOpacity>
             </SafeAreaView>

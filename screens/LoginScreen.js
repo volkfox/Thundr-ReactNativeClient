@@ -75,9 +75,9 @@ export default class LoginScreen extends React.Component {
                 onPress={ () => {navigation.pop()}}
             >
                 <Image
-                    source={require('../images/back_arrow.png')}
+                    source={require('../images/back_chevron.png')}
                     resizeMode='contain'
-                    style={ {width: scale(22), height: scale(22)} }
+                    style={ {width: scale(20), height: scale(20)} }
                 />
             </TouchableOpacity>
         )
