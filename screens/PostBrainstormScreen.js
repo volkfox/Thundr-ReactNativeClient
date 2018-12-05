@@ -12,15 +12,13 @@ import React from 'react'
 import {
     View,
     SafeAreaView,
-    StyleSheet,
-    TextInput,
     StatusBar,
 } from 'react-native'
 import { StackActions, NavigationActions } from 'react-navigation'
 import FontStyles from '../components/FontStyles'
-import brainstormData from '../data/BrainstormData'
-import { scale } from 'react-native-size-matters'
 import ThundrButton from '../components/ThundrButton'
+import ThundrTextField from '../components/ThundrTextField'
+import brainstormData from '../data/BrainstormData'
 
 export default class PostBrainstormScreen extends React.Component {
     constructor(props) {
@@ -35,24 +33,19 @@ export default class PostBrainstormScreen extends React.Component {
         return (
             <SafeAreaView style={{flex: 1}}>
                 <StatusBar barStyle='light-content'/>
-                <View style={styles.titleContainer}> 
-                    <TextInput 
-                        style={styles.inputField}
-                        placeholder='Title of Brainstorm'
-                        onChangeText={ (text) => this.setState({ title: text}) }
-                        value={this.state.title}
-                    />
-                </View>
-                <View style={styles.descriptionContainer}>
-                    <TextInput
-                        style={styles.inputField}
-                        multiline={true}
-                        numberOfLines={3}
-                        placeholder='Description'
-                        onChangeText={ (text) => this.setState({ description: text }) }
-                        value={this.state.description}
-                    />
-                </View>
+                <ThundrTextField
+                    text='Title of Brainstorm'
+                    onChangeText={ (text) => this.setState({title: text}) }
+                    value={this.state.title}
+                />
+                <ThundrTextField
+                    text='Description'
+                    onChangeText={ (text) => this.setState({description: text}) }
+                    value={this.state.description}
+                    multiline={true}
+                    numberOfLines={3}
+                />
+                <View style={{ flex: 0.7 }}/>
                 <ThundrButton
                     text='Done'
                     color='yellow'
@@ -142,24 +135,3 @@ export default class PostBrainstormScreen extends React.Component {
         headerBackTitle: null,
     }
 }
-
-/* Style sheet. */
-const styles = StyleSheet.create({
-    titleContainer: {
-        paddingTop: scale(50),
-        flex: 0.8,
-        alignItems: 'center',
-    },
-    inputField: {
-        width: '75%',
-        fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.medium,
-        borderBottomColor: '#FAD15F',
-        borderBottomWidth: scale(1.5),
-    },
-    descriptionContainer: {
-        flex: 1,
-        paddingTop: scale(20),
-        alignItems: 'center',
-    },
-})

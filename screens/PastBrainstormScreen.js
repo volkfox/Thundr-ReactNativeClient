@@ -15,12 +15,12 @@ import {
     Text,
     TextInput,
 } from 'react-native'
-import FontStyles from '../components/FontStyles'
-import ActionButton from 'react-native-action-button'
-import pastData from '../data/PastData'
-import PastBrainstormItem from '../components/PastBrainstormItem'
 import { scale } from 'react-native-size-matters'
+import ActionButton from 'react-native-action-button'
 import Modal from 'react-native-modal'
+import FontStyles from '../components/FontStyles'
+import PastBrainstormItem from '../components/PastBrainstormItem'
+import pastData from '../data/PastData'
 
 export default class PastBrainstormScreen extends React.Component {
     constructor(props) {

@@ -3,53 +3,53 @@
     (who they've invited).
  */
 
- import React from 'react'
- import {
-     View,
-     Text,
-     Image,
-     StyleSheet,
- } from 'react-native'
-import FontStyles from './FontStyles';
+import React from 'react'
+import {
+    View,
+    Text,
+    Image,
+    StyleSheet,
+} from 'react-native'
 import { scale } from 'react-native-size-matters'
+import FontStyles from './FontStyles';
 
- export default class CollaboratorItem extends React.Component {
-     render() {
-        const randomHeadshots = [
-            require('../images/headshot_0.jpg'),
-            require('../images/headshot_1.jpg'),
-            require('../images/headshot_2.jpg')
-        ]
+export default class CollaboratorItem extends React.Component {
+    render() {
+    const randomHeadshots = [
+        require('../images/headshot_0.jpg'),
+        require('../images/headshot_1.jpg'),
+        require('../images/headshot_2.jpg')
+    ]
 
-        return (
-            <View style={styles.container}>
-                <Image
-                    source={randomHeadshots[Math.floor(Math.random() * randomHeadshots.length)]}
-                    style={styles.image}
-                    resizeMode='contain'
-                />
-                <View style={{ justifyContent: 'center', paddingTop: scale(10) }}>
-                    <Text style={styles.text}>{this.props.name}</Text>
-                </View>
+    return (
+        <View style={styles.container}>
+            <Image
+                source={randomHeadshots[Math.floor(Math.random() * randomHeadshots.length)]}
+                style={styles.image}
+                resizeMode='contain'
+            />
+            <View style={{ justifyContent: 'center', paddingTop: scale(10) }}>
+                <Text style={styles.text}>{this.props.name}</Text>
             </View>
-        )
-     }
- }
+        </View>
+    )
+    }
+}
 
- /* Style sheet. */
- const styles = StyleSheet.create ({
-     container: {
+/* Style sheet. */
+const styles = StyleSheet.create ({
+    container: {
         flex: 1,
         flexDirection: 'row',
         marginLeft: scale(40),
-     },
-     image: {
+    },
+    image: {
         width: scale(50),
         height: scale(50),
-     },
-     text: {
+    },
+    text: {
         marginLeft: scale(10),
         fontFamily: 'HiraginoSans-W3',
         fontSize: FontStyles.small,
-     }
- })
+    }
+})

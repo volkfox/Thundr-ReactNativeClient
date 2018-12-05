@@ -12,8 +12,8 @@ import {
     TouchableOpacity,
     Image,
 } from 'react-native'
-import FontStyles from '../components/FontStyles'
 import { scale } from 'react-native-size-matters'
+import FontStyles from '../components/FontStyles'
 import ActionButton from 'react-native-action-button'
 import HomeScreenItem from '../components/HomeScreenItem'
 import brainstormData from '../data/BrainstormData'

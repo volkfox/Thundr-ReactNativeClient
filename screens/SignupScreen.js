@@ -18,10 +18,10 @@ import {
     Image,
     AsyncStorage,
 } from 'react-native'
+import { scale } from 'react-native-size-matters'
 import FontStyles from '../components/FontStyles'
 import ThundrTextField from '../components/ThundrTextField'
 import ThundrButton from '../components/ThundrButton'
-import { scale } from 'react-native-size-matters'
 
 export default class SignupScreen extends React.Component {
     render() {

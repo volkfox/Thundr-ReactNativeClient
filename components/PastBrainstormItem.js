@@ -11,9 +11,9 @@ import {
     TouchableOpacity,
     ScrollView,
 } from 'react-native'
-import FontStyles from '../components/FontStyles'
-import Modal from 'react-native-modal'
 import { scale } from 'react-native-size-matters'
+import Modal from 'react-native-modal'
+import FontStyles from '../components/FontStyles'
 
 export default class PastBrainstormItem extends React.Component {
     state = {

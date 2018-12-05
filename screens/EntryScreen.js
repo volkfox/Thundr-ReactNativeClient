@@ -13,8 +13,8 @@ import {
     TouchableOpacity, 
     SafeAreaView 
 } from 'react-native'
-import FontStyles from '../components/FontStyles'
 import { scale } from 'react-native-size-matters'
+import FontStyles from '../components/FontStyles'
 import ThundrButton from '../components/ThundrButton'
 
 export default class EntryScreen extends React.Component {

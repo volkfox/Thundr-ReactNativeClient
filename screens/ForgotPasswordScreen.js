@@ -14,10 +14,10 @@ import {
     Image, 
     TouchableOpacity 
 } from 'react-native'
+import { scale } from 'react-native-size-matters'
 import FontStyles from '../components/FontStyles'
 import ThundrButton from '../components/ThundrButton'
 import ThundrTextField from '../components/ThundrTextField'
-import { scale } from 'react-native-size-matters'
 
 export default class ForgotPasswordScreen extends React.Component {
     render() {

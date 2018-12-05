@@ -8,6 +8,7 @@ const FontStyles = {
     xtiny: scale(10),
     tiny: scale(12),
     small: scale(16),
+    smedium: scale(18),
     medium: scale(20),
     large: scale(24),
     xlarge: scale(28),

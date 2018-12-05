@@ -19,10 +19,10 @@ import {
     AsyncStorage, 
     Image,
 } from 'react-native'
+import { scale } from 'react-native-size-matters'
 import FontStyles from '../components/FontStyles'
 import ThundrTextField from '../components/ThundrTextField'
 import ThundrButton from '../components/ThundrButton';
-import { scale } from 'react-native-size-matters'
 
 export default class LoginScreen extends React.Component {
     render() {

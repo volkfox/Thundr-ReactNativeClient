@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     inputField: {
         width: '75%',
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small,
+        fontSize: FontStyles.smedium,
         borderBottomColor: '#FAD15F',
         borderBottomWidth: scale(1.5),
     },

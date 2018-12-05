@@ -8,15 +8,15 @@ import {
     StyleSheet, 
     View 
 } from 'react-native'
-import FontStyles from './FontStyles'
 import { scale } from 'react-native-size-matters'
+import FontStyles from './FontStyles'
 
 export default class ThundrTextField extends Component {
     render() {
         return (
             <View style={styles.container}>
                 <TextInput 
-                    // style={this.props.mediumText ? styles.mediumField : styles.defaultField}
+                    // style={!this.props.large ? styles.large : styles.field}
                     style={styles.field}
                     placeholder={this.props.text}
                     autoCorrect={this.props.autoCorrect || false}
@@ -25,6 +25,8 @@ export default class ThundrTextField extends Component {
                     clearButtonMode='while-editing'
                     value={this.props.value || this.text}
                     onChangeText={this.props.onChangeText || null }
+                    multiline={this.props.multiline || false}
+                    numberOfLines={this.props.numberOfLines || 1 }
                 />
             </View>
         )
@@ -39,16 +41,16 @@ const styles=StyleSheet.create({
     },
     field: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small,
+        fontSize: FontStyles.smedium,
         width: '75%',
         borderBottomColor: '#FAD15F',
         borderBottomWidth: scale(1.5),
     },
-    mediumField: {
-        fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.medium,
-        width: '75%',
-        borderBottomColor: '#FAD15F',
-        borderBottomWidth: scale(1.5),
-    }
+    // large: {
+    //     fontFamily: 'HiraginoSans-W3',
+    //     fontSize: FontStyles.smedium,
+    //     width: '75%',
+    //     borderBottomColor: '#FAD15F',
+    //     borderBottomWidth: scale(1.5),
+    // }
 })

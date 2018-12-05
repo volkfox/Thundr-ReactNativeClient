@@ -13,8 +13,8 @@ import {
     TouchableOpacity,
 } from 'react-native'
 import { withNavigation } from 'react-navigation'
-import FontStyles from './FontStyles'
 import { scale } from 'react-native-size-matters'
+import FontStyles from './FontStyles'
 
 class HomeScreenItem extends React.Component {
     render() {

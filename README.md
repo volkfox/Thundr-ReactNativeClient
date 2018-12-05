@@ -7,6 +7,7 @@ and developing the UI and screen flows, with minimal backend functionality.
 TODOS:
 
 - Add modal for information button
+- Make fields empty after adding idea to past brainstorm.
 - Add modal for search button
 - Add modal for menu button(…)
 - Create confirmation modal to tell user to check email for password reset
