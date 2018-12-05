@@ -6,7 +6,6 @@ and developing the UI and screen flows, with minimal backend functionality.
 
 TODOS:
 
-- Add a new idea to existing brainstorm
 - Hamburger menu
 - Add modal for information button
 - Add modal for search button

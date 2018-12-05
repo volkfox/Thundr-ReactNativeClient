@@ -38,65 +38,65 @@ export default class PastBrainstormScreen extends React.Component {
     render() {
         return (
             <SafeAreaView style={{flex: 1}}>
-            <StatusBar barStyle='light-content'/>
-            <FlatList
-                data={pastData}
-                renderItem={this._renderItem}
-                ItemSeparatorComponent={this._renderSeparator}
-            />
-            <Modal 
-                isVisible={this.state.isModalVisible}
-                onBackdropPress={this._toggleModal}
-            >
-                <View style={styles.modalContainer}>
-                    <View style={{ flexDirection: 'row', flex: 1 }}>
-                        <View style={{ flex: 1 }}/>
-                        <View style={styles.modalTitleContainer}>
-                            <Text style={styles.modalTitleText}>Add New Idea</Text>
+                <StatusBar barStyle='light-content'/>
+                <FlatList
+                    data={pastData}
+                    renderItem={this._renderItem}
+                    ItemSeparatorComponent={this._renderSeparator}
+                />
+                <Modal 
+                    isVisible={this.state.isModalVisible}
+                    onBackdropPress={this._toggleModal}
+                >
+                    <View style={styles.modalContainer}>
+                        <View style={{ flexDirection: 'row', flex: 1 }}>
+                            <View style={{ flex: 1 }}/>
+                            <View style={styles.modalTitleContainer}>
+                                <Text style={styles.modalTitleText}>Add New Idea</Text>
+                            </View>
+                            <View style={styles.exitButtonContainer}>
+                                <TouchableOpacity onPress={this._toggleModal}>
+                                    <Image
+                                        source={require('../images/yellow_x.png')}
+                                        style={styles.exitButton}
+                                        resizeMode='contain'
+                                    />
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                        <View style={styles.exitButtonContainer}>
-                            <TouchableOpacity onPress={this._toggleModal}>
-                                <Image
-                                    source={require('../images/yellow_x.png')}
-                                    style={styles.exitButton}
-                                    resizeMode='contain'
-                                />
+                        <View style={styles.inputContainer}>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder='Idea'
+                                clearButtonMode='while-editing'
+                                onChangeText={ (text) => this.setState({newIdea: text}) }
+                                value={this.state.newIdea}
+                            />
+                            <View style={{ flex: 0.2} }/>
+                            <TextInput
+                                style={styles.textInput}
+                                placeholder='Notes'
+                                clearButtonMode='while-editing'
+                                multiline={true}
+                                numberOfLines={4}
+                                onChangeText={ (text) => this.setState({newNotes: text}) }
+                                value={this.state.newNotes}
+                            />
+                        </View>
+                        <View style={styles.newIdeaButtonContainer}>
+                            <TouchableOpacity
+                                style={styles.newIdeaButton}
+                                onPress={this._addNewIdea}
+                            >
+                                <Text style={styles.addIdeaText}>Add</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={styles.inputContainer}>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder='Idea'
-                            clearButtonMode='while-editing'
-                            onChangeText={ (text) => this.setState({newIdea: text}) }
-                            value={this.state.newIdea}
-                        />
-                        <View style={{ flex: 0.2} }/>
-                        <TextInput
-                            style={styles.textInput}
-                            placeholder='Notes'
-                            clearButtonMode='while-editing'
-                            multiline={true}
-                            numberOfLines={4}
-                            onChangeText={ (text) => this.setState({newNotes: text}) }
-                            value={this.state.newNotes}
-                        />
-                    </View>
-                    <View style={styles.newIdeaButtonContainer}>
-                        <TouchableOpacity
-                            style={styles.newIdeaButton}
-                            onPress={this._addNewIdea}
-                        >
-                            <Text style={styles.addIdeaText}>Add</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-            </Modal>
-            <ActionButton
-                    buttonColor='#FAD15F' 
-                    onPress={this._toggleModal}
-            />
+                </Modal>
+                <ActionButton
+                        buttonColor='#FAD15F' 
+                        onPress={this._toggleModal}
+                />
             </SafeAreaView>
         )
     }

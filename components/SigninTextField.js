@@ -14,7 +14,7 @@ export default class SigninTextField extends Component {
                 <TextInput 
                     style={styles.inputField}
                     autoCorrect={false}
-                    secureTextEntry={this.props.hidden}
+                    secureTextEntry={this.props.hidden || false}
                     returnKeyType='next'
                     keyboardType='email-address'
                     placeholder={this.props.text}

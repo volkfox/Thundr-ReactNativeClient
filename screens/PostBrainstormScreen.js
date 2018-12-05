@@ -13,15 +13,14 @@ import {
     View,
     SafeAreaView,
     StyleSheet,
-    Text,
     TextInput,
-    TouchableOpacity,
     StatusBar,
 } from 'react-native'
 import { StackActions, NavigationActions } from 'react-navigation'
 import FontStyles from '../components/FontStyles'
 import brainstormData from '../data/BrainstormData'
 import { scale } from 'react-native-size-matters'
+import ThundrButton from '../components/ThundrButton'
 
 export default class PostBrainstormScreen extends React.Component {
     constructor(props) {
@@ -54,14 +53,11 @@ export default class PostBrainstormScreen extends React.Component {
                         value={this.state.description}
                     />
                 </View>
-                <View style={styles.doneContainer}>
-                    <TouchableOpacity
-                        style={styles.doneButton}
-                        onPress={this._addRecentBrainstorm.bind(this)}
-                    >
-                        <Text style={styles.doneText}>Done</Text>
-                    </TouchableOpacity>
-                </View>
+                <ThundrButton
+                    text='Done'
+                    color='yellow'
+                    onPress={this._addRecentBrainstorm.bind(this)}
+                />
                 <View style={{flex: 3}}/>
             </SafeAreaView>
         )
@@ -166,24 +162,4 @@ const styles = StyleSheet.create({
         paddingTop: scale(20),
         alignItems: 'center',
     },
-    doneContainer: {
-        flex: 1,
-        paddingTop: scale(20),
-    },
-    doneButton: {
-        backgroundColor: '#FAD15F',
-        alignItems: 'center',
-        height: FontStyles.headerHeight,
-        marginHorizontal: scale(30),
-        borderRadius: 100,
-    },
-    doneText: {
-        color: '#FFFFFF',
-        fontFamily: 'HiraginoSans-W6',
-        fontSize: FontStyles.medium,
-        paddingVertical: (FontStyles.headerHeight - FontStyles.medium) / 2,
-    },
-    keyboardContainer: {
-        flex: 3,
-    }
 })

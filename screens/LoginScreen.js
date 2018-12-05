@@ -22,6 +22,7 @@ import {
 import FontStyles from '../components/FontStyles'
 import SigninTextField from '../components/SigninTextField'
 import { scale } from 'react-native-size-matters'
+import ThundrButton from '../components/ThundrButton';
 
 export default class LoginScreen extends React.Component {
     render() {
@@ -30,10 +31,7 @@ export default class LoginScreen extends React.Component {
                 <StatusBar barStyle='dark-content'/>
                 <View style={styles.inputContainer}>
                     <View style={styles.fieldContainer}>
-                        <SigninTextField 
-                            text='Email'
-                            hidden={false}
-                        />
+                        <SigninTextField text='Email'/>
                     </View>
                     <View style={styles.fieldContainer}>
                         <SigninTextField 
@@ -51,14 +49,11 @@ export default class LoginScreen extends React.Component {
                         <Text style={styles.forgotText}>Forgot your password?</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={styles.continueContainer}>
-                    <TouchableOpacity 
-                        style={styles.continueButton}
-                        onPress={this._asyncLogin}
-                    >
-                        <Text style={styles.continueText}>Continue</Text>
-                    </TouchableOpacity>
-                </View>
+                <ThundrButton
+                    text='Continue'
+                    color='yellow'
+                    onPress={this._asyncLogin}
+                />
                 <View style={styles.keyboardContainer}/>
             </SafeAreaView>
         )
@@ -121,22 +116,6 @@ const styles = StyleSheet.create({
         fontFamily: 'HiraginoSans-W3',
         fontSize: FontStyles.small,
         color: '#4B4A4A',
-    },
-    continueContainer: {
-        flex: 1,
-    },
-    continueButton: {
-        backgroundColor: '#FAD15F',
-        alignItems: 'center',
-        height: FontStyles.buttonHeight,
-        marginHorizontal: scale(30),
-        borderRadius: 100,
-    },
-    continueText: {
-        color: '#FFFFFF',
-        fontFamily: 'HiraginoSans-W6',
-        fontSize: FontStyles.medium,
-        paddingVertical: (FontStyles.buttonHeight - FontStyles.medium) / 2,
     },
     keyboardContainer: {
        flex: 3.2,

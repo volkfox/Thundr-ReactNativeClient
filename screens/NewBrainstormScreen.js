@@ -14,7 +14,6 @@ import {
     TouchableOpacity,
     TextInput,
     StyleSheet,
-    Text,
     Image,
     FlatList,
 } from 'react-native'
@@ -22,6 +21,7 @@ import { StackActions, NavigationActions } from 'react-navigation'
 import FontStyles from '../components/FontStyles'
 import CollaboratorItem from '../components/CollaboratorItem'
 import { scale } from 'react-native-size-matters'
+import ThundrButton from '../components/ThundrButton'
 
 export default class NewBrainstormScreen extends React.Component {
     constructor(props) {
@@ -46,9 +46,10 @@ export default class NewBrainstormScreen extends React.Component {
         })
 
         return (
-            <SafeAreaView style={styles.safeContainer}>
-                <View style={styles.inputContainer}>
+            <SafeAreaView style={{ flex: 1}}>
+                <View style={{ flex: 4 }}>
                     <View style={styles.fieldContainer}>
+                        <View style={{ width: scale(30) }}/>
                         <TextInput 
                             style={styles.inputField}
                             placeholder='People'
@@ -65,7 +66,7 @@ export default class NewBrainstormScreen extends React.Component {
                             />
                         </TouchableOpacity>
                     </View>
-                    <View style={styles.peopleContainer}>
+                    <View style={{ flex: 3, paddingBottom: scale(10) }}>
                         <FlatList
                             ref='flatList'
                             data={this.state.collaboratorsHolder}
@@ -74,16 +75,12 @@ export default class NewBrainstormScreen extends React.Component {
                         />
                     </View>
                 </View>
-                <View style={styles.startContainer}>
-                    <TouchableOpacity
-                        style={styles.startButton}
-                        onPress={ () => {this.props.navigation.dispatch(resetAction)} }
-                    >
-                        <Text style={styles.startText}>Start</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.keyboardContainer}>
-                </View>
+                <ThundrButton
+                    text='Start'
+                    color='yellow'
+                    onPress={ () => {this.props.navigation.dispatch(resetAction)} }
+                />
+                <View style={{ flex: 4 }}/>
             </SafeAreaView>
         )
     }
@@ -136,12 +133,6 @@ export default class NewBrainstormScreen extends React.Component {
 
 /* Style sheet. */
 const styles = StyleSheet.create({
-    safeContainer: {
-        flex: 1,
-    },
-    inputContainer: {
-        flex: 4,
-    },
     fieldContainer: {
         flex: 1,
         flexDirection: 'row',
@@ -159,33 +150,11 @@ const styles = StyleSheet.create({
         width: scale(15),
         height: scale(15),
     },
-    peopleContainer: {
-        flex: 3,
-    },
-    startContainer: {
-        flex: 1,
-    },
-    keyboardContainer: {
-        flex: 4,
-    },
     inputField: {
         width: '75%',
         fontFamily: 'HiraginoSans-W3',
         fontSize: FontStyles.medium,
         borderBottomColor: '#FAD15F',
         borderBottomWidth: scale(1.5),
-    },
-    startButton: {
-        backgroundColor: '#FAD15F',
-        marginHorizontal: scale(30),
-        borderRadius: 100,
-        alignItems: 'center',
-        height: FontStyles.buttonHeight,
-    },
-    startText: {
-        color: '#FFFFFF',
-        fontFamily: 'HiraginoSans-W6',
-        fontSize: FontStyles.medium,
-        paddingVertical: (FontStyles.buttonHeight - FontStyles.medium) / 2,
     },
 })

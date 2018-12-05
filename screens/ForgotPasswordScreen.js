@@ -8,42 +8,35 @@
  */
 
 import React from 'react'
-import { 
-    Text, 
+import {  
     View, 
     SafeAreaView, 
-    StyleSheet, 
-    Dimensions,
     Image, 
     TouchableOpacity 
 } from 'react-native'
 import FontStyles from '../components/FontStyles'
-import SigninTextFields from '../components/SigninTextField'
+import SigninTextField from '../components/SigninTextField'
 import { scale } from 'react-native-size-matters'
+import ThundrButton from '../components/ThundrButton'
 
 export default class ForgotPasswordScreen extends React.Component {
     render() {
         return (
-            <SafeAreaView style={styles.safeContainer}>
-                <View style={styles.fieldContainer}>
-                    <SigninTextFields
-                        text='Email'
-                        hidden={false}
-                    />
+            <SafeAreaView style={{ flex: 1 }}>
+                <View style={{ flex: 2, paddingBottom: scale(50) }}>
+                    <SigninTextField text='Email'/>
                 </View>
-                <View style={styles.submitContainer}>
-                    <TouchableOpacity 
-                        style={styles.submitButton}
-                        onPress={ () => this.props.navigation.pop()}
-                    >
-                        <Text style={styles.submitText}>Submit</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.keyboardContainer}/>
+                <ThundrButton
+                    text='Submit'
+                    color='yellow'
+                    onPress={ () => this.props.navigation.pop() }
+                />
+                <View style={{ flex: 3 }}/>
             </SafeAreaView>
         )
     }
 
+    /* Header styling. */
     static navigationOptions = ({navigation}) => ({
         title: 'Reset Password',
         headerStyle: {
@@ -69,34 +62,3 @@ export default class ForgotPasswordScreen extends React.Component {
         )
     })
 }
-
-/* Style sheet. */
-const styles=StyleSheet.create({
-    safeContainer: {
-        flex: 1,
-    },
-    fieldContainer: {
-        flex: 3,
-        justifyContent: 'flex-start',
-    },
-    submitContainer: {
-        flex: 2,
-        justifyContent: 'center',
-    },
-    submitButton: {
-        backgroundColor: '#FAD15F',
-        alignItems: 'center',
-        marginHorizontal: scale(30),
-        borderRadius: 100,
-        height: FontStyles.buttonHeight,
-    },
-    submitText: {
-        fontFamily: 'HiraginoSans-W6',
-        fontSize: FontStyles.medium,
-        color: '#FFFFFF',
-        marginVertical: (FontStyles.buttonHeight - FontStyles.medium) / 2,
-    },
-    keyboardContainer: {
-        flex: 3, 
-    },
-})
