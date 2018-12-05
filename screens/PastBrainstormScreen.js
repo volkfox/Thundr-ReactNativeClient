@@ -8,6 +8,7 @@ import {
     FlatList,
     Image,
     SafeAreaView,
+    ScrollView,
     StatusBar, 
     StyleSheet, 
     Text,
@@ -27,13 +28,11 @@ export default class PastBrainstormScreen extends React.Component {
         super(props)
         this.state = {
             isModalVisible: false,
+            isInfoVisible: false,
             newIdea: '',
             newNotes: '',
         }
     }
-
-     /* Change the visibility of the modal. */
-     _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
 
     render() {
         return (
@@ -44,7 +43,45 @@ export default class PastBrainstormScreen extends React.Component {
                     renderItem={this._renderItem}
                     ItemSeparatorComponent={this._renderSeparator}
                 />
-                <Modal 
+                <Modal /* Info button modal */
+                    isVisible={this.state.isInfoVisible}
+                    onBackdropPress={this._toggleInfo}    
+                >
+                    <View style={styles.infoModal}>
+                        <View style={{ flexDirection: 'row' }}>
+                            <View style={{ flex: 1 }}/>
+                            <View style={styles.modalTitleContainer}>
+                                <Text style={styles.modalTitleText}>Details</Text>
+                            </View>
+                            <View style={styles.exitButtonContainer}>
+                                <TouchableOpacity onPress={this._toggleInfo}>
+                                    <Image
+                                        source={require('../images/yellow_x.png')}
+                                        style={styles.exitButton}
+                                        resizeMode='contain'
+                                    />
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+                        <ScrollView style={{ width: '80%', paddingTop: scale(15)}}>
+                            <Text>
+                                <Text style={styles.detailsTitleText}>{'Title: '}</Text>
+                                <Text style={styles.detailsText}>{this.props.navigation.getParam('title', '')}</Text>
+                            </Text>
+                            <View style={{ height: scale(10) }}/>
+                            <Text>
+                                <Text style={styles.detailsTitleText}>{'Description: '}</Text>
+                                <Text style={styles.detailsText}>{this.props.navigation.getParam('description', '')}</Text>
+                            </Text>
+                            <View style={{ height: scale(10) }}/>
+                            <Text>
+                                <Text style={styles.detailsTitleText}>{'Collaborators: '}</Text>
+                                <Text style={styles.detailsText}>{this._getCollaborators(this.props.navigation.getParam('collaborators', []))}</Text>
+                            </Text>
+                        </ScrollView>
+                    </View>
+                </Modal>
+                <Modal /* Add new idea modal */
                     isVisible={this.state.isModalVisible}
                     onBackdropPress={this._toggleModal}
                 >
@@ -104,7 +141,7 @@ export default class PastBrainstormScreen extends React.Component {
     /* Adds an idea to existing FlatList. */
     _addNewIdea = () => {
         if (this.state.newIdea.length == 0) {
-            alert('Please enter an idea.')
+            alert('Please enter an idea.f')
             return
         }
         const newIdea = {
@@ -113,8 +150,8 @@ export default class PastBrainstormScreen extends React.Component {
             upvotes: 0,
         }
         pastData.push(newIdea)
+        this.setState({ newIdea: '', newNotes: '' })
         this._toggleModal()
-        
     }
 
     /* renderItem function for FlatList. */
@@ -136,6 +173,36 @@ export default class PastBrainstormScreen extends React.Component {
         />
     )
 
+    /* Change the visibility of the modal. */
+     _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
+     _toggleInfo = () => this.setState({ isInfoVisible: !this.state.isInfoVisible })
+
+    componentDidMount() {
+        this.props.navigation.setParams({
+            handleThis: this._toggleInfo
+        });
+    }
+
+    /* Returns a list of collaborators for display on info modal. */
+    _getCollaborators(listCollaborators) {
+        let stringCollaborators = ''
+        if (listCollaborators.length == 0) {
+            stringCollaborators = 'none'
+        }
+        else if (listCollaborators.length == 1) {
+            stringCollaborators = listCollaborators[0] 
+        } else if (listCollaborators.length == 2) {
+            stringCollaborators = listCollaborators[0] + ' and ' + listCollaborators[1]
+        }
+        else {
+            for (let i = 0; i < listCollaborators.length - 1; i++) {
+                stringCollaborators += listCollaborators[i] + ', '
+            }
+            stringCollaborators += 'and ' + listCollaborators[listCollaborators.length - 1]
+        }
+        return stringCollaborators
+    }
+
     /* Header styling. */
     static navigationOptions = ({navigation}) => ({
         title: navigation.getParam('title', null), 
@@ -152,7 +219,7 @@ export default class PastBrainstormScreen extends React.Component {
         headerLeft: null,
         headerRight: (
             <TouchableOpacity style={ {paddingRight: scale(25), paddingBottom: scale(5)} }
-                onPress={ () => {} }
+                onPress={navigation.getParam('handleThis')}
             >
                 <Image
                     source={require('../images/info_button.png')}
@@ -234,5 +301,27 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontSize: ThundrSize.small,
         paddingVertical: (0.8 * ThundrSize.buttonHeight - ThundrSize.small) / 2,
+    },
+    infoModal: {
+        alignSelf: 'center',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
+        height: '50%',
+        width: '90%',
+        backgroundColor: '#F5FCFF',
+        borderRadius: 30,
+    },
+    detailsContainer: {
+        flex: 4,
+    },
+    detailsText: {
+        fontFamily: 'HiraginoSans-W3',
+        fontSize: ThundrSize.small,
+        color: '#7E7E7E',
+    },
+    detailsTitleText: {
+        fontFamily: 'HiraginoSans-W6',
+        fontSize: ThundrSize.small,
+        color: '#7E7E7E',
     },
 })

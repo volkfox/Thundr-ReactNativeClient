@@ -35,7 +35,9 @@ class HomeScreenItem extends React.Component {
         return (
             <View style={styles.itemContainer}>
                 <TouchableOpacity
-                    onPress={ () => this.props.navigation.push('PastBrainstorm', {title: this.props.title})}
+                    onPress={ () => this.props.navigation.push('PastBrainstorm', {title: this.props.title, 
+                                    collaborators: this.props.collaborators, ideas: this.props.ideas, 
+                                    date: this.props.date, description: this.props.description})}
                 >
                     <View style= {styles.titleLine}>
                         <View style={styles.titleContainer}>
