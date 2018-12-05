@@ -10,19 +10,19 @@
 
 import React from 'react'
 import { 
-    View, 
-    Text, 
-    StyleSheet, 
-    StatusBar, 
-    TouchableOpacity, 
-    SafeAreaView, 
     AsyncStorage, 
     Image,
+    SafeAreaView, 
+    StatusBar, 
+    StyleSheet, 
+    Text, 
+    TouchableOpacity, 
+    View, 
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
-import FontStyles from '../components/FontStyles'
-import ThundrTextField from '../components/ThundrTextField'
 import ThundrButton from '../components/ThundrButton';
+import ThundrSize from '../components/ThundrSize'
+import ThundrTextField from '../components/ThundrTextField'
 
 export default class LoginScreen extends React.Component {
     render() {
@@ -61,12 +61,12 @@ export default class LoginScreen extends React.Component {
         title: 'Login',       
         headerStyle: {
             borderBottomWidth: 0,
-            height: FontStyles.headerHeight,
+            height: ThundrSize.headerHeight,
         },
         headerTintColor: '#FAD15F',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.large,
+            fontSize: ThundrSize.large,
         },
         headerBackTitle: null,
         headerLeft: (
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     },
     forgotText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small,
+        fontSize: ThundrSize.small,
         color: '#4B4A4A',
     },
 })

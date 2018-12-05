@@ -9,18 +9,18 @@
 
 import React from 'react'
 import {
-    SafeAreaView,
-    View,
-    TouchableOpacity,
-    TextInput,
-    StyleSheet,
-    Image,
     FlatList,
+    Image,
+    SafeAreaView,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity,
+    View,
 } from 'react-native'
 import { StackActions, NavigationActions } from 'react-navigation'
 import { scale } from 'react-native-size-matters'
-import FontStyles from '../components/FontStyles'
 import CollaboratorItem from '../components/CollaboratorItem'
+import ThundrSize from '../components/ThundrSize'
 import ThundrButton from '../components/ThundrButton'
 
 export default class NewBrainstormScreen extends React.Component {
@@ -109,13 +109,13 @@ export default class NewBrainstormScreen extends React.Component {
         title: 'Add People', 
         headerStyle: {
             borderBottomWidth: 0,
-            height: FontStyles.headerHeight,
+            height: ThundrSize.headerHeight,
             backgroundColor: '#FAD15F',
         },
         headerTintColor: '#FFFFFF',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.medium,
+            fontSize: ThundrSize.medium,
         },
         headerBackTitle: null,
         headerLeft: (
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     inputField: {
         width: '75%',
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.smedium,
+        fontSize: ThundrSize.smedium,
         borderBottomColor: '#FAD15F',
         borderBottomWidth: scale(1.5),
     },

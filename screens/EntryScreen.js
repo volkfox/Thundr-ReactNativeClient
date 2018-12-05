@@ -5,17 +5,17 @@
 
 import React from 'react'
 import { 
-    Text, 
-    View, 
-    StyleSheet, 
     Image, 
+    SafeAreaView,
     StatusBar, 
+    StyleSheet, 
+    Text,
     TouchableOpacity, 
-    SafeAreaView 
+    View, 
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
-import FontStyles from '../components/FontStyles'
 import ThundrButton from '../components/ThundrButton'
+import ThundrSize from '../components/ThundrSize'
 
 export default class EntryScreen extends React.Component {
     render() {
@@ -81,12 +81,12 @@ const styles = StyleSheet.create({
     },
     thundr: {
         fontFamily: 'HiraginoSans-W6',
-        fontSize: FontStyles.xxxlarge,
+        fontSize: ThundrSize.xxxlarge,
         color: '#FFFFFF',
     },
     existingAccount: {
         fontFamily: 'HiraginoSans-W6',
-        fontSize: FontStyles.small,
+        fontSize: ThundrSize.small,
         color: '#FFFFFF',
     },
 })

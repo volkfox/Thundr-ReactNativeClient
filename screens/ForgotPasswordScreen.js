@@ -9,14 +9,14 @@
 
 import React from 'react'
 import {  
-    View, 
-    SafeAreaView, 
     Image, 
-    TouchableOpacity 
+    SafeAreaView, 
+    TouchableOpacity,
+    View, 
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
-import FontStyles from '../components/FontStyles'
 import ThundrButton from '../components/ThundrButton'
+import ThundrSize from '../components/ThundrSize'
 import ThundrTextField from '../components/ThundrTextField'
 
 export default class ForgotPasswordScreen extends React.Component {
@@ -41,12 +41,12 @@ export default class ForgotPasswordScreen extends React.Component {
         title: 'Reset Password',
         headerStyle: {
             borderBottomWidth: 0,
-            height: FontStyles.headerHeight,
+            height: ThundrSize.headerHeight,
         },
         headerTintColor: '#FAD15F',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.medium,
+            fontSize: ThundrSize.medium,
         }, 
         headerLeft: (
             <TouchableOpacity 

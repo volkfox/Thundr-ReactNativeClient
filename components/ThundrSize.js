@@ -1,10 +1,10 @@
-/*  -- FontStyles.js --
+/*  -- ThundrSize.js --
     Constants to control font size in Thundr app.
 */
 
 import { scale } from 'react-native-size-matters'
 
-const FontStyles = {
+const ThundrSize = {
     xtiny: scale(10),
     tiny: scale(12),
     small: scale(16),
@@ -18,4 +18,4 @@ const FontStyles = {
     headerHeight: scale(50),
 }
 
-export default FontStyles
+export default ThundrSize

@@ -10,15 +10,15 @@
 
 import React from 'react'
 import {
-    View,
     SafeAreaView,
     StatusBar,
+    View,
 } from 'react-native'
 import { StackActions, NavigationActions } from 'react-navigation'
-import FontStyles from '../components/FontStyles'
-import ThundrButton from '../components/ThundrButton'
-import ThundrTextField from '../components/ThundrTextField'
 import brainstormData from '../data/BrainstormData'
+import ThundrButton from '../components/ThundrButton'
+import ThundrSize from '../components/ThundrSize'
+import ThundrTextField from '../components/ThundrTextField'
 
 export default class PostBrainstormScreen extends React.Component {
     constructor(props) {
@@ -123,13 +123,13 @@ export default class PostBrainstormScreen extends React.Component {
         title: 'Finish Up',
         headerStyle: {
             borderBottomWidth: 0,
-            height: FontStyles.headerHeight,
+            height: ThundrSize.headerHeight,
             backgroundColor: '#FAD15F',
         },
         headerTintColor: '#FFFFFF',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.medium,
+            fontSize: ThundrSize.medium,
         },
         headerLeft: null,
         headerBackTitle: null,

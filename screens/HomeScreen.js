@@ -5,18 +5,18 @@
 
 import React from 'react'
 import { 
-    View, 
-    StatusBar, 
-    SafeAreaView,
     FlatList,
-    TouchableOpacity,
     Image,
+    SafeAreaView,
+    StatusBar, 
+    TouchableOpacity,
+    View, 
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
-import FontStyles from '../components/FontStyles'
 import ActionButton from 'react-native-action-button'
-import HomeScreenItem from '../components/HomeScreenItem'
 import brainstormData from '../data/BrainstormData'
+import HomeScreenItem from '../components/HomeScreenItem'
+import ThundrSize from '../components/ThundrSize'
 
 export default class HomeScreen extends React.Component {
     render() {
@@ -62,13 +62,13 @@ export default class HomeScreen extends React.Component {
         title: 'Brainstorms', 
         headerStyle: {
             borderBottomWidth: 0,
-            height: FontStyles.headerHeight,
+            height: ThundrSize.headerHeight,
             backgroundColor: '#FAD15F',
         },
         headerTintColor: '#FFFFFF',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W3',
-            fontSize: FontStyles.medium,
+            fontSize: ThundrSize.medium,
         },
         headerBackTitle: null,
         headerRight: (

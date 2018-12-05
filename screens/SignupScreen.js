@@ -10,18 +10,18 @@
 
 import React from 'react'
 import { 
-    View, 
-    StyleSheet, 
-    StatusBar, 
-    TouchableOpacity, 
-    SafeAreaView, 
-    Image,
     AsyncStorage,
+    Image,
+    SafeAreaView, 
+    StatusBar, 
+    StyleSheet, 
+    TouchableOpacity, 
+    View, 
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
-import FontStyles from '../components/FontStyles'
-import ThundrTextField from '../components/ThundrTextField'
 import ThundrButton from '../components/ThundrButton'
+import ThundrSize from '../components/ThundrSize'
+import ThundrTextField from '../components/ThundrTextField'
 
 export default class SignupScreen extends React.Component {
     render() {
@@ -57,12 +57,12 @@ export default class SignupScreen extends React.Component {
         title: 'Sign Up',       
         headerStyle: {
             borderBottomWidth: 0,
-            height: FontStyles.headerHeight,
+            height: ThundrSize.headerHeight,
         },
         headerTintColor: '#FAD15F',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.large,
+            fontSize: ThundrSize.large,
         },
         headerLeft: (
             <TouchableOpacity 

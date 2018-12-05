@@ -5,13 +5,13 @@
 
 import React from 'react'
 import {
-    View,
-    Text,
     Image,
     StyleSheet,
+    Text,
+    View,
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
-import FontStyles from './FontStyles';
+import ThundrSize from './ThundrSize';
 
 export default class CollaboratorItem extends React.Component {
     render() {
@@ -50,6 +50,6 @@ const styles = StyleSheet.create ({
     text: {
         marginLeft: scale(10),
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small,
+        fontSize: ThundrSize.small,
     }
 })

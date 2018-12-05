@@ -4,16 +4,16 @@
 
 import React from 'react'
 import {
-    View,
-    Text,
-    StyleSheet,
     Image,
-    TouchableOpacity,
     ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
 import Modal from 'react-native-modal'
-import FontStyles from '../components/FontStyles'
+import ThundrSize from '../components/ThundrSize'
 
 export default class PastBrainstormItem extends React.Component {
     state = {
@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     },
     ideaText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small,
+        fontSize: ThundrSize.small,
     },
     upvoteContainer: {
         width: '14%',
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.tiny,
+        fontSize: ThundrSize.tiny,
         color: '#7E7E7E',
     },
     notesContainer: {
@@ -127,12 +127,12 @@ const styles = StyleSheet.create({
     },
     modalText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.body,
+        fontSize: ThundrSize.body,
         color: '#7E7E7E',
     },
     modalTitleText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small,
+        fontSize: ThundrSize.small,
         paddingTop: scale(20),
         color: '#595959',
     },

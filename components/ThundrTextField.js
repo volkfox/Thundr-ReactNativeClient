@@ -4,12 +4,12 @@
 
 import React, { Component } from 'react'
 import { 
-    TextInput, 
     StyleSheet, 
+    TextInput, 
     View 
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
-import FontStyles from './FontStyles'
+import ThundrSize from './ThundrSize'
 
 export default class ThundrTextField extends Component {
     render() {
@@ -41,14 +41,14 @@ const styles=StyleSheet.create({
     },
     field: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.smedium,
+        fontSize: ThundrSize.smedium,
         width: '75%',
         borderBottomColor: '#FAD15F',
         borderBottomWidth: scale(1.5),
     },
     // large: {
     //     fontFamily: 'HiraginoSans-W3',
-    //     fontSize: FontStyles.smedium,
+    //     fontSize: ThundrSize.smedium,
     //     width: '75%',
     //     borderBottomColor: '#FAD15F',
     //     borderBottomWidth: scale(1.5),

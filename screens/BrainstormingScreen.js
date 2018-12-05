@@ -5,17 +5,17 @@
 
 import React from 'react'
 import {
-    View,
-    StyleSheet,
-    SafeAreaView,
     Image,
+    SafeAreaView,
+    StatusBar,
+    StyleSheet,
     Text,
     TouchableOpacity,
-    StatusBar,
+    View,
 } from 'react-native'
-import { StackActions, NavigationActions } from 'react-navigation'
-import FontStyles from '../components/FontStyles'
 import { scale } from 'react-native-size-matters'
+import { StackActions, NavigationActions } from 'react-navigation'
+import ThundrSize from '../components/ThundrSize'
 
 export default class BrainstormingScreen extends React.Component { 
     render() {
@@ -87,15 +87,15 @@ const styles = StyleSheet.create({
     },
     finishButton: {
         width: '25%',
-        height: FontStyles.buttonHeight,
+        height: ThundrSize.buttonHeight,
         alignItems: 'flex-end',
         marginRight: scale(20),
     },
     finishText: {
         fontFamily: 'HiraginoSans-W6',
         color: '#FFFFFF',
-        fontSize: FontStyles.medium,
-        paddingVertical: (FontStyles.buttonHeight - FontStyles.medium) / 2,
+        fontSize: ThundrSize.medium,
+        paddingVertical: (ThundrSize.buttonHeight - ThundrSize.medium) / 2,
     },
     textContainer: {
         flex: 1,
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     },
     text: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small,
+        fontSize: ThundrSize.small,
         color: '#FFFFFF',
     },
 })

@@ -6,15 +6,15 @@
 
 import React from 'react'
 import {
-    View,
+    Image,
     StyleSheet,
     Text,
-    Image,
     TouchableOpacity,
+    View,
 } from 'react-native'
-import { withNavigation } from 'react-navigation'
 import { scale } from 'react-native-size-matters'
-import FontStyles from './FontStyles'
+import { withNavigation } from 'react-navigation'
+import ThundrSize from './ThundrSize'
 
 class HomeScreenItem extends React.Component {
     render() {
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     },
     titleText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small,
+        fontSize: ThundrSize.small,
     },
     dateContainer: {
         flex: 2,
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
     },
     dateText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.xtiny,
+        fontSize: ThundrSize.xtiny,
         color: '#7E7E7E',
     },
     menuContainer: {
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     },
     descriptionText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.tiny,
+        fontSize: ThundrSize.tiny,
         color: '#7E7E7E',
     },
     infoContainer: {
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     },
     infoText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.tiny,
+        fontSize: ThundrSize.tiny,
         color: '#7E7E7E', 
     },
     collaboratorsContainer: {

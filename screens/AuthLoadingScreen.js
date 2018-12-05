@@ -5,12 +5,12 @@
 
 import React from 'react'
 import {
-    View,
+    AsyncStorage,
     Image,
     SafeAreaView,
-    StyleSheet,
     StatusBar,
-    AsyncStorage,
+    StyleSheet,
+    View,
 } from 'react-native'
 
 export default class AuthLoadingScreen extends React.Component {

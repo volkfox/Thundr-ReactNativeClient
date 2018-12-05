@@ -4,13 +4,13 @@
 
 import React from 'react'
 import {
-    TouchableOpacity,
     Text,
+    TouchableOpacity,
     View,
 } from 'react-native'
-import { withNavigation } from 'react-navigation'
 import { scale } from 'react-native-size-matters';
-import FontStyles from './FontStyles';
+import { withNavigation } from 'react-navigation'
+import ThundrSize from './ThundrSize';
 
 class ThundrButton extends React.Component {
     render() {
@@ -21,7 +21,7 @@ class ThundrButton extends React.Component {
                         backgroundColor: this.props.color == 'yellow' ? '#FAD15F' : '#FFFFFF',
                         marginHorizontal: scale(30),
                         borderRadius: 100,
-                        height: FontStyles.buttonHeight,
+                        height: ThundrSize.buttonHeight,
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}
@@ -29,8 +29,8 @@ class ThundrButton extends React.Component {
                 >
                     <Text style={{ 
                         fontFamily: this.props.color == 'yellow' ? 'HiraginoSans-W6' : 'HiraginoSans-W3', 
-                        fontSize: FontStyles.medium, 
-                        paddingVertical: (FontStyles.buttonHeight - FontStyles.medium) / 2,
+                        fontSize: ThundrSize.medium, 
+                        paddingVertical: (ThundrSize.buttonHeight - ThundrSize.medium) / 2,
                         color: this.props.color == 'yellow' ? '#FFFFFF' : '#000000' 
                     }}>
                         {this.props.text}

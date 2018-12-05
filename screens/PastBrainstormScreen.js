@@ -5,22 +5,22 @@
 
 import React from 'react'
 import {
-    SafeAreaView,
-    View,
     FlatList,
-    StatusBar,
-    TouchableOpacity,
     Image,
-    StyleSheet,
+    SafeAreaView,
+    StatusBar, 
+    StyleSheet, 
     Text,
     TextInput,
+    TouchableOpacity,
+    View,
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
 import ActionButton from 'react-native-action-button'
 import Modal from 'react-native-modal'
-import FontStyles from '../components/FontStyles'
 import PastBrainstormItem from '../components/PastBrainstormItem'
 import pastData from '../data/PastData'
+import ThundrSize from '../components/ThundrSize'
 
 export default class PastBrainstormScreen extends React.Component {
     constructor(props) {
@@ -141,13 +141,13 @@ export default class PastBrainstormScreen extends React.Component {
         title: navigation.getParam('title', null), 
         headerStyle: {
             borderBottomWidth: 0,
-            height: FontStyles.headerHeight,
+            height: ThundrSize.headerHeight,
             backgroundColor: '#FAD15F',
         },
         headerTintColor: '#FFFFFF',
         headerTitleStyle: {
             fontFamily: 'HiraginoSans-W6',
-            fontSize: FontStyles.small,
+            fontSize: ThundrSize.small,
         },
         headerLeft: null,
         headerRight: (
@@ -178,12 +178,12 @@ const styles = StyleSheet.create({
     },
     modalText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.body,
+        fontSize: ThundrSize.body,
         color: '#7E7E7E',
     },
     modalTitleText: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small,
+        fontSize: ThundrSize.small,
         paddingTop: scale(20),
         color: '#595959',
     },
@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
     },
     textInput: {
         fontFamily: 'HiraginoSans-W3',
-        fontSize: FontStyles.small,
+        fontSize: ThundrSize.small,
         borderBottomWidth: scale(1.5),
         borderBottomColor: '#FAD15F',
         width: '75%',
@@ -225,14 +225,14 @@ const styles = StyleSheet.create({
     newIdeaButton: {
         backgroundColor: '#FAD15F',
         alignItems: 'center',
-        height: FontStyles.buttonHeight * 0.8,
+        height: ThundrSize.buttonHeight * 0.8,
         marginHorizontal: scale(30),
         borderRadius: 100,
     },
     addIdeaText: {
         fontFamily: 'HiraginoSans-W6',
         color: '#FFFFFF',
-        fontSize: FontStyles.small,
-        paddingVertical: (0.8 * FontStyles.buttonHeight - FontStyles.small) / 2,
+        fontSize: ThundrSize.small,
+        paddingVertical: (0.8 * ThundrSize.buttonHeight - ThundrSize.small) / 2,
     },
 })
