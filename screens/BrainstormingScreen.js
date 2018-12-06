@@ -15,6 +15,7 @@ import {
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
 import { StackActions, NavigationActions } from 'react-navigation'
+import Pulse from 'react-native-pulse'
 import ThundrSize from '../components/ThundrSize'
 
 export default class BrainstormingScreen extends React.Component { 
@@ -49,6 +50,10 @@ export default class BrainstormingScreen extends React.Component {
                         </TouchableOpacity>
                     </View>
                     <View style={styles.boltContainer}>
+                        <Pulse
+                            color='#FDF1D0'
+                            diameter={scale(400)}
+                        />
                         <Image
                             style={styles.bolt}
                             source={require('../images/bolt.png')}
@@ -78,6 +83,7 @@ const styles = StyleSheet.create({
         flex: 5,
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: scale(80)
     },
     finishButton: {
         width: '25%',
