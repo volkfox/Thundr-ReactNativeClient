@@ -67,7 +67,7 @@ export default class LoginScreen extends React.Component {
                     <ThundrTextField text='Email' autoFocus={true}/>
                     <ThundrTextField text='Password' hidden={true}/>
                 </View>
-                <View style={{ flex: 0.7 }}>
+                <View style={ {flex: 0.7} }>
                     <TouchableOpacity 
                         style={styles.forgotButton}
                         onPress={ () => this.props.navigation.push('Forgot') }

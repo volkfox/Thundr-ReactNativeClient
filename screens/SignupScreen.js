@@ -59,9 +59,9 @@ export default class SignupScreen extends React.Component {
     /* Render function. */
     render() {
         return (
-            <SafeAreaView style={{ flex: 1 }}>
+            <SafeAreaView style={ {flex: 1} }>
                 <StatusBar barStyle='dark-content'/>
-                <View style={{ flex: 3.3 }}>
+                <View style={ {flex: 3.3} }>
                     <ThundrTextField text='Name' autoFocus={true}/>
                     <ThundrTextField text='Email'/>
                     <ThundrTextField text='Password' hidden={true}/>

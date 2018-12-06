@@ -131,7 +131,6 @@ class MenuModal extends React.Component {
                     </TouchableOpacity>
                 </View>
             </Modal>
-
         )
     }
 }

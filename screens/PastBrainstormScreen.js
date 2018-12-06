@@ -19,9 +19,9 @@ import {
 import { scale } from 'react-native-size-matters'
 import ActionButton from 'react-native-action-button'
 import Modal from 'react-native-modal'
-import PastBrainstormItem from '../components/PastBrainstormItem'
 import pastData from '../data/PastData'
 import ThundrSize from '../components/ThundrSize'
+import PastBrainstormItem from '../components/PastBrainstormItem'
 
 export default class PastBrainstormScreen extends React.Component {
     /* Constructor. */
@@ -48,13 +48,13 @@ export default class PastBrainstormScreen extends React.Component {
             paddingTop: scale(7),
         },
         headerRight: (
-            <TouchableOpacity style={{ paddingRight: scale(25), paddingTop: scale(2) }}
+            <TouchableOpacity style={ {paddingRight: scale(25), paddingTop: scale(2)} }
                 onPress={navigation.getParam('toggleInfoModal')}
             >
                 <Image
                     source={require('../images/info_button.png')}
                     resizeMode='contain'
-                    style={{ width: scale(20), height: scale(20) }}
+                    style={ {width: scale(20), height: scale(20)} }
                 />
             </TouchableOpacity>
         ),
@@ -76,14 +76,11 @@ export default class PastBrainstormScreen extends React.Component {
         />
     )
 
-    /* renderSeparator function for Flatlist. */
+    /* renderSeparator function for FlatList. */
     _renderSeparator = () => (
-        <View 
-            style = {{
-                height: scale(0.5),
-                backgroundColor: '#cccccc',
-            }}
-        />
+        <View style = {{
+            height: scale(30),
+        }}/>
     )
 
     /* Change the visibility of the modals. */
@@ -115,6 +112,7 @@ export default class PastBrainstormScreen extends React.Component {
         return (
             <SafeAreaView style={{flex: 1}}>
                 <StatusBar barStyle='light-content'/>
+                <View style={ {height: scale(30)} }/>
                 <FlatList
                     data={pastData}
                     renderItem={this._renderItem}
@@ -151,8 +149,8 @@ class InfoModal extends React.Component {
                 animationOut='slideOutUp'  
             >
                 <View style={styles.infoModal}>
-                    <View style={{ flexDirection: 'row' }}>
-                        <View style={{ flex: 1 }}/>
+                    <View style={ {flexDirection: 'row'} }>
+                        <View style={ {flex: 1} }/>
                         <View style={styles.modalTitleContainer}>
                             <Text style={styles.modalTitleText}>Details</Text>
                         </View>
@@ -171,12 +169,12 @@ class InfoModal extends React.Component {
                             <Text style={styles.detailsTitleText}>{'Title: '}</Text>
                             <Text style={styles.detailsText}>{this.props.title}</Text>
                         </Text>
-                        <View style={{ height: scale(10) }}/>
+                        <View style={ {height: scale(10)} }/>
                         <Text>
                             <Text style={styles.detailsTitleText}>{'Description: '}</Text>
                             <Text style={styles.detailsText}>{this.props.details}</Text>
                         </Text>
-                        <View style={{ height: scale(10) }}/>
+                        <View style={ {height: scale(10)} }/>
                         <Text>
                             <Text style={styles.detailsTitleText}>{'Collaborators: '}</Text>
                             <Text style={styles.detailsText}>{this.props.collaborators}</Text>

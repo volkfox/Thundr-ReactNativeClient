@@ -1,21 +1,23 @@
-/* */
+/*  -- PastBrainstormItem.js --
+    Item rendered by PastBrainstormScreen Flatlist to display an idea.
+*/
 
 import React from 'react'
 import {
-    View,
-    StyleSheet,
-    TouchableOpacity,
-    Text,
     Image,
     ScrollView,
+    StyleSheet,
+    Text,
+    TouchableOpacity,
+    View,
 } from 'react-native'
 import { scale } from 'react-native-size-matters'
 import Modal from 'react-native-modal'
-import ThundrSize from './ThundrSize'
+import ThundrSize from '../components/ThundrSize'
 
 export default class PastBrainstormItem extends React.Component {
-     /* Constructor. */
-     constructor(props) {
+    /* Constructor. */
+    constructor(props) {
         super(props)
         this.state = {
             isModalVisible: false,
@@ -25,7 +27,7 @@ export default class PastBrainstormItem extends React.Component {
     /* Change the visibility of the modal. */
     _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
 
-    /* Render function. */    
+    /* Render function. */
     render() {
         return (
             <View style={styles.itemContainer}>
@@ -35,30 +37,24 @@ export default class PastBrainstormItem extends React.Component {
                     idea={this.props.idea}
                     notes={this.props.notes}
                 />
-                <TouchableOpacity onPress={this._toggleModal} style={ {flex: 1} }>
-                    <View style={styles.contentContainer}>
-                        <View style={styles.titleContainer}>
-                            <View style={styles.ideaTextContainer}>
-                                <Text style={styles.ideaText} numberOfLines={1}>
-                                    {this.props.idea}
-                                </Text>
-                            </View>
-                            <View style={styles.upvoteContainer}>
-                                <Text style={styles.text}>{this.props.upvotes}</Text>
-                                <View style={styles.imageContainer}>
-                                    <Image 
-                                        source={require('../images/upvote_2.png')}
-                                        resizeMode='contain'
-                                        style={styles.upvote}
-                                    />
-                                </View>
-                            </View>
+                <TouchableOpacity onPress={this._toggleModal}>
+                    <View style={styles.titleLine}>
+                        <View style={ {width: '75%'} }>
+                            <Text style={styles.ideaText} numberOfLines={1}>{this.props.idea}</Text>
                         </View>
-                        <View style={styles.notesContainer}>
-                            <Text style={styles.text} numberOfLines={7}>
-                                {this.props.notes}
-                            </Text>
+                        <View style={styles.upvoteContainer}>
+                            <Text style={styles.text}>{this.props.upvotes}</Text>
                         </View>
+                        <View style={ {width: '6%'} }>
+                            <Image 
+                                style={styles.upvote} 
+                                source={require('../images/upvote.png')}
+                                resizeMode='contain'
+                            />
+                        </View>
+                    </View>
+                    <View style={styles.notesContainer}>
+                        <Text style={styles.text} numberOfLines={2}>{this.props.notes}</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -105,57 +101,37 @@ class IdeaModal extends React.Component {
 const styles = StyleSheet.create({
     itemContainer: {
         flex: 1,
-        backgroundColor: '#FFF9E6',
-        marginHorizontal: scale(25),
-        height: scale(180),
-        shadowOffset: {height: scale(3), width: 0},
-        shadowRadius: 2,
-        shadowOpacity: 0.2,
+        marginLeft: scale(20),
+        paddingVertical: scale(20),
     },
-    titleContainer: {
-        flex: 1.5, 
-        flexDirection: 'row'
-    },
-    contentContainer: {
+    titleLine: {
         flex: 1,
-        marginLeft: scale(30),
-        marginRight: scale(10),
-        marginVertical: scale(15),
-    },
-    ideaTextContainer: {
-        flex: 8,
+        flexDirection: 'row',
     },
     ideaText: {
         fontFamily: 'HiraginoSans-W3',
         fontSize: ThundrSize.small,
-        
     },
     upvoteContainer: {
-        flex: 2,
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignItems: 'center',
+        width: '14%',
+        alignItems: 'flex-end',
         paddingRight: scale(5),
+        paddingTop: scale(6),
     },
-    notesContainer: {
-        flex: 7,
-        marginTop: scale(10),
-        marginBottom: scale(5),
-        marginRight: scale(30),
+    upvote: {
+        width: scale(20),
+        height: scale(20),
     },
     text: {
         fontFamily: 'HiraginoSans-W3',
         fontSize: ThundrSize.tiny,
         color: '#7E7E7E',
     },
-    upvote: {
-        width: scale(20),
-        height: scale(20),
+    notesContainer: {
+        flex: 1,
+        width: '75%',
+        marginVertical: scale(10),
     },
-    imageContainer: {
-        paddingBottom: scale(12), 
-        paddingLeft: scale(6),
-    }, 
     modalContainer: {
         alignSelf: 'center',
         justifyContent: 'center',
