@@ -61,7 +61,7 @@ export default class LoginScreen extends React.Component {
     /* Render function. */
     render() {
         return (
-            <SafeAreaView style={{ flex: 1 }}> 
+            <SafeAreaView style={ {flex: 1} }> 
                 <StatusBar barStyle='dark-content'/>
                 <View style={styles.inputContainer}>
                     <ThundrTextField text='Email' autoFocus={true}/>
@@ -70,7 +70,7 @@ export default class LoginScreen extends React.Component {
                 <View style={{ flex: 0.7 }}>
                     <TouchableOpacity 
                         style={styles.forgotButton}
-                        onPress={ () => this.props.navigation.push('Forgot')}
+                        onPress={ () => this.props.navigation.push('Forgot') }
                     >
                         <Text style={styles.forgotText}>Forgot your password?</Text>
                     </TouchableOpacity>

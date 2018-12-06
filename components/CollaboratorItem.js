@@ -29,7 +29,7 @@ export default class CollaboratorItem extends React.Component {
                     style={styles.image}
                     resizeMode='contain'
                 />
-                <View style={{ justifyContent: 'center', paddingTop: scale(10) }}>
+                <View style={ {justifyContent: 'center', paddingTop: scale(10)} }>
                     <Text style={styles.text}>{this.props.name}</Text>
                 </View>
             </View>

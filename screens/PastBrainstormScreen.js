@@ -28,15 +28,13 @@ export default class PastBrainstormScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isModalVisible: false,
-            isInfoVisible: false,
-            newIdea: '',
-            newNotes: '',
+            isAddModalVisible: false,
+            isInfoModalVisible: false,
         }
     }
 
-     /* Header styling. */
-     static navigationOptions = ({navigation}) => ({
+    /* Header styling. */
+    static navigationOptions = ({navigation}) => ({
         title: navigation.getParam('title', null), 
         headerStyle: {
             borderBottomWidth: 0,
@@ -51,7 +49,7 @@ export default class PastBrainstormScreen extends React.Component {
         },
         headerRight: (
             <TouchableOpacity style={{ paddingRight: scale(25), paddingTop: scale(2) }}
-                onPress={navigation.getParam('toggleInfo')}
+                onPress={navigation.getParam('toggleInfoModal')}
             >
                 <Image
                     source={require('../images/info_button.png')}
@@ -62,27 +60,11 @@ export default class PastBrainstormScreen extends React.Component {
         ),
     }) 
 
-    /* Passes reference to _toggleInfo to navigation. */
+    /* Passes reference to _toggleInfoModal to navigation. */
     componentDidMount() {
         this.props.navigation.setParams({
-            toggleInfo: this._toggleInfo
+            toggleInfoModal: this._toggleInfoModal
         });
-    }
-
-     /* Adds an idea to existing FlatList. */
-     _addNewIdea = () => {
-        if (this.state.newIdea.length == 0) {
-            alert('Please enter an idea.')
-            return
-        }
-        const newIdea = {
-            idea: this.state.newIdea,
-            notes: this.state.newNotes,
-            upvotes: 0,
-        }
-        pastData.push(newIdea)
-        this.setState({ newIdea: '', newNotes: '' })
-        this._toggleModal()
     }
 
     /* renderItem function for FlatList. */
@@ -104,9 +86,9 @@ export default class PastBrainstormScreen extends React.Component {
         />
     )
 
-    /* Change the visibility of the modal. */
-     _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
-     _toggleInfo = () => this.setState({ isInfoVisible: !this.state.isInfoVisible })
+    /* Change the visibility of the modals. */
+    _toggleAddModal = () => this.setState({ isAddModalVisible: !this.state.isAddModalVisible })
+    _toggleInfoModal = () => this.setState({ isInfoModalVisible: !this.state.isInfoModalVisible })
 
     /* Returns a list of collaborators for display on info modal. */
     _getCollaborators(listCollaborators) {
@@ -138,108 +120,161 @@ export default class PastBrainstormScreen extends React.Component {
                     renderItem={this._renderItem}
                     ItemSeparatorComponent={this._renderSeparator}
                 />
-                <Modal /* Info button modal */
-                    isVisible={this.state.isInfoVisible}
-                    onBackdropPress={this._toggleInfo}    
-                >
-                    <View style={styles.infoModal}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <View style={{ flex: 1 }}/>
-                            <View style={styles.modalTitleContainer}>
-                                <Text style={styles.modalTitleText}>Details</Text>
-                            </View>
-                            <View style={styles.exitButtonContainer}>
-                                <TouchableOpacity onPress={this._toggleInfo}>
-                                    <Image
-                                        source={require('../images/yellow_x.png')}
-                                        style={styles.exitButton}
-                                        resizeMode='contain'
-                                    />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                        <ScrollView style={{ width: '80%', paddingTop: scale(15)}}>
-                            <Text>
-                                <Text style={styles.detailsTitleText}>{'Title: '}</Text>
-                                <Text style={styles.detailsText}>{this.props.navigation.getParam('title', '')}</Text>
-                            </Text>
-                            <View style={{ height: scale(10) }}/>
-                            <Text>
-                                <Text style={styles.detailsTitleText}>{'Description: '}</Text>
-                                <Text style={styles.detailsText}>{this.props.navigation.getParam('description', '')}</Text>
-                            </Text>
-                            <View style={{ height: scale(10) }}/>
-                            <Text>
-                                <Text style={styles.detailsTitleText}>{'Collaborators: '}</Text>
-                                <Text style={styles.detailsText}>{this._getCollaborators(this.props.navigation.getParam('collaborators', []))}</Text>
-                            </Text>
-                        </ScrollView>
-                    </View>
-                </Modal>
-                <Modal /* Add new idea modal */
-                    isVisible={this.state.isModalVisible}
-                    onBackdropPress={this._toggleModal}
-                >
-                    <View style={styles.modalContainer}>
-                        <View style={{ flexDirection: 'row', flex: 1 }}>
-                            <View style={{ flex: 1 }}/>
-                            <View style={styles.modalTitleContainer}>
-                                <Text style={styles.modalTitleText}>Add New Idea</Text>
-                            </View>
-                            <View style={styles.exitButtonContainer}>
-                                <TouchableOpacity onPress={this._toggleModal}>
-                                    <Image
-                                        source={require('../images/yellow_x.png')}
-                                        style={styles.exitButton}
-                                        resizeMode='contain'
-                                    />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                        <View style={styles.inputContainer}>
-                            <TextInput
-                                style={styles.textInput}
-                                placeholder='Idea'
-                                clearButtonMode='while-editing'
-                                onChangeText={ (text) => this.setState({newIdea: text}) }
-                                value={this.state.newIdea}
-                                selectionColor='#656565'
-                                autoFocus={true}
-                            />
-                            <View style={{ flex: 0.2} }/>
-                            <TextInput
-                                style={styles.textInput}
-                                placeholder='Notes'
-                                clearButtonMode='while-editing'
-                                multiline={true}
-                                numberOfLines={4}
-                                onChangeText={ (text) => this.setState({newNotes: text}) }
-                                value={this.state.newNotes}
-                                selectionColor='#656565'
-                            />
-                        </View>
-                        <View style={styles.newIdeaButtonContainer}>
-                            <TouchableOpacity
-                                style={styles.newIdeaButton}
-                                onPress={this._addNewIdea}
-                            >
-                                <Text style={styles.addIdeaText}>Add</Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                </Modal>
+                <InfoModal
+                    isModalVisible={this.state.isInfoModalVisible}
+                    toggleModal={this._toggleInfoModal}
+                    title={this.props.navigation.getParam('title', '')}
+                    details={this.props.navigation.getParam('description', '')}
+                    collaborators={this._getCollaborators(this.props.navigation.getParam('collaborators', []))}
+                />
+                <AddIdeaModal 
+                    isModalVisible={this.state.isAddModalVisible}
+                    toggleModal={this._toggleAddModal}
+                /> 
                 <ActionButton
                         buttonColor='#FAD15F' 
-                        onPress={this._toggleModal}
+                        onPress={this._toggleAddModal}
                 />
             </SafeAreaView>
         )
     }
 }
 
+/* Displays the information modal, accessed by clicking on the (i) header icon. */
+class InfoModal extends React.Component {
+    render() {
+        return (
+            <Modal 
+                isVisible={this.props.isModalVisible}
+                onBackdropPress={this.props.toggleModal}    
+            >
+                <View style={styles.infoModal}>
+                    <View style={{ flexDirection: 'row' }}>
+                        <View style={{ flex: 1 }}/>
+                        <View style={styles.modalTitleContainer}>
+                            <Text style={styles.modalTitleText}>Details</Text>
+                        </View>
+                        <View style={styles.exitButtonContainer}>
+                            <TouchableOpacity onPress={this.props.toggleModal}>
+                                <Image
+                                    source={require('../images/yellow_x.png')}
+                                    style={styles.exitButton}
+                                    resizeMode='contain'
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <ScrollView style={{ width: '80%', paddingTop: scale(15)}}>
+                        <Text>
+                            <Text style={styles.detailsTitleText}>{'Title: '}</Text>
+                            <Text style={styles.detailsText}>{this.props.title}</Text>
+                        </Text>
+                        <View style={{ height: scale(10) }}/>
+                        <Text>
+                            <Text style={styles.detailsTitleText}>{'Description: '}</Text>
+                            <Text style={styles.detailsText}>{this.props.details}</Text>
+                        </Text>
+                        <View style={{ height: scale(10) }}/>
+                        <Text>
+                            <Text style={styles.detailsTitleText}>{'Collaborators: '}</Text>
+                            <Text style={styles.detailsText}>{this.props.collaborators}</Text>
+                        </Text>
+                    </ScrollView>
+                </View>
+            </Modal>
+        )
+    }
+}
+
+/* Displays the add new idea modal, accessed by clicking on the plus FAB. */
+class AddIdeaModal extends React.Component {
+    /* Constructor. */
+    constructor(props) {
+        super(props)
+        this.state = {
+            newIdea: '',
+            newNotes: '',
+        }
+    }
+
+    /* Adds an idea to existing FlatList. */
+    _addNewIdea = () => {
+        if (this.state.newIdea.length == 0) {
+            alert('Please enter an idea.')
+            return
+        }
+        const newIdea = {
+            idea: this.state.newIdea,
+            notes: this.state.newNotes,
+            upvotes: 0,
+        }
+        pastData.push(newIdea)
+        this.setState({ newIdea: '', newNotes: '' })
+        this.props.toggleModal()
+    }
+    
+    /* Render function. */
+    render() {
+        return (
+            <Modal 
+                isVisible={this.props.isModalVisible}
+                onBackdropPress={this.props.toggleModal}
+            >
+                <View style={styles.addModal}>
+                    <View style={ {flexDirection: 'row', flex: 1} }>
+                        <View style={ {flex: 1} }/>
+                        <View style={styles.modalTitleContainer}>
+                            <Text style={styles.modalTitleText}>Add New Idea</Text>
+                        </View>
+                        <View style={styles.exitButtonContainer}>
+                            <TouchableOpacity onPress={this.props.toggleModal}>
+                                <Image
+                                    source={require('../images/yellow_x.png')}
+                                    style={styles.exitButton}
+                                    resizeMode='contain'
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.inputContainer}>
+                        <TextInput
+                            style={styles.textInput}
+                            placeholder='Idea'
+                            clearButtonMode='while-editing'
+                            onChangeText={ (text) => this.setState({newIdea: text}) }
+                            value={this.state.newIdea}
+                            selectionColor='#656565'
+                            autoFocus={true}
+                        />
+                        <View style={ {flex: 0.2} }/>
+                        <TextInput
+                            style={styles.textInput}
+                            placeholder='Notes'
+                            clearButtonMode='while-editing'
+                            multiline={true}
+                            numberOfLines={4}
+                            onChangeText={ (text) => this.setState({newNotes: text}) }
+                            value={this.state.newNotes}
+                            selectionColor='#656565'
+                        />
+                    </View>
+                    <View style={styles.newIdeaButtonContainer}>
+                        <TouchableOpacity
+                            style={styles.newIdeaButton}
+                            onPress={this._addNewIdea}
+                        >
+                            <Text style={styles.addIdeaText}>Add</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </Modal>
+        )
+    }
+}
+
 /* Style sheet. */
 const styles = StyleSheet.create({
-    modalContainer: {
+    addModal: {
         alignSelf: 'center',
         justifyContent: 'flex-start',
         alignItems: 'center',

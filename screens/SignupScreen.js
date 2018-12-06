@@ -74,7 +74,7 @@ export default class SignupScreen extends React.Component {
                         onPress = {this._signUpAsync}
                     />
                 </View>
-                <View style={{ flex: 2.8 }}/>
+                <View style={ {flex: 2.8} }/>
             </SafeAreaView>
         )
     }

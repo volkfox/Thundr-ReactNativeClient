@@ -47,7 +47,7 @@ export default class HomeScreen extends React.Component {
         headerBackTitle: null,
         headerRight: (
             <TouchableOpacity 
-                style={{ paddingRight: scale(25) }} 
+                style={ {paddingRight: scale(25)} } 
                 onPress={navigation.getParam('toggleModal')}
             >
                 <Image
@@ -93,49 +93,12 @@ export default class HomeScreen extends React.Component {
     /* Render function. */
     render() {
         return (
-            <SafeAreaView style={{flex: 1}}> 
+            <SafeAreaView style={ {flex: 1} }> 
                 <StatusBar barStyle='light-content'/>
-                <Modal /* Search Modal */
-                    isVisible={this.state.isModalVisible}    
-                >
-                    <View style={styles.modalContainer}>
-                        <View style={styles.modalHeader}>
-                            <View style={styles.iconContainer}>
-                                <TouchableOpacity
-                                    onPress={this._toggleModal}
-                                >
-                                    <Image
-                                        source={require('../images/gray_back_arrow.png')}
-                                        resizeMode='contain'
-                                        style={{ width: scale(22), height: scale(22) }}
-                                    />
-                                </TouchableOpacity>
-                            </View>
-                            <View style={styles.searchBarContainer}>
-                                <TextInput
-                                    placeholder='Search'
-                                    style={styles.searchText}
-                                    autoFocus={true}
-                                    selectionColor= '#656565'
-                                    clearButtonMode='while-editing'
-                                />
-                            </View>
-                            <View style={styles.iconContainer}>
-                                <TouchableOpacity
-                                    onPress={ () => {} }
-                                >
-                                    <Image 
-                                        source={require('../images/mic.png')}
-                                        resizeMode='contain'
-                                        style= {{ width: scale(22), height: scale(22) }}
-                                    />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                        <View style={styles.modalBody}>
-                        </View>
-                    </View>
-                </Modal>
+                <SearchModal 
+                    isModalVisible={this.state.isModalVisible} 
+                    toggleModal={this._toggleModal}
+                />
                 <FlatList
                     data={brainstormData}
                     renderItem={this._renderItem}
@@ -143,13 +106,57 @@ export default class HomeScreen extends React.Component {
                 />
                 <ActionButton
                     buttonColor='#FAD15F' 
-                    onPress={ () => {this.props.navigation.push('NewBrainstorm')}}
+                    onPress={ () => {this.props.navigation.push('NewBrainstorm')} }
                 />
             </SafeAreaView>
         )
     }
 }
 
+/* Displays the search bar modal, accessed by clicking on the (Q) header icon. */
+class SearchModal extends React.Component {
+    render() {
+        return (
+            <Modal isVisible={this.props.isModalVisible}>
+                <View style={styles.modalContainer}>
+                    <View style={styles.modalHeader}>
+                        <View style={styles.iconContainer}>
+                            <TouchableOpacity onPress={this.props.toggleModal}>
+                                <Image
+                                    source={require('../images/gray_back_arrow.png')}
+                                    resizeMode='contain'
+                                    style={ {width: scale(22), height: scale(22)} }
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.searchBarContainer}>
+                            <TextInput
+                                placeholder='Search'
+                                style={styles.searchText}
+                                autoFocus={true}
+                                selectionColor= '#656565'
+                                clearButtonMode='while-editing'
+                            />
+                        </View>
+                        <View style={styles.iconContainer}>
+                            <TouchableOpacity onPress={ () => {} }>
+                                <Image 
+                                    source={require('../images/mic.png')}
+                                    resizeMode='contain'
+                                    style= { {width: scale(22), height: scale(22)} }
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.modalBody}>
+                    </View>
+                </View>
+            </Modal>
+        )
+    }
+}
+
+/* Style sheet. */
 const styles = StyleSheet.create({
     modalContainer: {
         alignSelf: 'center',

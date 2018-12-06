@@ -79,16 +79,16 @@ export default class NewBrainstormScreen extends React.Component {
             actions: [
                 NavigationActions.navigate({
                     routeName: 'Brainstorming',
-                    params: { collaborators: this.collaborators },
+                    params: {collaborators: this.collaborators},
                 })
             ]
         })
 
         return (
-            <SafeAreaView style={{ flex: 1}}>
-                <View style={{ flex: 4 }}>
+            <SafeAreaView style={ {flex: 1} }>
+                <View style={ {flex: 4} }>
                     <View style={styles.fieldContainer}>
-                        <View style={{ width: scale(30) }}/>
+                        <View style={ {width: scale(30)} }/>
                         <TextInput 
                             style={styles.inputField}
                             placeholder='People'
@@ -109,7 +109,7 @@ export default class NewBrainstormScreen extends React.Component {
                         </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={{ flex: 3, paddingBottom: scale(10) }}>
+                    <View style={ {flex: 3, paddingBottom: scale(10)} }>
                         <FlatList
                             ref='flatList'
                             data={this.state.collaboratorsHolder}
@@ -123,7 +123,7 @@ export default class NewBrainstormScreen extends React.Component {
                     color='yellow'
                     onPress={ () => {this.props.navigation.dispatch(resetAction)} }
                 />
-                <View style={{ flex: 4 }}/>
+                <View style={ {flex: 4} }/>
             </SafeAreaView>
         )
     }

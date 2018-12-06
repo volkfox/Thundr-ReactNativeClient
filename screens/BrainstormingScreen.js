@@ -19,7 +19,7 @@ import ThundrSize from '../components/ThundrSize'
 
 export default class BrainstormingScreen extends React.Component { 
     /* Header styling. */
-    static navigationOptions = { header: null }
+    static navigationOptions = {header: null}
     
     /* Render function. */
     render() {
@@ -31,16 +31,14 @@ export default class BrainstormingScreen extends React.Component {
             actions: [
                 NavigationActions.navigate({
                     routeName: 'PostBrainstorm',
-                    params: { collaborators: collaborators }
+                    params: {collaborators: collaborators}
                 })
             ]
         })
 
         return (
             <SafeAreaView style={styles.safeContainer}>
-                <TouchableOpacity
-                    style={{flex: 1}}
-                >
+                <TouchableOpacity style={ {flex: 1} }>
                     <View style={styles.finishContainer}>
                         <StatusBar barStyle='light-content'/>
                         <TouchableOpacity

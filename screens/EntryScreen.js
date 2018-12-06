@@ -19,7 +19,7 @@ import ThundrSize from '../components/ThundrSize'
 
 export default class EntryScreen extends React.Component {
      /* Header styling. */
-     static navigationOptions = { header: null }
+     static navigationOptions = {header: null}
     
     /* Render function. */
     render() {

@@ -29,6 +29,11 @@ class HomeScreenItem extends React.Component {
     /* Toggles menu button modal. */
     _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
 
+    /* Triggered when pressing on a HomeScreenItem. */
+    _navigateToPastBrainstorm =  () => this.props.navigation.push('PastBrainstorm', {title: this.props.title, 
+                                       collaborators: this.props.collaborators, ideas: this.props.ideas, 
+                                       date: this.props.date, description: this.props.description})
+
     /* Render function. */
     render() {
         /* Build string of collaborators. */
@@ -46,34 +51,13 @@ class HomeScreenItem extends React.Component {
         }        
 
         return (
-            <View style={{ flex: 1 }}>
-                <Modal 
-                    isVisible={this.state.isModalVisible}
-                    style={{ justifyContent: 'flex-end' }}
-                    onBackdropPress={this._toggleModal}
-                >
-                    <View style={styles.modalContainer}>
-                        <TouchableOpacity
-                            onPress={this._toggleModal}
-                            style={{ flex: 1 }}
-                        >
-                            <Text style={styles.modalText}>Share</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={this._toggleModal}
-                            style={{ flex: 1 }}
-                        >
-                            <Text style={styles.modalText}>Cancel</Text>
-                        </TouchableOpacity>
-                    </View>
-                </Modal>
-
+            <View style={ {flex: 1} }>
+                <MenuModal
+                    isModalVisible={this.state.isModalVisible}
+                    toggleModal={this._toggleModal}
+                />
                 <View style={styles.itemContainer}>
-                    <TouchableOpacity
-                        onPress={ () => this.props.navigation.push('PastBrainstorm', {title: this.props.title, 
-                                        collaborators: this.props.collaborators, ideas: this.props.ideas, 
-                                        date: this.props.date, description: this.props.description})}
-                    >
+                    <TouchableOpacity onPress={this._navigateToPastBrainstorm}>
                         <View style= {styles.titleLine}>
                             <View style={styles.titleContainer}>
                                 <Text style={styles.titleText} numberOfLines={1}>{this.props.title}</Text>
@@ -82,9 +66,7 @@ class HomeScreenItem extends React.Component {
                                 <Text style={styles.dateText}>{this.props.date}</Text>
                             </View>
                             <View style={styles.menuContainer}>
-                                <TouchableOpacity
-                                    onPress={this._toggleModal}
-                                >
+                                <TouchableOpacity onPress={this._toggleModal}>
                                     <Image
                                         source={require('../images/menu_button.png')}
                                         resizeMode='contain'
@@ -115,14 +97,41 @@ class HomeScreenItem extends React.Component {
                                     style={styles.infoText} 
                                     numberOfLines={1}
                                     ellipsizeMode='middle'
-                                >
-                                    {collaborators()}
-                                </Text>
+                                >{collaborators()}</Text>
                             </View>
                         </View>
                     </TouchableOpacity>
                 </View>
             </View>
+        )
+    }
+}
+
+/* Displays menu modal, accessed by clicking on the triple dot icon. */
+class MenuModal extends React.Component {
+    render() {
+        return (
+            <Modal 
+                isVisible={this.props.isModalVisible}
+                style={ {justifyContent: 'flex-end'} }
+                onBackdropPress={this.props.toggleModal}
+            >
+                <View style={styles.modalContainer}>
+                    <TouchableOpacity
+                        onPress={this.props.toggleModal}
+                        style={ {flex: 1} }
+                    >
+                        <Text style={styles.modalText}>Share</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        onPress={this.props.toggleModal}
+                        style={ {flex: 1} }
+                    >
+                        <Text style={styles.modalText}>Cancel</Text>
+                    </TouchableOpacity>
+                </View>
+            </Modal>
+
         )
     }
 }

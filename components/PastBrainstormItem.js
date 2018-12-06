@@ -31,31 +31,12 @@ export default class PastBrainstormItem extends React.Component {
     render() {
         return (
             <View style={styles.itemContainer}>
-                <Modal 
-                    isVisible={this.state.isModalVisible}
-                    onBackdropPress={this._toggleModal}
-                >
-                    <View style={styles.modalContainer}>
-                        <View style={{ flexDirection: 'row' }}>
-                            <View style={{ flex: 1 }}/>
-                            <View style={styles.modalTitleContainer}>
-                                <Text style={styles.modalTitleText} numberOfLines={1}>{this.props.idea}</Text>
-                            </View>
-                            <View style={styles.exitButtonContainer}>
-                                <TouchableOpacity onPress={this._toggleModal}>
-                                    <Image
-                                        source={require('../images/yellow_x.png')}
-                                        style={styles.exitButton}
-                                        resizeMode='contain'
-                                    />
-                                </TouchableOpacity>
-                            </View>
-                        </View>
-                        <ScrollView style={{ width: '80%', paddingTop: scale(15)}}>
-                            <Text style={styles.modalText}>{this.props.notes}</Text>
-                        </ScrollView>
-                    </View>
-                </Modal>
+                <IdeaModal
+                    isModalVisible={this.state.isModalVisible}
+                    toggleModal={this._toggleModal}
+                    idea={this.props.idea}
+                    notes={this.props.notes}
+                />
                 <TouchableOpacity onPress={this._toggleModal}>
                     <View style={styles.titleLine}>
                         <View style={ {width: '75%'} }>
@@ -77,6 +58,39 @@ export default class PastBrainstormItem extends React.Component {
                     </View>
                 </TouchableOpacity>
             </View>
+        )
+    }
+}
+
+/* Displays extended information modal for past idea, accessed by clicking on the idea. */
+class IdeaModal extends React.Component {
+    render() {
+        return (
+            <Modal 
+                isVisible={this.props.isModalVisible}
+                onBackdropPress={this.props.toggleModal}
+            >
+                <View style={styles.modalContainer}>
+                    <View style={ {flexDirection: 'row'} }>
+                        <View style={{ flex: 1 }}/>
+                        <View style={styles.modalTitleContainer}>
+                            <Text style={styles.modalTitleText} numberOfLines={1}>{this.props.idea}</Text>
+                        </View>
+                        <View style={styles.exitButtonContainer}>
+                            <TouchableOpacity onPress={this.props.toggleModal}>
+                                <Image
+                                    source={require('../images/yellow_x.png')}
+                                    style={styles.exitButton}
+                                    resizeMode='contain'
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <ScrollView style={{ width: '80%', paddingTop: scale(15)}}>
+                        <Text style={styles.modalText}>{this.props.notes}</Text>
+                    </ScrollView>
+                </View>
+            </Modal>
         )
     }
 }
