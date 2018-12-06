@@ -29,7 +29,7 @@ export default class PastBrainstormScreen extends React.Component {
         super(props)
         this.state = {
             isAddModalVisible: false,
-            isInfoModalVisible: false,
+            isSearchModalVisible: false,
         }
     }
 
@@ -49,21 +49,22 @@ export default class PastBrainstormScreen extends React.Component {
         },
         headerRight: (
             <TouchableOpacity style={ {paddingRight: scale(25), paddingTop: scale(2)} }
-                onPress={navigation.getParam('toggleInfoModal')}
+                onPress={navigation.getParam('toggleSearchModal')}
             >
                 <Image
-                    source={require('../images/info_button.png')}
+                    source={require('../images/search.png')}
                     resizeMode='contain'
-                    style={ {width: scale(20), height: scale(20)} }
+                    style={ {width: scale(17), height: scale(17)} }
                 />
             </TouchableOpacity>
         ),
     }) 
 
-    /* Passes reference to _toggleInfoModal to navigation. */
+    /* Passes reference to _toggleSearchModal to navigation. */
     componentDidMount() {
         this.props.navigation.setParams({
-            toggleInfoModal: this._toggleInfoModal
+            //toggleSearchModal: this._showSearchModal
+            toggleSearchModal: this._toggleSearchModal
         });
     }
 
@@ -83,9 +84,18 @@ export default class PastBrainstormScreen extends React.Component {
         }}/>
     )
 
-    /* Change the visibility of the modals. */
+    /* Change the visibility of add idea modal. */
     _toggleAddModal = () => this.setState({ isAddModalVisible: !this.state.isAddModalVisible })
-    _toggleInfoModal = () => this.setState({ isInfoModalVisible: !this.state.isInfoModalVisible })
+    
+    /* Change the visibility of the search modal. */
+    _toggleSearchModal = () => {
+        if (this.state.isSearchModalVisible) {
+            StatusBar.setBarStyle('light-content')
+        } else {
+            StatusBar.setBarStyle('dark-content')
+        }
+        this.setState({ isSearchModalVisible: !this.state.isSearchModalVisible })
+    }
 
     /* Returns a list of collaborators for display on info modal. */
     _getCollaborators(listCollaborators) {
@@ -118,12 +128,16 @@ export default class PastBrainstormScreen extends React.Component {
                     renderItem={this._renderItem}
                     ItemSeparatorComponent={this._renderSeparator}
                 />
-                <InfoModal
-                    isModalVisible={this.state.isInfoModalVisible}
-                    toggleModal={this._toggleInfoModal}
+                {/* <InfoModal
+                    isModalVisible={this.state.isSearchModalVisible}
+                    toggleModal={this._toggleSearchModal}
                     title={this.props.navigation.getParam('title', '')}
                     details={this.props.navigation.getParam('description', '')}
                     collaborators={this._getCollaborators(this.props.navigation.getParam('collaborators', []))}
+                /> */}
+                <SearchModal 
+                    isModalVisible={this.state.isSearchModalVisible} 
+                    toggleModal={this._toggleSearchModal}
                 />
                 <AddIdeaModal 
                     isModalVisible={this.state.isAddModalVisible}
@@ -139,47 +153,89 @@ export default class PastBrainstormScreen extends React.Component {
 }
 
 /* Displays the information modal, accessed by clicking on the (i) header icon. */
-class InfoModal extends React.Component {
+// class InfoModal extends React.Component {
+//     render() {
+//         return (
+//             <Modal 
+//                 isVisible={this.props.isModalVisible}
+//                 onBackdropPress={this.props.toggleModal} 
+//                 animationIn='slideInDown' 
+//                 animationOut='slideOutUp'  
+//             >
+//                 <View style={styles.infoModal}>
+//                     <View style={ {flexDirection: 'row'} }>
+//                         <View style={ {flex: 1} }/>
+//                         <View style={styles.modalTitleContainer}>
+//                             <Text style={styles.modalTitleText}>Details</Text>
+//                         </View>
+//                         <View style={styles.exitButtonContainer}>
+//                             <TouchableOpacity onPress={this.props.toggleModal}>
+//                                 <Image
+//                                     source={require('../images/yellow_x.png')}
+//                                     style={styles.exitButton}
+//                                     resizeMode='contain'
+//                                 />
+//                             </TouchableOpacity>
+//                         </View>
+//                     </View>
+//                     <ScrollView style={{ width: '80%', paddingTop: scale(15)}}>
+//                         <Text>
+//                             <Text style={styles.detailsTitleText}>{'Title: '}</Text>
+//                             <Text style={styles.detailsText}>{this.props.title}</Text>
+//                         </Text>
+//                         <View style={ {height: scale(10)} }/>
+//                         <Text>
+//                             <Text style={styles.detailsTitleText}>{'Description: '}</Text>
+//                             <Text style={styles.detailsText}>{this.props.details}</Text>
+//                         </Text>
+//                         <View style={ {height: scale(10)} }/>
+//                         <Text>
+//                             <Text style={styles.detailsTitleText}>{'Collaborators: '}</Text>
+//                             <Text style={styles.detailsText}>{this.props.collaborators}</Text>
+//                         </Text>
+//                     </ScrollView>
+//                 </View>
+//             </Modal>
+//         )
+//     }
+// }
+/* Displays the search bar modal, accessed by clicking on the (Q) header icon. */
+class SearchModal extends React.Component {
     render() {
         return (
-            <Modal 
-                isVisible={this.props.isModalVisible}
-                onBackdropPress={this.props.toggleModal} 
-                animationIn='slideInDown' 
-                animationOut='slideOutUp'  
-            >
-                <View style={styles.infoModal}>
-                    <View style={ {flexDirection: 'row'} }>
-                        <View style={ {flex: 1} }/>
-                        <View style={styles.modalTitleContainer}>
-                            <Text style={styles.modalTitleText}>Details</Text>
-                        </View>
-                        <View style={styles.exitButtonContainer}>
+            <Modal isVisible={this.props.isModalVisible}>
+                <View style={styles.searchModalContainer}>
+                    <View style={styles.searchModalHeader}>
+                        <View style={styles.iconContainer}>
                             <TouchableOpacity onPress={this.props.toggleModal}>
                                 <Image
-                                    source={require('../images/yellow_x.png')}
-                                    style={styles.exitButton}
+                                    source={require('../images/gray_back_arrow.png')}
                                     resizeMode='contain'
+                                    style={ {width: scale(22), height: scale(22)} }
+                                />
+                            </TouchableOpacity>
+                        </View>
+                        <View style={styles.searchBarContainer}>
+                            <TextInput
+                                placeholder='Search'
+                                style={styles.searchText}
+                                autoFocus={true}
+                                selectionColor= '#656565'
+                                clearButtonMode='while-editing'
+                            />
+                        </View>
+                        <View style={styles.iconContainer}>
+                            <TouchableOpacity onPress={ () => {} }>
+                                <Image 
+                                    source={require('../images/mic.png')}
+                                    resizeMode='contain'
+                                    style= { {width: scale(22), height: scale(22)} }
                                 />
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <ScrollView style={{ width: '80%', paddingTop: scale(15)}}>
-                        <Text>
-                            <Text style={styles.detailsTitleText}>{'Title: '}</Text>
-                            <Text style={styles.detailsText}>{this.props.title}</Text>
-                        </Text>
-                        <View style={ {height: scale(10)} }/>
-                        <Text>
-                            <Text style={styles.detailsTitleText}>{'Description: '}</Text>
-                            <Text style={styles.detailsText}>{this.props.details}</Text>
-                        </Text>
-                        <View style={ {height: scale(10)} }/>
-                        <Text>
-                            <Text style={styles.detailsTitleText}>{'Collaborators: '}</Text>
-                            <Text style={styles.detailsText}>{this.props.collaborators}</Text>
-                        </Text>
-                    </ScrollView>
+                    <View style={styles.searchModalBody}>
+                    </View>
                 </View>
             </Modal>
         )
@@ -356,5 +412,36 @@ const styles = StyleSheet.create({
         fontFamily: 'HiraginoSans-W6',
         fontSize: ThundrSize.small,
         color: '#7E7E7E',
+    },
+
+    searchModalContainer: {
+        alignSelf: 'center',
+        height: '110%',
+        width: '110%',
+        backgroundColor: '#F5FCFF',
+    },
+    searchModalHeader: {
+        flex: 1.2,
+        flexDirection: 'row',
+    },
+    iconContainer: {
+        flex: 1.5,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingBottom: scale(15),
+    },
+    searchBarContainer: {
+        flex: 7,
+        justifyContent: 'flex-end',
+        paddingBottom: scale(12),
+        paddingLeft: scale(20),
+    },
+    searchText: {
+        fontFamily: 'HiraginoSans-W3',
+        fontSize: ThundrSize.small,
+    },
+    searchModalBody: {
+        flex: 8,
+        backgroundColor: '#ECECEC',
     },
 })
