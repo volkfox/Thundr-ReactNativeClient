@@ -146,7 +146,9 @@ class InfoModal extends React.Component {
         return (
             <Modal 
                 isVisible={this.props.isModalVisible}
-                onBackdropPress={this.props.toggleModal}    
+                onBackdropPress={this.props.toggleModal} 
+                animationIn='slideInDown' 
+                animationOut='slideOutUp'  
             >
                 <View style={styles.infoModal}>
                     <View style={{ flexDirection: 'row' }}>

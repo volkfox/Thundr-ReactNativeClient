@@ -69,6 +69,8 @@ class IdeaModal extends React.Component {
             <Modal 
                 isVisible={this.props.isModalVisible}
                 onBackdropPress={this.props.toggleModal}
+                animationIn='zoomIn'
+                animationOut='zoomOut'
             >
                 <View style={styles.modalContainer}>
                     <View style={ {flexDirection: 'row'} }>

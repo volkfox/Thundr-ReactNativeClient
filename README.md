@@ -6,7 +6,6 @@ and developing the UI and screen flows, with minimal backend functionality.
 
 TODOS:
 
-- Change animation for info modal. 
 - Add animations to BrainstormingScreen 
 - Create confirmation modal to tell user to check email for password reset
 - Adding idea to existing brainstorm adds to all brainstorms.
