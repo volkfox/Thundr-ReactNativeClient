@@ -62,7 +62,7 @@ export default class HomeScreen extends React.Component {
     /* Give reference to toggle function to navigation. */
     componentDidMount() {
         this.props.navigation.setParams({
-            toggleModal: this._toggleModal
+            toggleModal: this._showModal
         });
     }
 
@@ -87,8 +87,17 @@ export default class HomeScreen extends React.Component {
         />
     )
 
-    /* Toggles the modal search modal. */
-    _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
+    /* Displays the search modal. */
+    _showModal = () => {
+        this.setState({ isModalVisible: !this.state.isModalVisible })
+        StatusBar.setBarStyle('dark-content')
+    }
+
+    /* Hides the search modal. */
+    _hideModal = () => {
+        this.setState({ isModalVisible: !this.state.isModalVisible })
+        StatusBar.setBarStyle('light-content')
+    }
 
     /* Render function. */
     render() {
@@ -97,7 +106,7 @@ export default class HomeScreen extends React.Component {
                 <StatusBar barStyle='light-content'/>
                 <SearchModal 
                     isModalVisible={this.state.isModalVisible} 
-                    toggleModal={this._toggleModal}
+                    toggleModal={this._hideModal}
                 />
                 <FlatList
                     data={brainstormData}
