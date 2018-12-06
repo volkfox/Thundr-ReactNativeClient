@@ -14,11 +14,19 @@ import {
 } from 'react-native'
 
 export default class AuthLoadingScreen extends React.Component {
+    /* Constructor. */
     constructor(props) {
         super(props)
         this._bootStrapAsync()
     }
+
+    /* Checks if user has signed in previously. */
+    _bootStrapAsync = async () => {
+        const userToken = await AsyncStorage.getItem('userToken')
+        this.props.navigation.navigate(!userToken ? 'App' : 'Auth')
+    }
     
+    /* Render function. */
     render() {
         return (
             <SafeAreaView style={styles.safeContainer}>
@@ -32,11 +40,6 @@ export default class AuthLoadingScreen extends React.Component {
                 </View>
             </SafeAreaView>
         )
-    }
-
-    _bootStrapAsync = async () => {
-        const userToken = await AsyncStorage.getItem('userToken')
-        this.props.navigation.navigate(!userToken ? 'App' : 'Auth')
     }
 }
 

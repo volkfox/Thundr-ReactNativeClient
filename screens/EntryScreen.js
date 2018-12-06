@@ -18,6 +18,10 @@ import ThundrButton from '../components/ThundrButton'
 import ThundrSize from '../components/ThundrSize'
 
 export default class EntryScreen extends React.Component {
+     /* Header styling. */
+     static navigationOptions = { header: null }
+    
+    /* Render function. */
     render() {
         return (
             <SafeAreaView style={styles.safeContainer}>
@@ -39,18 +43,12 @@ export default class EntryScreen extends React.Component {
                 />
                 <View style={styles.loginContainer}>
                     <Text style={styles.existingAccount}>Already have an account?</Text>
-                    <TouchableOpacity onPress={ () => this.props.navigation.push('Login')}>
+                    <TouchableOpacity onPress={ () => this.props.navigation.push('Login') }>
                         <Text style={styles.existingAccount}>Login</Text>
                     </TouchableOpacity>
                 </View>
             </SafeAreaView>
         )
-    }
-
-    /* Header styling. */
-    static navigationOptions = {
-        header: null,
-        headerTruncatedBackTitle: null,
     }
 }
 

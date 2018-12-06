@@ -18,10 +18,18 @@ import Modal from 'react-native-modal'
 import ThundrSize from './ThundrSize'
 
 class HomeScreenItem extends React.Component {
-    state = {
-        isModalVisible: false,
+    /* Constructor. */
+    constructor(props) {
+        super(props)
+        this.state = {
+            isModalVisible: false,
+        }
     }
-    
+
+    /* Toggles menu button modal. */
+    _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
+
+    /* Render function. */
     render() {
         /* Build string of collaborators. */
         let collaborators = () => {
@@ -117,8 +125,6 @@ class HomeScreenItem extends React.Component {
             </View>
         )
     }
-
-    _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
 }
 
 /* Style sheet. */

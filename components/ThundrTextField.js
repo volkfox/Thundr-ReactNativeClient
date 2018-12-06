@@ -1,5 +1,5 @@
 /*  -- ThundrTextField.js -- 
-    Component that contains a textInput field and a title.
+    TextInput field customized for Thundr.
 */
 
 import React, { Component } from 'react'
@@ -47,11 +47,4 @@ const styles=StyleSheet.create({
         borderBottomColor: '#FAD15F',
         borderBottomWidth: scale(1.5),
     },
-    // large: {
-    //     fontFamily: 'HiraginoSans-W3',
-    //     fontSize: ThundrSize.smedium,
-    //     width: '75%',
-    //     borderBottomColor: '#FAD15F',
-    //     borderBottomWidth: scale(1.5),
-    // }
 })

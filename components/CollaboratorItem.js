@@ -14,25 +14,26 @@ import { scale } from 'react-native-size-matters'
 import ThundrSize from './ThundrSize';
 
 export default class CollaboratorItem extends React.Component {
+    /* Render function. */
     render() {
-    const randomHeadshots = [
-        require('../images/headshot_0.jpg'),
-        require('../images/headshot_1.jpg'),
-        require('../images/headshot_2.jpg')
-    ]
+        const randomHeadshots = [
+            require('../images/headshot_0.jpg'),
+            require('../images/headshot_1.jpg'),
+            require('../images/headshot_2.jpg')
+        ]
 
-    return (
-        <View style={styles.container}>
-            <Image
-                source={randomHeadshots[Math.floor(Math.random() * randomHeadshots.length)]}
-                style={styles.image}
-                resizeMode='contain'
-            />
-            <View style={{ justifyContent: 'center', paddingTop: scale(10) }}>
-                <Text style={styles.text}>{this.props.name}</Text>
+        return (
+            <View style={styles.container}>
+                <Image
+                    source={randomHeadshots[Math.floor(Math.random() * randomHeadshots.length)]}
+                    style={styles.image}
+                    resizeMode='contain'
+                />
+                <View style={{ justifyContent: 'center', paddingTop: scale(10) }}>
+                    <Text style={styles.text}>{this.props.name}</Text>
+                </View>
             </View>
-        </View>
-    )
+        )
     }
 }
 

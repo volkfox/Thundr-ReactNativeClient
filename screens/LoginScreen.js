@@ -25,6 +25,40 @@ import ThundrSize from '../components/ThundrSize'
 import ThundrTextField from '../components/ThundrTextField'
 
 export default class LoginScreen extends React.Component {
+    /* Header styling. */
+    static navigationOptions = ({navigation}) => ({
+        title: 'Login',       
+        headerStyle: {
+            borderBottomWidth: 0,
+            height: ThundrSize.headerHeight,
+        },
+        headerTintColor: '#FAD15F',
+        headerTitleStyle: {
+            fontFamily: 'HiraginoSans-W6',
+            fontSize: ThundrSize.large,
+        },
+        headerBackTitle: null,
+        headerLeft: (
+            <TouchableOpacity 
+                style={ {paddingLeft: scale(12), paddingBottom: scale(9)} } 
+                onPress={ () => {navigation.pop()} }
+            >
+                <Image
+                    source={require('../images/back_chevron.png')}
+                    resizeMode='contain'
+                    style={ {width: scale(20), height: scale(20)} }
+                />
+            </TouchableOpacity>
+        )
+    })
+
+    /* Login function. */
+    _asyncLogin = async () => {
+        await AsyncStorage.setItem('userToken', 'placeholder')
+        this.props.navigation.navigate('App')
+    }
+    
+    /* Render function. */
     render() {
         return (
             <SafeAreaView style={{ flex: 1 }}> 
@@ -46,42 +80,10 @@ export default class LoginScreen extends React.Component {
                     color='yellow'
                     onPress={this._asyncLogin}
                 />
-                <View style={{ flex: 3.2 }}/>
+                <View style={ {flex: 3.2} }/>
             </SafeAreaView>
         )
     }
-
-    _asyncLogin = async () => {
-        await AsyncStorage.setItem('userToken', 'placeholder')
-        this.props.navigation.navigate('App')
-    }
-    
-    /* Header styling. */
-    static navigationOptions = ({navigation}) => ({
-        title: 'Login',       
-        headerStyle: {
-            borderBottomWidth: 0,
-            height: ThundrSize.headerHeight,
-        },
-        headerTintColor: '#FAD15F',
-        headerTitleStyle: {
-            fontFamily: 'HiraginoSans-W6',
-            fontSize: ThundrSize.large,
-        },
-        headerBackTitle: null,
-        headerLeft: (
-            <TouchableOpacity 
-                style={ {paddingLeft: scale(12), paddingBottom: scale(9)} } 
-                onPress={ () => {navigation.pop()}}
-            >
-                <Image
-                    source={require('../images/back_chevron.png')}
-                    resizeMode='contain'
-                    style={ {width: scale(20), height: scale(20)} }
-                />
-            </TouchableOpacity>
-        )
-    })
 }
 
 /* Style sheet. */

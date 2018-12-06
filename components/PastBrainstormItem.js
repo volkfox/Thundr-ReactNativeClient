@@ -16,13 +16,18 @@ import Modal from 'react-native-modal'
 import ThundrSize from '../components/ThundrSize'
 
 export default class PastBrainstormItem extends React.Component {
-    state = {
-        isModalVisible: false,
+    /* Constructor. */
+    constructor(props) {
+        super(props)
+        this.state = {
+            isModalVisible: false,
+        }
     }
 
     /* Change the visibility of the modal. */
     _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
 
+    /* Render function. */
     render() {
         return (
             <View style={styles.itemContainer}>
@@ -53,13 +58,13 @@ export default class PastBrainstormItem extends React.Component {
                 </Modal>
                 <TouchableOpacity onPress={this._toggleModal}>
                     <View style={styles.titleLine}>
-                        <View style={styles.ideaContainer}>
+                        <View style={ {width: '75%'} }>
                             <Text style={styles.ideaText} numberOfLines={1}>{this.props.idea}</Text>
                         </View>
                         <View style={styles.upvoteContainer}>
                             <Text style={styles.text}>{this.props.upvotes}</Text>
                         </View>
-                        <View style={styles.imageContainer}>
+                        <View style={ {width: '6%'} }>
                             <Image 
                                 style={styles.upvote} 
                                 source={require('../images/upvote.png')}
@@ -76,6 +81,7 @@ export default class PastBrainstormItem extends React.Component {
     }
 }
 
+/* Style sheet. */
 const styles = StyleSheet.create({
     itemContainer: {
         flex: 1,
@@ -86,9 +92,6 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
     },
-    ideaContainer: {
-        width: '75%',
-    },
     ideaText: {
         fontFamily: 'HiraginoSans-W3',
         fontSize: ThundrSize.small,
@@ -98,9 +101,6 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         paddingRight: scale(5),
         paddingTop: scale(6),
-    },
-    imageContainer: {
-        width: '6%',
     },
     upvote: {
         width: scale(20),

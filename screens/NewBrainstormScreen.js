@@ -24,6 +24,7 @@ import ThundrSize from '../components/ThundrSize'
 import ThundrButton from '../components/ThundrButton'
 
 export default class NewBrainstormScreen extends React.Component {
+    /* Constructor. */
     constructor(props) {
         super(props)
         this.collaborators = [] 
@@ -33,6 +34,44 @@ export default class NewBrainstormScreen extends React.Component {
         }       
     }
 
+    /* Header styling. */
+    static navigationOptions = {
+        title: 'Add People', 
+        headerStyle: {
+            borderBottomWidth: 0,
+            height: ThundrSize.headerHeight,
+            backgroundColor: '#FAD15F',
+        },
+        headerTintColor: '#FFFFFF',
+        headerTitleStyle: {
+            fontFamily: 'HiraginoSans-W6',
+            fontSize: ThundrSize.medium,
+            paddingTop: scale(8),
+        },
+        headerBackTitle: null,
+    }
+
+    /* Add a collaborator when textInput button is pressed. */
+    _addPerson = () => {
+        if (this.state.text.length == 0) {
+            return
+        }
+        this.collaborators.push({'name': this.state.text})
+        this.setState({
+             text: '',
+             collaboratorsHolder: [...this.collaborators]
+        })
+        this.refs.flatList.scrollToEnd()
+    }
+
+    /* renderItem function used by FlatList. */
+    _renderItem = ({item}) => (
+        <CollaboratorItem
+            name = {item.name}
+        />
+    )
+
+    /* Render function. */
     render() {
         /* Reset stack after navigating away. */
         const resetAction = StackActions.reset({
@@ -88,43 +127,6 @@ export default class NewBrainstormScreen extends React.Component {
             </SafeAreaView>
         )
     }
-
-    /* renderItem function used by FlatList. */
-    _renderItem = ({item}) => (
-        <CollaboratorItem
-            name = {item.name}
-        />
-    )
-
-    /* Add a collaborator when textInput button is pressed. */
-    _addPerson = () => {
-        if (this.state.text.length == 0) {
-            return
-        }
-        this.collaborators.push({'name': this.state.text})
-        this.setState({
-             text: '',
-             collaboratorsHolder: [...this.collaborators]
-        })
-        this.refs.flatList.scrollToEnd()
-    }
-
-    /* Header styling. */
-    static navigationOptions = ({navigation}) => ({
-        title: 'Add People', 
-        headerStyle: {
-            borderBottomWidth: 0,
-            height: ThundrSize.headerHeight,
-            backgroundColor: '#FAD15F',
-        },
-        headerTintColor: '#FFFFFF',
-        headerTitleStyle: {
-            fontFamily: 'HiraginoSans-W6',
-            fontSize: ThundrSize.medium,
-            paddingTop: scale(8),
-        },
-        headerBackTitle: null,
-    })
 }
 
 /* Style sheet. */

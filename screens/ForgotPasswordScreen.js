@@ -20,22 +20,6 @@ import ThundrSize from '../components/ThundrSize'
 import ThundrTextField from '../components/ThundrTextField'
 
 export default class ForgotPasswordScreen extends React.Component {
-    render() {
-        return (
-            <SafeAreaView style={{ flex: 1 }}>
-                <View style={{ flex: 2, paddingBottom: scale(50) }}>
-                    <ThundrTextField text='Email' autoFocus={true}/>
-                </View>
-                <ThundrButton
-                    text='Submit'
-                    color='yellow'
-                    onPress={ () => this.props.navigation.pop() }
-                />
-                <View style={{ flex: 3 }}/>
-            </SafeAreaView>
-        )
-    }
-
     /* Header styling. */
     static navigationOptions = ({navigation}) => ({
         title: 'Reset Password',
@@ -51,7 +35,7 @@ export default class ForgotPasswordScreen extends React.Component {
         headerLeft: (
             <TouchableOpacity 
                 style={ {paddingLeft: scale(12), paddingBottom: scale(9)} } 
-                onPress={ () => {navigation.pop()}}
+                onPress={ () => {navigation.pop()} }
             >
                 <Image
                     source={require('../images/back_chevron.png')}
@@ -61,4 +45,21 @@ export default class ForgotPasswordScreen extends React.Component {
             </TouchableOpacity>
         )
     })
+    
+    /* Render function. */
+    render() {
+        return (
+            <SafeAreaView style={ {flex: 1 } }>
+                <View style={ {flex: 2, paddingBottom: scale(50)} }>
+                    <ThundrTextField text='Email' autoFocus={true}/>
+                </View>
+                <ThundrButton
+                    text='Submit'
+                    color='yellow'
+                    onPress={ () => this.props.navigation.pop() }
+                />
+                <View style={ {flex: 3} }/>
+            </SafeAreaView>
+        )
+    }
 }

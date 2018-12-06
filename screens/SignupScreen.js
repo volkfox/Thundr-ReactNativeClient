@@ -24,34 +24,6 @@ import ThundrSize from '../components/ThundrSize'
 import ThundrTextField from '../components/ThundrTextField'
 
 export default class SignupScreen extends React.Component {
-    render() {
-        return (
-            <SafeAreaView style={{ flex: 1 }}>
-                <StatusBar barStyle='dark-content'/>
-                <View style={{ flex: 3.3 }}>
-                    <ThundrTextField text='Name' autoFocus={true}/>
-                    <ThundrTextField text='Email'/>
-                    <ThundrTextField text='Password' hidden={true}/>
-                    <ThundrTextField text='Confirm Password' hidden={true}/>
-                </View>
-                <View style={styles.continueContainer}>
-                    <ThundrButton
-                        text='Continue'
-                        color='yellow'
-                        onPress = {this._signUpAsync}
-                    />
-                </View>
-                <View style={{ flex: 2.8 }}/>
-            </SafeAreaView>
-        )
-    }
-
-    /* */
-    _signUpAsync = async () => {
-        await AsyncStorage.setItem('userToken', 'placeholder')
-        this.props.navigation.navigate('App')
-    }
-
     /* Header styling. */
     static navigationOptions = ({navigation}) => ({
         title: 'Sign Up',       
@@ -77,6 +49,35 @@ export default class SignupScreen extends React.Component {
             </TouchableOpacity>
         )
     })
+
+    /* Sign up function. */
+    _signUpAsync = async () => {
+        await AsyncStorage.setItem('userToken', 'placeholder')
+        this.props.navigation.navigate('App')
+    }
+    
+    /* Render function. */
+    render() {
+        return (
+            <SafeAreaView style={{ flex: 1 }}>
+                <StatusBar barStyle='dark-content'/>
+                <View style={{ flex: 3.3 }}>
+                    <ThundrTextField text='Name' autoFocus={true}/>
+                    <ThundrTextField text='Email'/>
+                    <ThundrTextField text='Password' hidden={true}/>
+                    <ThundrTextField text='Confirm Password' hidden={true}/>
+                </View>
+                <View style={styles.continueContainer}>
+                    <ThundrButton
+                        text='Continue'
+                        color='yellow'
+                        onPress = {this._signUpAsync}
+                    />
+                </View>
+                <View style={{ flex: 2.8 }}/>
+            </SafeAreaView>
+        )
+    }
 }
 
 /* Style sheet. */

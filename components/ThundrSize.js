@@ -1,5 +1,5 @@
 /*  -- ThundrSize.js --
-    Constants to control font size in Thundr app.
+    Constants to control object size in Thundr app.
 */
 
 import { scale } from 'react-native-size-matters'

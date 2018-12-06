@@ -21,6 +21,7 @@ import ThundrSize from '../components/ThundrSize'
 import ThundrTextField from '../components/ThundrTextField'
 
 export default class PostBrainstormScreen extends React.Component {
+    /* Constructor. */
     constructor(props) {
         super(props)
         this.state = {
@@ -29,32 +30,21 @@ export default class PostBrainstormScreen extends React.Component {
         }
     }
 
-    render() {
-        return (
-            <SafeAreaView style={{flex: 1}}>
-                <StatusBar barStyle='light-content'/>
-                <ThundrTextField
-                    text='Title of Brainstorm'
-                    onChangeText={ (text) => this.setState({title: text}) }
-                    value={this.state.title}
-                    autoFocus={true}
-                />
-                <ThundrTextField
-                    text='Description'
-                    onChangeText={ (text) => this.setState({description: text}) }
-                    value={this.state.description}
-                    multiline={true}
-                    numberOfLines={3}
-                />
-                <View style={{ flex: 0.7 }}/>
-                <ThundrButton
-                    text='Done'
-                    color='yellow'
-                    onPress={this._addRecentBrainstorm.bind(this)}
-                />
-                <View style={{flex: 3}}/>
-            </SafeAreaView>
-        )
+     /* Header styling. */
+     static navigationOptions = {
+        title: 'Finish Up',
+        headerStyle: {
+            borderBottomWidth: 0,
+            height: ThundrSize.headerHeight,
+            backgroundColor: '#FAD15F',
+        },
+        headerTintColor: '#FFFFFF',
+        headerTitleStyle: {
+            fontFamily: 'HiraginoSans-W6',
+            fontSize: ThundrSize.medium,
+        },
+        headerLeft: null,
+        headerBackTitle: null,
     }
 
     /* Get list of brainstorm collaborators. */
@@ -84,9 +74,7 @@ export default class PostBrainstormScreen extends React.Component {
     }
 
     /* Gets number of ideas generated during brainstorm. */
-    _getIdeas = () => {
-        return 10
-    }
+    _getIdeas = () => { return 10 }
 
     /*  Checks if user has entered a title and description, then adds a new
         brainstorm object to BrainstormData, then navigates back Home. */
@@ -118,21 +106,33 @@ export default class PostBrainstormScreen extends React.Component {
         brainstormData.unshift(recentBrainstorm)
         this.props.navigation.dispatch(resetAction)
     }
-    
-    /* Header styling. */
-    static navigationOptions = {
-        title: 'Finish Up',
-        headerStyle: {
-            borderBottomWidth: 0,
-            height: ThundrSize.headerHeight,
-            backgroundColor: '#FAD15F',
-        },
-        headerTintColor: '#FFFFFF',
-        headerTitleStyle: {
-            fontFamily: 'HiraginoSans-W6',
-            fontSize: ThundrSize.medium,
-        },
-        headerLeft: null,
-        headerBackTitle: null,
+
+    /* Render function. */
+    render() {
+        return (
+            <SafeAreaView style={ {flex: 1} }>
+                <StatusBar barStyle='light-content'/>
+                <ThundrTextField
+                    text='Title of Brainstorm'
+                    onChangeText={ (text) => this.setState({title: text}) }
+                    value={this.state.title}
+                    autoFocus={true}
+                />
+                <ThundrTextField
+                    text='Description'
+                    onChangeText={ (text) => this.setState({description: text}) }
+                    value={this.state.description}
+                    multiline={true}
+                    numberOfLines={3}
+                />
+                <View style={{ flex: 0.7 }}/>
+                <ThundrButton
+                    text='Done'
+                    color='yellow'
+                    onPress={this._addRecentBrainstorm.bind(this)}
+                />
+                <View style={ {flex: 3} }/>
+            </SafeAreaView>
+        )
     }
 }

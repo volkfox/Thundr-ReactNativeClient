@@ -24,6 +24,7 @@ import pastData from '../data/PastData'
 import ThundrSize from '../components/ThundrSize'
 
 export default class PastBrainstormScreen extends React.Component {
+    /* Constructor. */
     constructor(props) {
         super(props)
         this.state = {
@@ -34,6 +35,100 @@ export default class PastBrainstormScreen extends React.Component {
         }
     }
 
+     /* Header styling. */
+     static navigationOptions = ({navigation}) => ({
+        title: navigation.getParam('title', null), 
+        headerStyle: {
+            borderBottomWidth: 0,
+            height: ThundrSize.headerHeight,
+            backgroundColor: '#FAD15F',
+        },
+        headerTintColor: '#FFFFFF',
+        headerTitleStyle: {
+            fontFamily: 'HiraginoSans-W6',
+            fontSize: ThundrSize.smedium,
+            paddingTop: scale(7),
+        },
+        headerRight: (
+            <TouchableOpacity style={{ paddingRight: scale(25), paddingTop: scale(2) }}
+                onPress={navigation.getParam('toggleInfo')}
+            >
+                <Image
+                    source={require('../images/info_button.png')}
+                    resizeMode='contain'
+                    style={{ width: scale(20), height: scale(20) }}
+                />
+            </TouchableOpacity>
+        ),
+    }) 
+
+    /* Passes reference to _toggleInfo to navigation. */
+    componentDidMount() {
+        this.props.navigation.setParams({
+            toggleInfo: this._toggleInfo
+        });
+    }
+
+     /* Adds an idea to existing FlatList. */
+     _addNewIdea = () => {
+        if (this.state.newIdea.length == 0) {
+            alert('Please enter an idea.')
+            return
+        }
+        const newIdea = {
+            idea: this.state.newIdea,
+            notes: this.state.newNotes,
+            upvotes: 0,
+        }
+        pastData.push(newIdea)
+        this.setState({ newIdea: '', newNotes: '' })
+        this._toggleModal()
+    }
+
+    /* renderItem function for FlatList. */
+    _renderItem = ({item}) => (
+        <PastBrainstormItem
+            idea={item.idea}
+            notes={item.notes}
+            upvotes={item.upvotes}
+        />
+    )
+
+    /* renderSeparator function for Flatlist. */
+    _renderSeparator = () => (
+        <View 
+            style = {{
+                height: scale(0.5),
+                backgroundColor: '#cccccc',
+            }}
+        />
+    )
+
+    /* Change the visibility of the modal. */
+     _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
+     _toggleInfo = () => this.setState({ isInfoVisible: !this.state.isInfoVisible })
+
+    /* Returns a list of collaborators for display on info modal. */
+    _getCollaborators(listCollaborators) {
+        let stringCollaborators = ''
+        if (listCollaborators.length == 0) {
+            stringCollaborators = 'none'
+        }
+        else if (listCollaborators.length == 1) {
+            stringCollaborators = listCollaborators[0] 
+        } else if (listCollaborators.length == 2) {
+            stringCollaborators = listCollaborators[0] + ' and ' + listCollaborators[1]
+        }
+        else {
+            for (let i = 0; i < listCollaborators.length - 1; i++) {
+                stringCollaborators += listCollaborators[i] + ', '
+            }
+            stringCollaborators += 'and ' + listCollaborators[listCollaborators.length - 1]
+        }
+        return stringCollaborators
+    }
+
+    /* Render function. */
     render() {
         return (
             <SafeAreaView style={{flex: 1}}>
@@ -140,98 +235,6 @@ export default class PastBrainstormScreen extends React.Component {
             </SafeAreaView>
         )
     }
-
-    /* Adds an idea to existing FlatList. */
-    _addNewIdea = () => {
-        if (this.state.newIdea.length == 0) {
-            alert('Please enter an idea.')
-            return
-        }
-        const newIdea = {
-            idea: this.state.newIdea,
-            notes: this.state.newNotes,
-            upvotes: 0,
-        }
-        pastData.push(newIdea)
-        this.setState({ newIdea: '', newNotes: '' })
-        this._toggleModal()
-    }
-
-    /* renderItem function for FlatList. */
-    _renderItem = ({item}) => (
-        <PastBrainstormItem
-            idea={item.idea}
-            notes={item.notes}
-            upvotes={item.upvotes}
-        />
-    )
-
-    /* renderSeparator function for Flatlist. */
-    _renderSeparator = () => (
-        <View 
-            style = {{
-                height: scale(0.5),
-                backgroundColor: '#cccccc',
-            }}
-        />
-    )
-
-    /* Change the visibility of the modal. */
-     _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
-     _toggleInfo = () => this.setState({ isInfoVisible: !this.state.isInfoVisible })
-
-    componentDidMount() {
-        this.props.navigation.setParams({
-            toggleInfo: this._toggleInfo
-        });
-    }
-
-    /* Returns a list of collaborators for display on info modal. */
-    _getCollaborators(listCollaborators) {
-        let stringCollaborators = ''
-        if (listCollaborators.length == 0) {
-            stringCollaborators = 'none'
-        }
-        else if (listCollaborators.length == 1) {
-            stringCollaborators = listCollaborators[0] 
-        } else if (listCollaborators.length == 2) {
-            stringCollaborators = listCollaborators[0] + ' and ' + listCollaborators[1]
-        }
-        else {
-            for (let i = 0; i < listCollaborators.length - 1; i++) {
-                stringCollaborators += listCollaborators[i] + ', '
-            }
-            stringCollaborators += 'and ' + listCollaborators[listCollaborators.length - 1]
-        }
-        return stringCollaborators
-    }
-
-    /* Header styling. */
-    static navigationOptions = ({navigation}) => ({
-        title: navigation.getParam('title', null), 
-        headerStyle: {
-            borderBottomWidth: 0,
-            height: ThundrSize.headerHeight,
-            backgroundColor: '#FAD15F',
-        },
-        headerTintColor: '#FFFFFF',
-        headerTitleStyle: {
-            fontFamily: 'HiraginoSans-W6',
-            fontSize: ThundrSize.smedium,
-            paddingTop: scale(7),
-        },
-        headerRight: (
-            <TouchableOpacity style={{ paddingRight: scale(25), paddingTop: scale(2) }}
-                onPress={navigation.getParam('toggleInfo')}
-            >
-                <Image
-                    source={require('../images/info_button.png')}
-                    resizeMode='contain'
-                    style={{ width: scale(20), height: scale(20) }}
-                />
-            </TouchableOpacity>
-        ),
-    }) 
 }
 
 /* Style sheet. */
@@ -245,11 +248,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
         borderRadius: 30,
         marginBottom: scale(220),
-    },
-    modalText: {
-        fontFamily: 'HiraginoSans-W3',
-        fontSize: ThundrSize.body,
-        color: '#7E7E7E',
     },
     modalTitleText: {
         fontFamily: 'HiraginoSans-W3',
@@ -313,9 +311,6 @@ const styles = StyleSheet.create({
         width: '90%',
         backgroundColor: '#F5FCFF',
         borderRadius: 30,
-    },
-    detailsContainer: {
-        flex: 4,
     },
     detailsText: {
         fontFamily: 'HiraginoSans-W3',

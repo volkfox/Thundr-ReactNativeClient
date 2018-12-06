@@ -22,10 +22,75 @@ import Modal from 'react-native-modal'
 import ThundrSize from '../components/ThundrSize'
 
 export default class HomeScreen extends React.Component {
-    state = {
-        isModalVisible: false,
+    /* Constructor */
+    constructor(props) {
+        super(props)
+        this.state = {
+            isModalVisible: false,
+        }
     }
     
+    /* Header styling. */
+    static navigationOptions = ({navigation}) => ({
+        title: 'Brainstorms', 
+        headerStyle: {
+            borderBottomWidth: 0,
+            height: ThundrSize.headerHeight,
+            backgroundColor: '#FAD15F',
+        },
+        headerTintColor: '#FFFFFF',
+        headerTitleStyle: {
+            fontFamily: 'HiraginoSans-W3',
+            fontSize: ThundrSize.medium,
+            paddingTop: scale(8),
+        },
+        headerBackTitle: null,
+        headerRight: (
+            <TouchableOpacity 
+                style={{ paddingRight: scale(25) }} 
+                onPress={navigation.getParam('toggleModal')}
+            >
+                <Image
+                    source={require('../images/search.png')}
+                    resizeMode='contain'
+                    style={ {width: scale(17), height: scale(17)} }
+                />
+            </TouchableOpacity>
+        ),
+    })
+
+    /* Give reference to toggle function to navigation. */
+    componentDidMount() {
+        this.props.navigation.setParams({
+            toggleModal: this._toggleModal
+        });
+    }
+
+     /* renderItem function for Flatlist. */
+     _renderItem = ({item}) => (
+        <HomeScreenItem
+            title={item.title}
+            date={item.date}
+            description={item.description}
+            ideas={item.ideas}
+            collaborators={item.collaborators}
+        />
+    )
+
+    /* renderSeparator function for Flatlist. */
+    _renderSeparator = () => (
+        <View 
+            style = {{
+                height: scale(0.5),
+                backgroundColor: '#cccccc',
+            }}
+        />
+    )
+
+    /* Toggles the modal search modal. */
+    _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
+
+    /* Render function. */
     render() {
         return (
             <SafeAreaView style={{flex: 1}}> 
@@ -83,65 +148,6 @@ export default class HomeScreen extends React.Component {
             </SafeAreaView>
         )
     }
-
-    /* renderItem function for Flatlist. */
-    _renderItem = ({item}) => (
-        <HomeScreenItem
-            title={item.title}
-            date={item.date}
-            description={item.description}
-            ideas={item.ideas}
-            collaborators={item.collaborators}
-        />
-    )
-
-    /* renderSeparator function for Flatlist. */
-    _renderSeparator = () => (
-        <View 
-            style = {{
-                height: scale(0.5),
-                backgroundColor: '#cccccc',
-            }}
-        />
-    )
-
-    /* Give reference to toggle function to navigation. */
-    componentDidMount() {
-        this.props.navigation.setParams({
-            toggleModal: this._toggleModal
-        });
-    }
-
-    _toggleModal = () => this.setState({ isModalVisible: !this.state.isModalVisible })
-
-    /* Header styling. */
-    static navigationOptions = ({navigation}) => ({
-        title: 'Brainstorms', 
-        headerStyle: {
-            borderBottomWidth: 0,
-            height: ThundrSize.headerHeight,
-            backgroundColor: '#FAD15F',
-        },
-        headerTintColor: '#FFFFFF',
-        headerTitleStyle: {
-            fontFamily: 'HiraginoSans-W3',
-            fontSize: ThundrSize.medium,
-            paddingTop: scale(8),
-        },
-        headerBackTitle: null,
-        headerRight: (
-            <TouchableOpacity 
-                style={{ paddingRight: scale(25) }} 
-                onPress={navigation.getParam('toggleModal')}
-            >
-                <Image
-                    source={require('../images/search.png')}
-                    resizeMode='contain'
-                    style={ {width: scale(17), height: scale(17)} }
-                />
-            </TouchableOpacity>
-        ),
-    })
 }
 
 const styles = StyleSheet.create({

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "TestingReact",
-    "slug": "TestingReact",
+    "name": "Thundr",
+    "slug": "thundr",
     "privacy": "public",
     "sdkVersion": "31.0.0",
     "platforms": [
@@ -23,7 +23,9 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
-    }
+      "supportsTablet": true,
+      "bundleIdentifier": "ThundrApp",
+    },
+    "description": ""
   }
 }

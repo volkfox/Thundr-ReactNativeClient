@@ -18,6 +18,10 @@ import { StackActions, NavigationActions } from 'react-navigation'
 import ThundrSize from '../components/ThundrSize'
 
 export default class BrainstormingScreen extends React.Component { 
+    /* Header styling. */
+    static navigationOptions = { header: null }
+    
+    /* Render function. */
     render() {
         const collaborators = this.props.navigation.getParam('collaborators', null)
 
@@ -60,11 +64,6 @@ export default class BrainstormingScreen extends React.Component {
             </SafeAreaView>
         )
     }
-
-    /* Header styling. */
-    static navigationOptions = {
-        header: null,
-    }
 }
 
 /* Style sheet. */
@@ -81,9 +80,6 @@ const styles = StyleSheet.create({
         flex: 5,
         alignItems: 'center',
         justifyContent: 'center',
-    },
-    bolt: {
-
     },
     finishButton: {
         width: '25%',
