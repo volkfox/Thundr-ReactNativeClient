@@ -1,0 +1,30 @@
+dependencies: \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Kernel/Environment/EXEnvironment.m \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Target\ Support\ Files/ExpoKit/ExpoKit-prefix.pch \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Analytics/EXAnalytics.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Kernel/Environment/EXBuildConstants.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Kernel/Core/EXKernelUtil.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/CocoaLumberjack/CocoaLumberjack.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/CocoaLumberjack/DDLog.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/CocoaLumberjack/DDLegacyMacros.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/CocoaLumberjack/DDLogMacros.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/CocoaLumberjack/DDAssertMacros.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/CocoaLumberjack/DDASLLogCapture.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/CocoaLumberjack/DDASLLogger.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/CocoaLumberjack/DDTTYLogger.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/CocoaLumberjack/DDFileLogger.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/CocoaLumberjack/DDOSLogger.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/ExpoKit/ExpoKit.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Kernel/Environment/EXEnvironment.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Internal/Test/EXTest.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBridgeModule.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTDefines.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/Crashlytics/Crashlytics/Crashlytics.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/Crashlytics/Crashlytics/CLSAttributes.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/Crashlytics/Crashlytics/CLSLogging.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/Crashlytics/Crashlytics/CLSReport.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/Crashlytics/Crashlytics/CLSStackFrame.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/Crashlytics/Crashlytics/Answers.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/Crashlytics/Crashlytics/ANSCompatibility.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTUtils.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTAssert.h

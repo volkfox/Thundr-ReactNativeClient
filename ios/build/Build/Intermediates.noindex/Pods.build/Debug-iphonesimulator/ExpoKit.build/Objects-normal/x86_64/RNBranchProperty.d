@@ -1,0 +1,36 @@
+dependencies: \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Api/Standalone/Branch/RNBranchProperty.m \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Target\ Support\ Files/ExpoKit/ExpoKit-prefix.pch \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Api/Standalone/Branch/RNBranchProperty.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/Branch.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCCallbacks.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCCommerceEvent.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCServerRequest.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCServerInterface.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCServerResponse.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCPreferenceHelper.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCNetworkServiceProtocol.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCAvailability.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCConfig.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCDebug.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCError.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCLinkCache.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCLinkData.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCLog.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BNCServerRequestQueue.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BranchActivityItemProvider.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BranchConstants.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BranchDeepLinkingController.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BranchEvent.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BranchUniversalObject.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BranchLinkProperties.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BranchDelegate.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BranchShareLink.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BranchView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/BranchViewHandler.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Branch/UIViewController+Branch.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Api/Standalone/Branch/BranchUniversalObject+RNBranch.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTLog.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTAssert.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTDefines.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTUtils.h

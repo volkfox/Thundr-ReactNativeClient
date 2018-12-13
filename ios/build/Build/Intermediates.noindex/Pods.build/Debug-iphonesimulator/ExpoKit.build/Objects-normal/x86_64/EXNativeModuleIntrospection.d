@@ -1,0 +1,13 @@
+dependencies: \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Internal/EXNativeModuleIntrospection.m \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Target\ Support\ Files/ExpoKit/ExpoKit-prefix.pch \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Internal/EXNativeModuleIntrospection.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBridgeModule.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTDefines.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBridge.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBridgeDelegate.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTJavaScriptLoader.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTFrameUpdate.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTInvalidating.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBridgeMethod.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTModuleData.h

@@ -1,0 +1,44 @@
+dependencies: \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Api/Components/Lottie/EXAnimationViewManager.m \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Target\ Support\ Files/ExpoKit/ExpoKit-prefix.pch \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Api/Components/Lottie/EXAnimationViewManager.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTViewManager.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBridgeModule.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTDefines.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTConvert.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTAnimationType.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBorderStyle.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTLog.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTAssert.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTUtils.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTPointerEvents.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTTextDecorationLineType.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/yoga/Yoga.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/yoga/YGEnums.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/yoga/YGMacros.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTEventDispatcher.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBridge.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBridgeDelegate.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTJavaScriptLoader.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTFrameUpdate.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTInvalidating.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/UIView+React.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTComponent.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Api/Components/Lottie/EXContainerView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/Lottie.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTAnimationTransitionController.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTAnimatedSwitch.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTAnimatedControl.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTCacheProvider.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTAnimationView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTAnimationView_Compat.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTComposition.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTKeypath.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTValueDelegate.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTAnimationCache.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTBlockCallback.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTInterpolatorCallback.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/lottie-ios/Lottie/LOTValueCallback.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTUIManager.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTRootView.h

@@ -1,0 +1,9 @@
+dependencies: \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTPlatform.m \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Target\ Support\ Files/React/React-prefix.pch \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTPlatform.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTVersion.h

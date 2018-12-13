@@ -1,0 +1,31 @@
+dependencies: \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/Surface/SurfaceHostingView/RCTSurfaceHostingProxyRootView.mm \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Target\ Support\ Files/React/React-prefix.pch \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/Surface/SurfaceHostingView/RCTSurfaceHostingProxyRootView.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTRootView.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTBridge.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTBridgeDelegate.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTJavaScriptLoader.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTDefines.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTBridgeModule.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTFrameUpdate.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTInvalidating.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/Surface/SurfaceHostingView/RCTSurfaceHostingView.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/Surface/RCTSurfaceDelegate.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/Surface/RCTSurfaceStage.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/Surface/SurfaceHostingView/RCTSurfaceSizeMeasureMode.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTLog.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTUtils.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTPerformanceLogger.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Profiler/RCTProfile.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTRootContentView.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Views/RCTView.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Views/RCTBorderStyle.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Views/RCTComponent.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Views/RCTPointerEvents.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/RCTRootViewDelegate.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Base/Surface/RCTSurface.h \
+  /Users/austinjones/Desktop/ThundrReact/node_modules/react-native/React/Views/UIView+React.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/yoga/YGEnums.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/yoga/YGMacros.h

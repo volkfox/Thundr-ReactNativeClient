@@ -1,0 +1,35 @@
+dependencies: \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginManagerResult.m \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Target\ Support\ Files/FBSDKLoginKit/FBSDKLoginKit-prefix.pch \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/Internal/FBSDKDeviceLoginManagerResult+Internal.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKCoreKit.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKAccessToken.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKCopying.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKGraphRequestConnection.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKMacros.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKAppEvents.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKApplicationDelegate.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKButton.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKConstants.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKGraphRequest.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKGraphRequestDataAttachment.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKSettings.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKTestUsersManager.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKUtility.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKAppLink.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKAppLinkTarget.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKAppLinkNavigation.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKAppLinkResolving.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKAppLinkResolver.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/Bolts/BFAppLinkResolving.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKAppLinkReturnToRefererController.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKAppLinkReturnToRefererView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKAppLinkUtility.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKGraphErrorRecoveryProcessor.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKMeasurementEvent.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKMutableCopying.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKProfile.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKProfilePictureView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKURL.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/FBSDKCoreKit/FBSDKWebViewAppLinkResolver.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/FBSDKLoginKit/FBSDKLoginKit/FBSDKLoginKit/FBSDKDeviceLoginManagerResult.h

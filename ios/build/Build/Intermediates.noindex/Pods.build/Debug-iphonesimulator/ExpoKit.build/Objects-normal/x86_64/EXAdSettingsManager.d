@@ -1,0 +1,46 @@
+dependencies: \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Api/FBAds/EXAdSettingsManager.m \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Target\ Support\ Files/ExpoKit/ExpoKit-prefix.pch \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/Api/FBAds/EXAdSettingsManager.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBridgeModule.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTDefines.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/ExpoKit/ios/Exponent/Versioned/Core/EXUnversioned.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBAudienceNetwork.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBAdChoicesView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBAdDefines.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/UIView+FBNativeAdViewTag.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBAdIconView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBAdSettings.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBAdView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBAdSize.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBInstreamAdView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBInterstitialAd.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBMediaView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBMediaViewVideoRenderer.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAd.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBAdStarRatingView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAdBase.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBAdImage.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAdCollectionViewAdProvider.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAdsManager.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAdCollectionViewCellProvider.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAdView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAdBaseView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAdViewAttributes.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAdScrollView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAdTableViewAdProvider.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeAdTableViewCellProvider.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeBannerAd.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBNativeBannerAdView.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/FBAudienceNetwork/FBAudienceNetwork/FBRewardedVideoAd.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTUtils.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTAssert.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTConvert.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTAnimationType.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTBorderStyle.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTLog.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTPointerEvents.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Public/React/React/RCTTextDecorationLineType.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/yoga/Yoga.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/yoga/YGEnums.h \
+  /Users/austinjones/Desktop/ThundrReact/ios/Pods/Headers/Private/yoga/YGMacros.h
