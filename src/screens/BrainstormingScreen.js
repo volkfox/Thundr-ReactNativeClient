@@ -50,8 +50,8 @@ export default class BrainstormingScreen extends React.Component {
                     style={{ alignItems: 'center', justifyContent: 'center', width: scale(50), height: scale(30) }}
                     onPress={ () => navigation.goBack() }
                 >
-                    <Image 
-                        source={require('../images/back_arrow.png')} 
+                    <Image
+                        source={require('../images/back_arrow.png')}
                         style={{ height: '100%' }}
                         resizeMode='contain'
                     />
@@ -116,24 +116,24 @@ export default class BrainstormingScreen extends React.Component {
         const ideas = this.state.ideas.filter(item => item.key !== data.key);
         this.setState({ ideas });
     }
-    
+
     onSpeechStart = e => {
         this.setState({
             recording: true,
         });
     };
-    
+
     onSpeechError = e => {
         console.log('onSpeechError: ', e);
         this.setState({
             error: JSON.stringify(e.error),
         });
     };
-    
+
     onSpeechResults = e => {
         this.setState({
             results: e.value,
-            ideaText: e.value.join(' '), 
+            ideaText: e.value.join(' '),
             // map function to make ideaText
         });
         if (this.state.results) {
@@ -141,7 +141,7 @@ export default class BrainstormingScreen extends React.Component {
             console.log(this.state.ideaText);
         }
     };
-    
+
     _startRecognizing = async () => {
         console.log('Start recognizing.');
         this.setState({
@@ -153,14 +153,14 @@ export default class BrainstormingScreen extends React.Component {
             partialResults: [],
             end: '',
         });
-    
+
         try {
             await Voice.start('en-US');
         } catch (e) {
             console.error(e);
         }
     };
-    
+
     _stopRecognizing = async () => {
         console.log('Stopping Recording');
         try {
@@ -168,7 +168,7 @@ export default class BrainstormingScreen extends React.Component {
         } catch (e) {
             console.error(e);
         }
-        this.setState({ 
+        this.setState({
             recording: false,
         });
     };
@@ -190,14 +190,14 @@ export default class BrainstormingScreen extends React.Component {
                             <Text style={styles.ideaHeaderText}>Your Idea</Text>
                         </View>
                         <View style={styles.headerFiller}>
-                            <TouchableOpacity 
+                            <TouchableOpacity
                                 onPress={ () => console.log() }  /* Make this reset the idea text and results */
-                                style={styles.xContainer} 
+                                style={styles.xContainer}
                             >
-                                <Image 
-                                    source={require('../images/x.png')} 
-                                    style={styles.headerX} 
-                                    resizeMode='contain' 
+                                <Image
+                                    source={require('../images/x.png')}
+                                    style={styles.headerX}
+                                    resizeMode='contain'
                                 />
                             </TouchableOpacity>
                         </View>
@@ -221,23 +221,23 @@ export default class BrainstormingScreen extends React.Component {
                                 );
                             })}
                         </View>
-                        <ThundrButton 
+                        <ThundrButton
                             style={{ marginHorizontal: scale(60) }}
-                            text='Submit' 
-                            color='dark' 
+                            text='Submit'
+                            color='dark'
                             onPress={ () => console.log } />
                     </View>
                 </View>
-                <View style={styles.microphoneContainer}> 
+                <View style={styles.microphoneContainer}>
                     {/* <Pulse color='#D3CFCF' diameter={scale(200)} numPulses={2} speed={15}/> */}
                     <View style={styles.buttonContainer}>
                         {/* <TouchableOpacity onPress={this._startRecognizing}> */}
                         {/* <TouchableOpacity onPress={this.toggleRecord}> */}
                         <TouchableOpacity onPress={this.state.recording ? this._stopRecognizing : this._startRecognizing}>
-                            <Image 
-                                source={require('../images/mic.png')} 
-                                style={styles.mic} 
-                                resizeMode='contain' 
+                            <Image
+                                source={require('../images/mic.png')}
+                                style={styles.mic}
+                                resizeMode='contain'
                             />
                         </TouchableOpacity>
                     </View>
@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: '#7979CE',
         borderTopRightRadius: 20,
-        borderTopLeftRadius: 20, 
+        borderTopLeftRadius: 20,
         justifyContent: 'center',
         alignItems: 'flex-end',
     },
