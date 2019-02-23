@@ -1,207 +1,326 @@
+/**
+ * -- BrainstormingScreen --
+ * @flow
+ */
+
+/* --TODOS--
+    - onSpeechStart() : start animation around mic
+    - onSpeech
+*/
+
+
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableHighlight } from 'react-native';
+import { Image, SafeAreaView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { scale } from 'react-native-size-matters';
+// import firebase from 'react-native-firebase';
+import * as firebase from 'firebase';
+import Pulse from 'react-native-pulse';
+import ThundrButton from '../components/ThundrButton';
+import ThundrSize from '../components/ThundrSize';
 import Voice from 'react-native-voice';
 
-export default class App extends React.Component {
-  state = {
-    recognized: '',
-    pitch: '',
-    error: '',
-    end: '',
-    started: '',
-    results: [],
-    partialResults: [],
-  };
+const firebaseConfig = {
+    apiKey: "AIzaSyAZ3_t5WUBasDIBn3CtrNYxAOXn7IN8Jb0",
+    authDomain: "voice-test-231101.firebaseapp.com",
+    databaseURL: "https://voice-test-231101.firebaseio.com",
+    projectId: "voice-test-231101",
+    storageBucket: "voice-test-231101.appspot.com",
+};
 
-  constructor(props) {
-    super(props);
-    Voice.onSpeechStart = this.onSpeechStart;
-    Voice.onSpeechRecognized = this.onSpeechRecognized;
-    Voice.onSpeechEnd = this.onSpeechEnd;
-    Voice.onSpeechError = this.onSpeechError;
-    Voice.onSpeechResults = this.onSpeechResults;
-    Voice.onSpeechPartialResults = this.onSpeechPartialResults;
-    Voice.onSpeechVolumeChanged = this.onSpeechVolumeChanged;
-  }
+// const session = 'MPUZKX';
+const session = 'MPUZKX';
 
-  componentWillUnmount() {
-    Voice.destroy().then(Voice.removeAllListeners);
-  }
-
-  onSpeechStart = e => {
-    console.log('onSpeechStart: ', e);
-    this.setState({
-      started: '√',
-    });
-  };
-
-  onSpeechRecognized = e => {
-    console.log('onSpeechRecognized: ', e);
-    this.setState({
-      recognized: '√',
-    });
-  };
-
-  onSpeechEnd = e => {
-    console.log('onSpeechEnd: ', e);
-    this.setState({
-      end: '√',
-    });
-  };
-
-  onSpeechError = e => {
-    console.log('onSpeechError: ', e);
-    this.setState({
-      error: JSON.stringify(e.error),
-    });
-  };
-
-  onSpeechResults = e => {
-    console.log('onSpeechResults: ', e);
-    this.setState({
-      results: e.value,
-    });
-  };
-
-  onSpeechPartialResults = e => {
-    console.log('onSpeechPartialResults: ', e);
-    this.setState({
-      partialResults: e.value,
-    });
-  };
-
-  onSpeechVolumeChanged = e => {
-    console.log('onSpeechVolumeChanged: ', e);
-    this.setState({
-      pitch: e.value,
-    });
-  };
-
-  _startRecognizing = async () => {
-    this.setState({
-      recognized: '',
-      pitch: '',
-      error: '',
-      started: '',
-      results: [],
-      partialResults: [],
-      end: '',
-    });
-
-    try {
-      await Voice.start('en-US');
-    } catch (e) {
-      console.error(e);
+export default class BrainstormingScreen extends React.Component {
+    static navigationOptions = ({ navigation }) => {
+        return {
+            title: 'New Brainstorm',
+            headerStyle: {
+                borderBottomWidth: 0,
+                height: ThundrSize.headerHeight,
+                backgroundColor: '#7979CE',
+            },
+            headerTintColor: '#FFFFFF',
+            headerTitleStyle: {
+                fontFamily: 'HiraginoSans-W6',
+                fontSize: ThundrSize.medium,
+                paddingTop: scale(8),
+            },
+            headerLeft: (
+                <TouchableOpacity
+                    style={{ alignItems: 'center', justifyContent: 'center', width: scale(50), height: scale(30) }}
+                    onPress={ () => navigation.goBack() }
+                >
+                    <Image 
+                        source={require('../images/back_arrow.png')} 
+                        style={{ height: '100%' }}
+                        resizeMode='contain'
+                    />
+                </TouchableOpacity>
+            ),
+            gesturesEnabled: false,
+        };
     }
-  };
 
-  _stopRecognizing = async () => {
-    try {
-      await Voice.stop();
-    } catch (e) {
-      console.error(e);
+    constructor(props) {
+        super(props);
+        this.state = {
+            ideaText: '',
+            ideas: [],
+            mode: 0,
+            channel: 0,
+
+            /* State for voice recognition */
+            recording: false,
+            recognized: '',
+            pitch: '',
+            error: '',
+            end: '',
+            started: '',
+            results: [],
+        };
+
+        Voice.onSpeechStart = this.onSpeechStart;
+        Voice.onSpeechError = this.onSpeechError;
+        Voice.onSpeechResults = this.onSpeechResults;
     }
-  };
 
-  _cancelRecognizing = async () => {
-    try {
-      await Voice.cancel();
-    } catch (e) {
-      console.error(e);
+    componentDidMount() {
+        firebase.initializeApp(firebaseConfig);
+
+        /* Ideas */
+        const ideasRef = firebase.database().ref(session + '/messages');
+        ideasRef.on('child_added', this.updateIdeas);
+        ideasRef.on('child_removed', this.removeIdeas);
+
+        /* Channel */
+        const channelRef = firebase.database().ref(session + '/channel');
+        channelRef.on('value', (snapshot) => { this.setState({channel: snapshot.val()}) });
+
+        /* Mode */
+        const modeRef = firebase.database().ref(session + '/mode');
+        modeRef.on('value', (snapshot) => { this.setState({mode: snapshot.val()}) });
     }
-  };
 
-  _destroyRecognizer = async () => {
-    try {
-      await Voice.destroy();
-    } catch (e) {
-      console.error(e);
+    componentWillUnmount() {
+        Voice.destroy().then(Voice.removeAllListeners);
     }
-    this.setState({
-      recognized: '',
-      pitch: '',
-      error: '',
-      started: '',
-      results: [],
-      partialResults: [],
-      end: '',
-    });
-  };
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native Voice!</Text>
-        <Text style={styles.instructions}>Press the button and start speaking.</Text>
-        <Text style={styles.stat}>{`Started: ${this.state.started}`}</Text>
-        <Text style={styles.stat}>{`Recognized: ${this.state.recognized}`}</Text>
-        <Text style={styles.stat}>{`Pitch: ${this.state.pitch}`}</Text>
-        <Text style={styles.stat}>{`Error: ${this.state.error}`}</Text>
-        <Text style={styles.stat}>Results</Text>
-        {this.state.results.map((result, index) => {
-          return (
-            <Text key={`result-${index}`} style={styles.stat}>
-              {result}
-            </Text>
-          );
-        })}
-        <Text style={styles.stat}>Partial Results</Text>
-        <Text>{this.state.partialResults.length}</Text>
-        {this.state.partialResults.map((result, index) => {
-          return (
-            <Text key={`partial-result-${index}`} style={styles.stat}>
-              {result}
-            </Text>
-          );
-        })}
-        <Text style={styles.stat}>{`End: ${this.state.end}`}</Text>
-        <TouchableHighlight onPress={this._startRecognizing}>
-          <Image style={styles.button} source={require('./button.png')} />
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this._stopRecognizing}>
-          <Text style={styles.action}>Stop Recognizing</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this._cancelRecognizing}>
-          <Text style={styles.action}>Cancel</Text>
-        </TouchableHighlight>
-        <TouchableHighlight onPress={this._destroyRecognizer}>
-          <Text style={styles.action}>Destroy</Text>
-        </TouchableHighlight>
-      </View>
-    );
-  }
+    updateIdeas = (data) => {
+        const ideas = this.state.ideas;
+        ideas.push({text: data.val().text, key: data.key});
+        this.setState({ ideas });
+        // console.log(this.state.ideas);
+    }
+
+    removeIdeas = (data) => {
+        const ideas = this.state.ideas.filter(item => item.key !== data.key);
+        this.setState({ ideas });
+    }
+    
+    onSpeechStart = e => {
+        this.setState({
+            recording: true,
+        });
+    };
+    
+    onSpeechError = e => {
+        console.log('onSpeechError: ', e);
+        this.setState({
+            error: JSON.stringify(e.error),
+        });
+    };
+    
+    onSpeechResults = e => {
+        this.setState({
+            results: e.value,
+            ideaText: e.value.join(' '), 
+            // map function to make ideaText
+        });
+        if (this.state.results) {
+            console.log(this.state.results);
+            console.log(this.state.ideaText);
+        }
+    };
+    
+    _startRecognizing = async () => {
+        console.log('Start recognizing.');
+        this.setState({
+            recognized: '',
+            pitch: '',
+            error: '',
+            started: '',
+            results: [],
+            partialResults: [],
+            end: '',
+        });
+    
+        try {
+            await Voice.start('en-US');
+        } catch (e) {
+            console.error(e);
+        }
+    };
+    
+    _stopRecognizing = async () => {
+        console.log('Stopping Recording');
+        try {
+            await Voice.stop();
+        } catch (e) {
+            console.error(e);
+        }
+        this.setState({ 
+            recording: false,
+        });
+    };
+
+    updateIdeaText = (text) => {
+        this.setState({
+            ideaText: text,
+        });
+    }
+
+    render() {
+        return (
+            <SafeAreaView style={styles.safeContainer}>
+                <StatusBar barStyle='light-content' />
+                <View style={styles.ideaContainer}>
+                    <View style={styles.ideaHeader}>
+                        <View style={styles.headerFiller}/>
+                        <View style={styles.ideaHeaderTextContainer}>
+                            <Text style={styles.ideaHeaderText}>Your Idea</Text>
+                        </View>
+                        <View style={styles.headerFiller}>
+                            <TouchableOpacity 
+                                onPress={ () => console.log() }  /* Make this reset the idea text and results */
+                                style={styles.xContainer} 
+                            >
+                                <Image 
+                                    source={require('../images/x.png')} 
+                                    style={styles.headerX} 
+                                    resizeMode='contain' 
+                                />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                    <View style={styles.ideaBody}>
+                        {/* <TextInput
+                            style={styles.ideaText}
+                            onChangeText={ (text) => this.updateIdeaText(text) }
+                            placeholder='Tap the mic to record an idea!'
+                            placeholderTextColor='#8E8E8E'
+                            value={this.state.ideaText}
+                            multiline={true}
+                        /> */}
+                        <View style={styles.ideaText}>
+                            {this.state.results.map((result, index) => {
+                            {/* {this.state.partialResults.map((result, index) => { */}
+                                return (
+                                    <Text key={`result-${index}`} style={styles.ideaText}>
+                                        {result}
+                                    </Text>
+                                );
+                            })}
+                        </View>
+                        <ThundrButton 
+                            style={{ marginHorizontal: scale(60) }}
+                            text='Submit' 
+                            color='dark' 
+                            onPress={ () => console.log } />
+                    </View>
+                </View>
+                <View style={styles.microphoneContainer}> 
+                    {/* <Pulse color='#D3CFCF' diameter={scale(200)} numPulses={2} speed={15}/> */}
+                    <View style={styles.buttonContainer}>
+                        {/* <TouchableOpacity onPress={this._startRecognizing}> */}
+                        {/* <TouchableOpacity onPress={this.toggleRecord}> */}
+                        <TouchableOpacity onPress={this.state.recording ? this._stopRecognizing : this._startRecognizing}>
+                            <Image 
+                                source={require('../images/mic.png')} 
+                                style={styles.mic} 
+                                resizeMode='contain' 
+                            />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </SafeAreaView>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  button: {
-    width: 50,
-    height: 50,
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  action: {
-    textAlign: 'center',
-    color: '#0000FF',
-    marginVertical: 5,
-    fontWeight: 'bold',
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  stat: {
-    textAlign: 'center',
-    color: '#B0171F',
-    marginBottom: 1,
-  },
+    safeContainer: {
+        flex: 1,
+    },
+    backArrow: {
+        backgroundColor: 'red',
+    },
+    ideaContainer: {
+        flex: 4.5,
+        marginHorizontal: scale(23),
+        marginTop: scale(30),
+        marginBottom: scale(5),
+        backgroundColor: '#FFFFFE',
+        shadowOffset: { width: 0, height: 3 },
+        shadowColor: '#9D9D9D',
+        shadowOpacity: 1.0,
+        borderRadius: 20,
+    },
+    ideaHeader: {
+        flex: 0.65,
+        flexDirection: 'row',
+        backgroundColor: '#7979CE',
+        borderTopRightRadius: 20,
+        borderTopLeftRadius: 20, 
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+    },
+    ideaHeaderTextContainer: {
+        flex: 6,
+        alignItems: 'center',
+    },
+    ideaHeaderText: {
+        fontFamily: 'HiraginoSans-W6',
+        fontSize: ThundrSize.smedium,
+        color: '#FFFFFF',
+        marginBottom: scale(5),
+    },
+    headerFiller: {
+        flex: 2,
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    xContainer: {
+        width: scale(50),
+        height: scale(40),
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        paddingTop: scale(10),
+    },
+    headerX: {
+        height: '100%',
+    },
+    ideaBody: {
+        flex: 4.5,
+    },
+    ideaText: {
+        flex: 3.5,
+        marginVertical: scale(20),
+        marginHorizontal: scale(15),
+        fontFamily: 'HiraginoSans-W3',
+        fontSize: ThundrSize.small,
+        color: '#434343',
+    },
+    microphoneContainer: {
+        flex: 1.5,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    buttonContainer: {
+        height: '60%',
+        justifyContent: 'center',
+    },
+    mic: {
+        height: '100%',
+    },
 });

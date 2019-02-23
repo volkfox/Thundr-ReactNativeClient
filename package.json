@@ -7,9 +7,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "firebase": "^5.8.4",
     "react": "16.6.3",
     "react-native": "0.58.5",
+    "react-native-firebase": "^5.2.2",
     "react-native-gesture-handler": "^1.0.16",
+    "react-native-pulse": "^1.0.7",
+    "react-native-size-matters": "^0.1.6",
     "react-native-voice": "^0.2.6",
     "react-navigation": "^3.3.0"
   },
