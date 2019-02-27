@@ -15,7 +15,9 @@
     "react-native-pulse": "^1.0.7",
     "react-native-size-matters": "^0.1.6",
     "react-native-voice": "^0.2.6",
-    "react-navigation": "^3.3.0"
+    "react-navigation": "^3.3.0",
+    "react-router": "^4.3.1",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "babel-core": "7.0.0-bridge.0",

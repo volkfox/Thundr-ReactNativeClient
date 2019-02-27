@@ -82,10 +82,11 @@ export default class BrainstormingScreen extends React.Component {
         Voice.onSpeechStart = this.onSpeechStart;
         Voice.onSpeechError = this.onSpeechError;
         Voice.onSpeechResults = this.onSpeechResults;
+        firebase.initializeApp(firebaseConfig);
     }
 
     componentDidMount() {
-        firebase.initializeApp(firebaseConfig);
+
 
         /* Ideas */
         const ideasRef = firebase.database().ref(session + '/messages');
