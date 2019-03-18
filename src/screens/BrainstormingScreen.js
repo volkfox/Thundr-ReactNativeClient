@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { Dimensions, FlatList, Image, Linking, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { AsyncStorage, Dimensions, FlatList, Image, Linking, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { scale } from 'react-native-size-matters';
 import * as firebase from 'firebase';
 import { DismissKeyboard } from '../components/DismissKeyboard';
@@ -144,9 +144,14 @@ export default class BrainstormingScreen extends React.Component {
     }
 
     /* Handles using QR code while on BrainstormingScreen */
-    handleOpenURL(event) {
+    async handleOpenURL(event) {
         if (event.url) {
             const code = event.url.match(/code=([\S]*)/)[1];
+            try {
+                await AsyncStorage.setItem('previousCode', code);
+            } catch (err) {
+                console.log(err);
+            }
             this.setState({ session: code }, () => {
                 this.removeFirebase();
                 this.startFirebase();
@@ -202,8 +207,6 @@ export default class BrainstormingScreen extends React.Component {
         }, () => {
             setTimeout(() => this.setState({ ideaTitle: 'Your Idea' }), 2000);
         });
-
-        console.log(this.state.ideas)
     }
 
     /* Submits a +1 or -1 corresponding to an idea to firebase/votes */
@@ -477,7 +480,7 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 9.5,
-        backgroundColor: '#FFFDF4',
+        // backgroundColor: '#FFFDF4',
     },
     ideaContainer: {
         flex: 4,
@@ -488,6 +491,7 @@ const styles = StyleSheet.create({
         shadowColor: '#9D9D9D',
         shadowOpacity: 1.0,
         borderRadius: 20,
+        backgroundColor: '#FFFFF6',
     },
     ideaHeader: {
         flex: 0.65,

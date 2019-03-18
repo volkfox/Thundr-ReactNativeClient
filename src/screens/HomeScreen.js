@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { Animated, Dimensions, Image, Keyboard, Linking, StatusBar, StyleSheet, View, TouchableOpacity} from 'react-native';
+import { Animated, AsyncStorage, Dimensions, Image, Keyboard, Linking, StatusBar, StyleSheet, View, TouchableOpacity} from 'react-native';
 import { scale } from 'react-native-size-matters';
 import { DismissKeyboard } from '../components/DismissKeyboard';
 import * as firebase from 'firebase';
@@ -57,7 +57,7 @@ export default class HomeScreen extends React.Component {
     }
 
     /* Set up deep linking */
-    componentDidMount() {
+    async componentDidMount() {
         Linking.getInitialURL().then((url) => {
             if (url) {
                 const code = url.match(/code=([\S]*)/)[1];
@@ -66,6 +66,12 @@ export default class HomeScreen extends React.Component {
             }
         }).catch(err => console.error('An error occurred', err));
         Linking.addEventListener('url', this.handleOpenURL.bind(this));
+        try {
+            const code = await AsyncStorage.getItem('previousCode');
+            this.setState({ code });
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     /* Remove listeners */
@@ -79,7 +85,7 @@ export default class HomeScreen extends React.Component {
     handleOpenURL(event) {
         if (event.url) {
             const code = event.url.match(/code=([\S]*)/)[1];
-            this.setState({ code: code }, () => {
+            this.setState({ code }, () => {
                 this.sendCode();
             });
         }
@@ -142,7 +148,7 @@ export default class HomeScreen extends React.Component {
     };
 
     /* Initiates brainstorm and navigates to BrainstormingScreen if code is valid */
-    sendCode = () => {
+    sendCode = async () => {
         if (!this.state.code) {
             alert('Please scan the QR code or enter the code on the display.');
             return;
@@ -150,6 +156,11 @@ export default class HomeScreen extends React.Component {
         if (!this.validCode(this.state.code)) {
             alert('Please scan the QR code or enter the (alphanumeric) code on the display.');
             return;
+        }
+        try {
+            await AsyncStorage.setItem('previousCode', this.state.code);
+        } catch (err) {
+            console.log(err);
         }
         let sessionRef = firebase.database().ref().child(this.state.code);
         sessionRef.once('value', (snapshot) => {
@@ -184,10 +195,10 @@ export default class HomeScreen extends React.Component {
                     <StatusBar barStyle='light-content' hidden={this.state.isQRScannerVisible} />
                     <View style={styles.logoContainer}>
                         <Animated.Image source={require('../images/thundr_logo.png')} style={{ height: this.imageHeight }} resizeMode='contain' />
-                        <Animated.Text style={[ styles.text, {fontSize: this.fontSize} ]}>Thundr</Animated.Text>
+                        <Animated.Text style={[ styles.text, {fontSize: this.fontSize} ]}>thundr</Animated.Text>
                     </View>
                     <View style={styles.codeEntryContainer}>
-                        <ThundrTextField text='Scan the QR code below!' value={this.state.code} onChange={this.onChange} /> 
+                        <ThundrTextField text='Enter code or scan QR' value={this.state.code} onChange={this.onChange} /> 
                         <ThundrButton 
                             style={{ marginTop: scale(15) }} 
                             color='#454899' 
