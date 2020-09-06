@@ -8,9 +8,10 @@
   },
   "dependencies": {
     "firebase": "^5.8.6",
+    "grpc": "^1.20.2",
     "react": "16.8.3",
     "react-native": "0.59.0",
-    "react-native-camera": "^2.0.0",
+    "react-native-camera": "^2.11.2",
     "react-native-flip-component": "^1.0.6",
     "react-native-gesture-handler": "^1.1.0",
     "react-native-modal": "^9.0.0",
